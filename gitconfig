@@ -1,0 +1,537 @@
+[user]
+  name = Owajigbanam Ogbuluijah
+  email = igbanam@andela.com
+[core]
+  editor = vim
+[protocol]
+  ; version = 2
+[alias]
+  a = add
+  b = branch
+  c = commit
+  d = diff
+  l = log
+  o = checkout
+  p = pull
+  r = remote
+  s = status
+
+  ### add ###
+
+  # add all
+  aa = add --all
+
+  # add by patch - looks at each change, and asks if we want to put it in the repo.
+  ap = add --patch
+
+  # add just the files that are updated.
+  au = add --update
+
+  ### branch ###
+
+  # branch - soft delete
+  bd = branch --delete
+
+  # branch - hard delete
+  bdd = !git bd --force
+
+  branches-age = !"for branch in `git branch -r | grep -v HEAD`;do echo `git show --format='%ci %cr' $branch | head -n 1` \t$branch; done | sort -r"
+  branches-ages = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+  ### commit ###
+
+  # commit - amend the tip of the current branch rather than creating a new commit.
+  ca = commit --amend
+
+  # commit - amend the tip of the current branch, and do not edit the message.
+  can = !git ca --no-edit
+
+  # commit interactive
+  ci = commit --interactive
+
+  # commit with a message
+  cm = commit --message
+
+  ### diff ###
+
+  # diff - show changes not yet staged
+  dc = diff --cached
+
+  # diff - changes about to be commited
+  ds = diff --staged
+
+  # diff - show changes but by word, not line
+  dw = diff --word-diff
+
+  diff-all = !"for name in $(git diff --name-only $1); do git difftool $1 $name & done"
+  diff-branch-changes = !"git diff-changes `git fork-point`..HEAD"
+  diff-branch-files-changed = !"git diff-stat `git fork-point`..HEAD | grep files | awk '{print $1}'"
+  diff-changes = diff --name-status -r
+  diff-staged = !git dc
+  diff-stat = diff --stat --ignore-space-change -r
+
+  gobble-squash = !"git reset --soft `git fork-point` && git c -t ~/.gobble-final-commit"
+
+  # Logs and Logging
+  # log with a text-based graphical representation of the commit history.
+  lg = log --graph
+
+  # log with one line per item.
+  lo = log --oneline
+
+  # log relative
+  lr = !git lg --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+
+  log-retro = !git log-me --since '1 week ago' --pretty=short --oneline
+  log-standup = !git log-me --since yesterday --pretty=short --oneline
+
+  # Show log of changes, oldest first
+  log-history = !git lo --reverse
+
+  # Show log of new commits after you fetched, with stats, excluding merges
+  log-fresh = log ORIG_HEAD.. --stat --no-merges
+
+  # Show the log for my own user email
+  log-me = !git log --author $(git config user.email)
+
+  # Show log as a graph
+  log-graph = !git lg --all --oneline --decorate
+
+  # Show the date of the first commit
+  log-first-date = !"git log --date-order --date=iso --pretty=%ad --reverse | head -1"
+
+  # Show the recent day
+  log-day = log --since yesterday
+
+  # TODO
+  log-fetched = !git lo HEAD..origin/master
+  log-local = !git lo origin..HEAD
+  log-refs = log --all --graph --decorate --oneline --simplify-by-decoration --no-merges
+  log-timeline = log --format='%h %an %ar - %s'
+
+  ### rebase ###
+
+  # rebase - forward-port local commits to the updated upstream head.
+  rb = rebase
+
+  # rebase - continue the rebasing process after resolving a conflict manually and updating the index with the resolution.
+  rbc = rebase --continue
+
+  # rebase - restart the rebasing process by skipping the current patch.
+  rbs = rebase --skip
+
+  # rbi - rebase interactive on our unpushed commits.
+  rbi = rebase --interactive @{upstream}
+
+  # See https://blog.filippo.io/git-fixup-amending-an-older-commit/
+  # This is a slightly modified version
+  fixup = "!f() { TARGET=$(git rev-parse \"$1\"); git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~; }; f"
+
+  ### reflog ###
+
+  # reflog - reference log that manages when tips of branches are updated.
+  rl = reflog
+
+  ### remote ###
+
+  # remote - manage set of tracked repositories [same as "r"].
+  rr = remote
+
+  # remote show - gives some information about the remote <name>.
+  rrs = remote show
+
+  ### status ###
+
+  # status with short format instead of full details
+  ss = status --short
+
+  # status with short format and showing branch and tracking info.
+  ssb = !git ss --branch
+
+  # Show who contributed with summarized changes
+  who = shortlog --summary --
+
+  # Show who contributed, in descending order by number of commits
+  whorank = shortlog --summary --numbered --no-merges
+
+  # Show contributors to a file or folder
+  whotouched = !"f() { git log --pretty=\"format:%an%x09\" $@ | sort | uniq; }; f"
+
+  # Publish the current branch by pushing it to the remote "origin",
+  # and setting the current branch to track the upstream branch.
+  publish = !"git push --set-upstream origin $(git branch-name)"
+
+  # Unpublish the current branch by deleting the
+  # remote version of the current branch.
+  unpublish = !"git push origin :$(git branch-name)"
+
+  ########### IGBANAM'S ##########
+
+  # Originally built for bringing a late origin up to speed with its forked
+  # upstream, this is something which aligns two remotes.
+  #
+  # You can use it thus
+  #
+  #   git sync-up
+  #
+  # This would sync up "origin's master" with "upstream' master"
+  #
+  #   git sync-up uplink develop
+  #
+  # This would sync up the "uplink" remote's "develop" branch with "origin"
+  # remote's develop branch.
+  sync-up = "!f() { \
+    url=\"${1:-upstream}\"; \
+    ref=\"${2:-master}\"; \
+    git o $ref; \
+    git p $url $ref; \
+    git push; \
+  };f"
+
+  # "Ancestral Bounds"
+  # These two commands seek to get the internal boundaries of a branch. In the
+  # case of the graph below, the oldest ancestor of topic-branch is G and the
+  # youngest descendant of topic-branch is J.
+  # -- X -- A -- B -- C -- D -- F  (master)
+  #           \     /   \     /
+  #            \   /     \   /
+  #              G -- H -- I -- J  (topic-branch)
+  fork-point = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-master}") | grep "^\\ [a-z0-9]" | sed -ne "s/^\\ //p" | head -n 1' -
+  oldest-ancestor = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-master}") | grep "^\\-[a-z0-9]" | sed -ne "s/^\\-//p" | tail -n 1' -
+  oldest-ancestor-2 = !"git log ${1:-master}..${2:-HEAD} --oneline | tail -1 | awk '{print $1}'"
+
+  ### Rails ###
+  rspec-branch = !"git diff-branch-changes | awk '{print $2}' | grep _spec.rb | xargs rspec"
+
+  # Topics and Flow
+  topic-base-branch-name = "! echo master"
+
+  topic-create = "!f(){ \
+    branch=\"$1\"; \
+    base=$(git topic-base-branch-name); \
+    git checkout \"$base\"; git pull; \
+    git checkout -b \"$branch\" \"$base\"; \
+  };f"
+
+  topic-delete = "!f(){ \
+    branch=$(git branch-name); \
+    base=$(git topic-base-branch-name); \
+    git checkout \"$base\"; \
+    git branch --delete \"$branch\"; \
+    git push origin \":$branch\"; \
+  };f"
+
+  topic-finish = "!f(){ \
+    git topic-push; \
+    git topic-delete; \
+  };f"
+
+  topic-pull = "!f(){ \
+    branch=$(git branch-name); \
+    base=$(git topic-base-branch-name); \
+    git checkout \"$base\"; git pull; \
+    git checkout \"$branch\"; git rebase \"$base\"; \
+  };f"
+
+  topic-push = !git publish
+
+  topic-start = "!f(){ \
+    branch=\"$1\"; \
+    git topic-create \"$branch\"; \
+    git topic-push; \
+  };f"
+
+  topic-sync = "!f(){ \
+    git topic-pull; \
+    git topic-push; \
+  };f"
+
+  ### MAINTENANCE ALIASES ###
+
+  # pruner: prune everything that is unreachable now.
+  #
+  # This command takes a long time to run, perhaps even overnight.
+  #
+  # This is useful for removing unreachable objects from all places.
+  #
+  # By [CodeGnome](http://www.codegnome.com/)
+  #
+  pruner = !"git prune --expire=now; git reflog expire --expire-unreachable=now --rewrite --all"
+
+  # repacker: repack a repo the way Linus recommends.
+  #
+  # This command takes a long time to run, perhaps even overnight.
+  #
+  # It does the equivalent of "git gc --aggressive"
+  # but done *properly*,  which is to do something like:
+  #
+  #     git repack -a -d --depth=250 --window=250
+  #
+  # The depth setting is about how deep the delta chains can be;
+  # make them longer for old history - it's worth the space overhead.
+  #
+  # The window setting is about how big an object window we want
+  # each delta candidate to scan.
+  #
+  # And here, you might well want to add the "-f" flag (which is
+  # the "drop all old deltas", since you now are actually trying
+  # to make sure that this one actually finds good candidates.
+  #
+  # And then it's going to take forever and a day (ie a "do it overnight"
+  # thing). But the end result is that everybody downstream from that
+  # repository will get much better packs, without having to spend any effort
+  # on it themselves.
+  #
+  # http://metalinguist.wordpress.com/2007/12/06/the-woes-of-git-gc-aggressive-and-how-git-deltas-work/
+  #
+  # We also add the --window-memory limit of 1 gig, which helps protect
+  # us from a window that has very large objects such as binary blobs.
+  #
+  repacker = repack -a -d -f --depth=300 --window=300 --window-memory=1g
+
+  # Do everything we can to optimize the repository.
+  #
+  # This command takes a long time to run, perhaps even overnight.
+  #
+  # Currently, this command simply calls `git pruner` and `git repacker`.
+  # There's a step that may be unnecessarying, calling `git prune-pack`.
+  #
+  optimize = !git pruner; git repacker; git prune-packed
+
+  ### SHELL SCRIPTING ALIASES ###
+
+  # Get the current branch name
+  branch-name = rev-parse --abbrev-ref HEAD
+
+  # Get name of the upstream branch
+  upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
+
+  # Get the top level directory, regardless of what subdirectory we're in.
+  # root = ! pwd # this one is funny but slow
+  root = rev-parse --show-toplevel
+
+  # Execute shell scripts. Git always runs scripts in the top directory.
+  # For example "git exec pwd" will always show you the top directory.
+  exec = ! exec
+
+  # Friendly wording is easier to remember.
+  # Thanks to http://gggritso.com/human-git-aliases
+  branches = branch -a
+  tags = tag -n1 --list
+  stashes = stash list
+
+  # Expunge a file everywhere; this command is typically for a serious problem,
+  # such as accidentially committing a file of sensistive data, such as passwords.
+  # After you use command, you will likely need to force push everything.
+  # See https://help.github.com/articles/removing-sensitive-data-from-a-repository/
+  expunge = !"f() { git filter-branch --force --index-filter \"git rm --cached --ignore-unmatch $1\" --prune-empty --tag-name-filter cat -- --all }; f"
+
+  # Edit all files of the given type
+  edit-cached = !"f() { git ls-files --cached | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-deleted = !"f() { git ls-files --deleted | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-ignored = !"f() { git ls-files --ignored | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-killed = !"f() { git ls-files --killed | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-modified = !"f() { git ls-files --modified | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-others = !"f() { git ls-files --others | sort -u ; }; `git var GIT_EDITOR` `f`"
+  edit-stage = !"f() { git ls-files --stage | cut -f2 | sort -u ; }; `git var GIT_EDITOR` `f`"
+
+  # Editing and adding conflicted files: when we get many merge conflicts
+  # and want to quickly solve them using an editor, then add the  files.
+  edit-unmerged = !"f() { git ls-files --unmerged | cut -f2 | sort -u ; }; `git var GIT_EDITOR` `f`"
+  add-unmerged = !"f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+  # Ours & Theirs - easy merging when you know which files you want
+  #
+  # Sometimes during a merge you want to take a file from one side wholesale.
+  #
+  # The following aliases expose the ours and theirs commands which let you
+  # pick a file(s) from the current branch or the merged branch respectively.
+  #
+  #   * ours: checkout our version of a file and add it
+  #   * theirs: checkout their version of a file and add it
+  #
+  # N.b. the function is there as hack to get $@ doing
+  # what you would expect it to as a shell user.
+  #
+  ours   = !"f() { git checkout --ours $@ && git add $@; }; f"
+  theirs = !"f() { git checkout --theirs $@ && git add $@; }; f"
+
+  # Work In Progress: from https://gist.github.com/492227 and VonC on stackoverflow.
+  # This enables a quick way to add all new and modified files to the index,
+  # while cleaning the index from the files removed from the working tree;
+  # this cleaning will facilite a rebase, because there won't be any conlfict
+  # due to an "unclean" working directory (not in sync with the index).
+  # The unwip will restore the deleted files to the working tree.
+  wip = !"git add --all; git ls-files --deleted -z | xargs -0 git rm; git commit --message=wip"
+  unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
+
+  # Assume
+  #
+  # Sometimes we want to change a file in a repo, but never check in your edits.
+  # We can't use .gitignore because the file is tracked. We use update-index.
+  #
+  # If you interact with big corporate projects, such as projects in Subversion,
+  # then you might run into the need to ignore certain files which are under
+  # Subversion control, yet you need to modify them but not commit.
+  # The assume-unchanged flag comes to the rescue.
+  #
+  # Suppose we want to edit passwords.txt and for god's sake never check it in:
+  #
+  #     $ git status
+  #     modified passwords.txt
+  #     modified foo.txt
+  #
+  #     $ git assume passwords.txt
+  #     $ git status
+  #     modified foo.txt
+  #
+  #     $ git assumed
+  #     passwords.txt
+  #
+  #     $ git unassume passwords.txt
+  #     $ git status
+  #     modified passwords.txt
+  #     modified foo.txt
+  #
+  # Thanks to http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+  # Thanks to http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+
+  assume   = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assume-all = "!git st -s | awk {'print $2'} | xargs git assume"
+  unassume-all = "!git assumed | xargs git update-index --no-assume-unchanged"
+  assumed  = !"git ls-files -v | grep ^h | cut -c 3-"
+
+  # Delete all branches that have already been merged into the master branch.
+  master-cleanse = !git master-cleanse-local; git master-cleanse-remote
+
+  # Delete all local branches that have been merged into the local master branch.
+  master-cleanse-local = "!git checkout master && git branch --merged | xargs git branch --delete"
+
+  # Delete all remote branches that have been merged into the remote master branch.
+  master-cleanse-remote = !"git branch --remotes --merged origin/master | sed 's# *origin/##' | grep -v '^master$' xargs -I% git push origin :% 2>&1 | grep --colour=never 'deleted'"
+
+  # Delete a branch name, then create the same branch name based on master -
+  # useful if you have, for example, a development branch and master branch
+  # and they go out of sync, and you want to nuke the development branch.
+  #
+  # Calls the `publish` and `unpublish` aliases.
+  #
+  reincarnate = !"f() { [[ -n $@ ]] && git checkout \"$@\" && git unpublish && git checkout master && git branch -D \"$@\" && git checkout -b \"$@\" && git publish; }; f"
+
+  ##
+  # Reset & Undo
+  ##
+
+  # Reset and undo aliases are ways to move backwards on the commit chain.
+  # We find that novices prefer the wording "undo"; experts prefer "reset".
+  reset-commit       = reset --soft HEAD~1
+  reset-commit-hard  = reset --hard HEAD~1
+  reset-commit-clean = !git reset --hard HEAD~1 && git clean -fd
+  reset-to-pristine   = !git reset --hard && git clean -ffdx
+  reset-to-upstream  = !git reset --hard $(git upstream-name)
+
+  # Undo is simply a synonym for "reset" because "undo" can help novices.
+  undo-commit        = reset --soft HEAD~1
+  undo-commit-hard   = reset --hard HEAD~1
+  undo-commit-clean  = !git reset --hard HEAD~1 && git clean -fd
+  undo-to-pristine   = !git reset --hard && git clean -ffdx
+  undo-to-upstream   = !git reset --hard $(git upstream-name)
+
+  # Nicknames
+  uncommit = reset --soft HEAD~1
+  unadd = reset HEAD
+  unstage = reset HEAD
+
+  # Discard changes in a (list of) file(s) in working tree
+  discard = checkout --
+
+  # Clean and discard changes and untracked files in working tree
+  cleanout = !git clean -df && git checkout -- .
+
+  # Clone a git repository including all submodules
+  cloner = clone --recursive
+
+  # Stash aliases for push & pop
+  #
+  # Note that if you are using an older version of git, before 2.16.0,
+  # then you can use the older "stash save" instead of the newer "stash push".
+  save = stash push
+  pop = stash pop
+
+  # Stash snapshot - from http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+  # Take a snapshot of your current working tree without removing changes.
+  # This is handy for refactoring where you can't quite fit what you've done
+  # into a commit but daren't stray too far from now without a backup.
+  #
+  # Running this:
+  #
+  #    $ git snapshot
+  #
+  # Creates this stash:
+  #
+  #    stash@{0}: On feature/handy-git-tricks: snapshot: Mon Apr 8 12:39:06 BST 2013
+  #
+  # And seemingly no changes to your working tree.
+  #
+  snapshot = !git stash push "snapshot: $(date)" && git stash apply "stash@{0}"
+
+  # When you're a little worried that the world is coming to an end
+  panic = !tar cvf ../git_panic.tar *
+
+  # Do everything we can to synchronize all changes
+  get = !git pull --rebase && git submodule update --init --recursive
+  put = !git commit --all --message=\"$1\" && shift && git push
+
+  # Ignore all untracked files by appending them to .gitignore:
+  ignore = "!git status | grep -P \"^\\t\" | grep -vF .gitignore | sed \"s/^\\t//\" >> .gitignore"
+
+  # churn: show log of files that have many changes
+  #
+  #   * Written by (Corey Haines)[http://coreyhaines.com/]
+  #   * Scriptified by Gary Bernhardt
+  #   * Obtained from https://github.com/garybernhardt/dotfiles/blob/master/bin/git-churn
+  #   * Edited for sixarm_git_config repo by Joel Parker Henderson
+  #   * Comments by Mislav http://mislav.uniqpath.com/2014/02/hidden-documentation/
+  #
+  # Show churn for whole repo:
+  #
+  #   $ git churn
+  #
+  # Show churn for specific directories:
+  #
+  #   $ git churn app lib
+  #
+  # Show churn for a time range:
+  #
+  #   $ git churn --since='1 month ago'
+  #
+  # These are all standard arguments to `git log`.
+  #
+  # It's possible to get valuable insight from history of a project not only
+  # by viewing individual commits, but by analyzing sets of changes as a whole.
+  # For instance, git-log-churn compiles stats about which files change the most.
+  #
+  # For example, to see where work on an app was focused on in the past month:
+  #
+  #     $ git churn --since='1 month ago' app/ | tail
+  #
+  # This can also highlight potential problems with technical debt in a project.
+  # A specific file changing too often is generally a red flag, since it probably
+  # means the file either needed to be frequently fixed for bugs, or the file
+  # holds too much responsibility and should be split into smaller units.
+  #
+  # Similar methods of history analysis can be employed to see which people were
+  # responsible recently for development of a certain part of the codebase.
+  #
+  # For instance, to see who contributed most to the API part of an application:
+  #
+  #    $ git log --format='%an' --since='1 month ago' app/controllers/api/ | \
+  #      sort | uniq -c | sort -rn | head
+  #
+  #    109 Alice Anderson
+  #    13 Bob Brown
+  #    7 Carol Clark
+  #
+  churn = !git log --all --find-copies --find-renames --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}' | sort -g
+
