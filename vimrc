@@ -1,45 +1,54 @@
-" Leader
+" leader
 let mapleader = " "
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" switch syntax highlighting on, when the terminal has colors
+" also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-set autowrite          " Automatically :write before running commands
-set backspace=2        " Backspace deletes like most programs in insert mode
+set autowrite          " automatically :write before running commands
+set backspace=2        " backspace deletes like most programs in insert mode
+set complete-=i        " do not parse included files in autocomplete
 set expandtab
 set history=50
 set incsearch          " do incremental searching
-set laststatus=2       " Always display the status line
+set laststatus=2       " always display the status line
 set nobackup
 set noswapfile         " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set nowritebackup
-set number             " Numbers
+set number             " numbers
 set numberwidth=5
+set relativenumber
 set ruler              " show the cursor position all the time
 set shiftround
 set shiftwidth=2
 set showcmd            " display incomplete commands
-set tabstop=2          " Softtabs, 2 spaces
+set tabstop=2          " softtabs, 2 spaces
 
-" Display extra whitespace
+" display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-""" Bundles
+""" auto groups
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
+""" bundles
 
 let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
-" Colours
+" colours
 Plug 'dikiaap/minimalist'
 
-" Plugins
+" plugins
 Plug 'christoomey/vim-run-interactive'
 Plug 'docunext/closetag.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'hzchirs/vim-material'
 Plug 'janko-m/vim-test'
@@ -49,6 +58,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'sheerun/vim-polyglot'
+Plug 'slashmili/alchemist.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -70,45 +80,45 @@ endif
 
 call plug#end()
 
-""" Configurations
+""" configurations
 colorscheme minimalist
 
-" Airline
+" airline
 let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
 
-" Auto Save
-let g:auto_save = 1  " enable AutoSave on Vim startup
+" auto save
+let g:auto_save = 1  " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
-" FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" fzf
+let $fzf_default_command = 'ag --hidden --ignore .git -l -g ""'
 
-""" Mappings
+""" mappings
 
-" Buffers
+" buffers
 set hidden
-nnoremap [b :bprev<CR>
-nnoremap ]b :bnext<CR>
+nnoremap [b :bprev<cr>
+nnoremap ]b :bnext<cr>
 
-" Window Shenanigans
-" Close buffers quicker!
-nmap <S-w> :bd<CR>
-" Select all
-nnoremap <C-a> ggVG<CR>
+" window shenanigans
+" close buffers quicker!
+nmap <s-w> :bd<cr>
+" select all
+nnoremap <c-a> ggvG
 
-" FZF to Ctrl+P
-nnoremap <C-p> :FZF<CR>
+" fzf to ctrl+p
+nnoremap <c-p> :FZF<cr>
 
-" Limelight
-nmap <Leader>ll :Limelight!!<CR>
+" limelight
+nmap <leader>ll :Limelight!!<cr>
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" quicker window movement
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " vim-commentary
-map  gc  <Plug>Commentary
-nmap gcc <Plug>CommentaryLine
+map  gc  <plug>Commentary
+nmap gcc <plug>CommentaryLine
