@@ -127,6 +127,8 @@
   # This is a slightly modified version
   fixup = "!f() { TARGET=$(git rev-parse \"$1\"); git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~; }; f"
 
+  drop = "!f() { TARGET=$(git rev-parse \"$1\"); git rebase -p --onto $TARGET^ $TARGET; }; f"
+
   ### reflog ###
 
   # reflog - reference log that manages when tips of branches are updated.
@@ -249,13 +251,6 @@
   ### MAINTENANCE ALIASES ###
 
   # pruner: prune everything that is unreachable now.
-  #
-  # This command takes a long time to run, perhaps even overnight.
-  #
-  # This is useful for removing unreachable objects from all places.
-  #
-  # By [CodeGnome](http://www.codegnome.com/)
-  #
   pruner = !"git prune --expire=now; git reflog expire --expire-unreachable=now --rewrite --all"
 
   # repacker: repack a repo the way Linus recommends.
@@ -307,7 +302,6 @@
   upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
 
   # Get the top level directory, regardless of what subdirectory we're in.
-  # root = ! pwd # this one is funny but slow
   root = rev-parse --show-toplevel
 
   # Execute shell scripts. Git always runs scripts in the top directory.
@@ -342,16 +336,10 @@
 
   # Ours & Theirs - easy merging when you know which files you want
   #
-  # Sometimes during a merge you want to take a file from one side wholesale.
-  #
-  # The following aliases expose the ours and theirs commands which let you
-  # pick a file(s) from the current branch or the merged branch respectively.
-  #
   #   * ours: checkout our version of a file and add it
   #   * theirs: checkout their version of a file and add it
   #
-  # N.b. the function is there as hack to get $@ doing
-  # what you would expect it to as a shell user.
+  # Note that for a rebase, this is flipped
   #
   ours   = !"f() { git checkout --ours $@ && git add $@; }; f"
   theirs = !"f() { git checkout --theirs $@ && git add $@; }; f"
@@ -484,7 +472,7 @@
   put = !git commit --all --message=\"$1\" && shift && git push
 
   # Ignore all untracked files by appending them to .gitignore:
-  ignore = "!git status | grep -P \"^\\t\" | grep -vF .gitignore | sed \"s/^\\t//\" >> .gitignore"
+  ignore = "!git status | grep \"^\\t\" | grep -vF .gitignore | sed \"s/^\\t//\" >> .gitignore"
 
   # churn: show log of files that have many changes
   #
