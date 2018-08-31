@@ -127,7 +127,7 @@
   # This is a slightly modified version
   fixup = "!f() { TARGET=$(git rev-parse \"$1\"); git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~; }; f"
 
-  drop = "!f() { TARGET=$(git rev-parse \"$1\"); git rebase -p --onto $TARGET^ $TARGET; }; f"
+  drop-commit = "!f() { TARGET=$(git rev-parse \"$1\"); git rebase -p --onto $TARGET^ $TARGET; }; f"
 
   ### reflog ###
 
