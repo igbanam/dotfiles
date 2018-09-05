@@ -80,40 +80,48 @@ endif
 
 call plug#end()
 
-""" configurations
+""" Configurations
 colorscheme minimalist
 
-" airline
+" Airline ---------------------------------------------------------------- {{{
 let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
+" ------------------------------------------------------------------------ }}}
 
-" auto save
+" Auto Save -------------------------------------------------------------- {{{
 let g:auto_save = 1  " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+" ------------------------------------------------------------------------ }}}
 
-" fzf
+" FZF -------------------------------------------------------------------- {{{
 let $fzf_default_command = 'ag --hidden --ignore .git -l -g ""'
+" ------------------------------------------------------------------------ }}}
 
-""" mappings
+" Ruby (vim-ruby) -------------------------------------------------------- {{{
+let ruby_fold = 1
+let ruby_foldable_groups = 'def'
+" ------------------------------------------------------------------------ }}}
 
-" buffers
+""" Mappings
+
+" Buffers
 set hidden
 nnoremap [b :bprev<cr>
 nnoremap ]b :bnext<cr>
 
-" window shenanigans
-" close buffers quicker!
+" Window Shenanigans
+" Close Buffers Quicker!
 nmap <s-w> :bd<cr>
-" select all
+" Select All
 nnoremap <c-a> ggvG
 
-" fzf to ctrl+p
+" FZF to Ctrl+P
 nnoremap <c-p> :FZF<cr>
 
-" limelight
+" Limelight
 nmap <leader>ll :Limelight!!<cr>
 
-" quicker window movement
+" Quicker Window Movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
