@@ -1,10 +1,15 @@
 [user]
   name = Owajigbanam Ogbuluijah
   email = igbanam@andela.com
-[core]
-  editor = vim
+  signingkey = 7EF7499705C1D9DE
 [protocol]
   ; version = 2
+[gpg]
+  program = gpg1
+[core]
+  editor = vim
+[commit]
+  gpgsign = true
 [alias]
   a = add
   b = branch
@@ -522,4 +527,3 @@
   #    7 Carol Clark
   #
   churn = !git log --all --find-copies --find-renames --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}' | sort -g
-
