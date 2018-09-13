@@ -9,7 +9,7 @@
 [core]
   editor = vim
 [commit]
-  gpgsign = true
+  ; gpgsign = true
 [alias]
   a = add
   b = branch
@@ -56,6 +56,9 @@
 
   # commit with a message
   cm = commit --message
+
+  # commit with a message
+  csm = commit -S --message
 
   ### diff ###
 
