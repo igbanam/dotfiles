@@ -99,7 +99,7 @@ let $fzf_default_command = 'ag --hidden --ignore .git -l -g ""'
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
 let ruby_fold = 1
-let ruby_foldable_groups = 'def'
+let ruby_foldable_groups = 'def do'
 " ------------------------------------------------------------------------ }}}
 
 """ Mappings
@@ -110,10 +110,10 @@ nnoremap [b :bprev<cr>
 nnoremap ]b :bnext<cr>
 
 " Window Shenanigans
-" Close Buffers Quicker!
+nmap <leader>w :bp<bar>sp<bar>bn<bar>bd<cr>
 nmap <s-w> :bd<cr>
 " Select All
-nnoremap <c-a> ggvG
+nnoremap <c-a> ggVG
 
 " FZF to Ctrl+P
 nnoremap <c-p> :FZF<cr>
