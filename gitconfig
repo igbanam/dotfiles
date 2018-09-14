@@ -78,7 +78,7 @@
   diff-staged = !git dc
   diff-stat = diff --stat --ignore-space-change -r
 
-  gobble-squash = !"git reset --soft `git fork-point` && git c -s -t ~/.gobble-final-commit"
+  gobble-squash = !"git reset --soft `git fork-point` && git c -S -t ~/.gobble-final-commit"
 
   # Logs and Logging
   # log with a text-based graphical representation of the commit history.
