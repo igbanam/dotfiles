@@ -22,6 +22,10 @@ BASH_GIT_PROMPT_CONFIG
 
 source ~/.bashrc
 
+# Install RVM
+curl -sSL https://get.rvm.io | bash -s stable
+source $HOME/.rvm/scripts/rvm
+
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -36,3 +40,7 @@ echo Clone the "Configuration of the Gods"
 
 # Copy the VIMRC into place
 echo "Copy the VIMRC into place"
+
+# get all the repos in an organization
+# IFS=' ' read -r -a repos <<< "all the repos in the organization"
+# for repo in ${repos[@]}; do git clone git@github.com:org/$repo.git; done
