@@ -5,7 +5,8 @@
 
 # Install Brew toys
 if [ -x which brew ]; then
-  cat toolstoy | xargs brew install
+  cat brew/faucets | xards brew tap
+  cat brew/toolstoy | xargs brew install
 fi
 
 if [ ! -f "~/.bashrc" ]; then
