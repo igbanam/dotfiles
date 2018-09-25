@@ -8,6 +8,7 @@
   program = gpg1
 [core]
   editor = vim
+  excludesfile = /Users/igbanam/.gitignore-system
 [commit]
   ; gpgsign = true
 [alias]
