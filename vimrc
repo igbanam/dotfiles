@@ -60,6 +60,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -94,7 +95,14 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 " ------------------------------------------------------------------------ }}}
 
 " FZF -------------------------------------------------------------------- {{{
-let $fzf_default_command = 'ag --hidden --ignore .git -l -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" ------------------------------------------------------------------------ }}}
+
+" Ruby (vim-ruby) -------------------------------------------------------- {{{
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
