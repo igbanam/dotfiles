@@ -43,7 +43,16 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " colours
+Plug 'Badacadabra/vim-archery'
+Plug 'challenger-deep-theme/vim'
 Plug 'dikiaap/minimalist'
+Plug 'jacoborus/tender.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'rakr/vim-one'
+Plug 'romainl/Apprentice'
+Plug 'vim-scripts/twilight256.vim'
+Plug 'vim-scripts/wombat256.vim'
 
 " plugins
 Plug 'christoomey/vim-run-interactive'
@@ -57,10 +66,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -119,7 +130,7 @@ nnoremap ]b :bnext<cr>
 
 " Window Shenanigans
 nmap <leader>w :bp<bar>sp<bar>bn<bar>bd<cr>
-nmap <s-w> :bd<cr>
+nmap <s-w> :BD<cr>
 " Select All
 nnoremap <c-a> ggVG
 
