@@ -89,7 +89,7 @@
   lo = log --oneline
 
   # log relative
-  lr = !git lg --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+  lr = !git lg --pretty=format:'%Cred%h%Creset %C(bold cyan)%G?%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
   log-retro = !git log-me --since '1 week ago' --pretty=short --oneline
   log-standup = !git log-me --since yesterday --pretty=short --oneline
