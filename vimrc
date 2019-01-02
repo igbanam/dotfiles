@@ -10,6 +10,7 @@ endif
 set autowrite          " automatically :write before running commands
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
+set diffopt+=vertical  " forcing figutive to diff using vertical splits
 set expandtab
 set history=50
 set incsearch          " do incremental searching
@@ -36,6 +37,11 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
+augroup fold_schemes
+  autocmd!
+  autocmd Filetype crystal setlocal foldmethod=syntax
+  autocmd Syntax xml,html.erb,xhtml setlocal foldmethod=indent
+augroup END
 """ bundles
 
 let g:has_async = v:version >= 800 || has('nvim')
@@ -55,6 +61,7 @@ Plug 'vim-scripts/twilight256.vim'
 Plug 'vim-scripts/wombat256.vim'
 
 " plugins
+Plug 'asheq/close-buffers.vim'
 Plug 'christoomey/vim-run-interactive'
 Plug 'docunext/closetag.vim'
 Plug 'elixir-editors/vim-elixir'
@@ -77,6 +84,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-heroku'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rhubarb'
@@ -84,6 +92,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'      " that awesome statusbar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
+Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-scripts/vim-auto-save'
 
 if g:has_async
@@ -109,11 +118,18 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 " ------------------------------------------------------------------------ }}}
 
-" Ruby (vim-ruby) -------------------------------------------------------- {{{
+" Ruby (vim-rspec) ------------------------------------------------------- {{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_runner = "os_x_iterm"
+
+augroup crystal_rspec_bind
+  autocmd!
+  autocmd Filetype crystal let g:rspec_command="!crystal spec"
+augroup END
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
@@ -149,3 +165,17 @@ nnoremap <c-l> <c-w>l
 " vim-commentary
 map  gc  <plug>Commentary
 nmap gcc <plug>CommentaryLine
+
+" Igbanam's Functions ---------------------------------------------------- {{{
+" ===========
+" Format JSON
+" ===========
+function! FormatJSON() range
+  silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
+endfunction
+
+"Convert within visual selection
+vnoremap <leader>pp :call FormatJSON()<cr>
+"Convert entire file
+nnoremap <leader>pp  :0,$call FormatJSON()<cr>
+" ------------------------------------------------------------------------ }}}
