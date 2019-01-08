@@ -49,18 +49,7 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " colours
-Plug 'Badacadabra/vim-archery'
-Plug 'challenger-deep-theme/vim'
-Plug 'dikiaap/minimalist'
-Plug 'hzchirs/vim-material'
-Plug 'jacoborus/tender.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'rakr/vim-one'
-Plug 'romainl/Apprentice'
-Plug 'vim-scripts/twilight256.vim'
-Plug 'vim-scripts/wombat256.vim'
+Plug 'flazz/vim-colorschemes'
 
 " plugins
 Plug 'asheq/close-buffers.vim'
