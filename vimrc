@@ -53,6 +53,7 @@ Plug 'flazz/vim-colorschemes'
 
 " plugins
 Plug 'asheq/close-buffers.vim'
+Plug 'chiedojohn/vim-case-convert'
 Plug 'docunext/closetag.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
@@ -60,11 +61,12 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'nwochaadim/git-remote-open'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
-Plug 'thoughtbot/vim-rspec'
+Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -76,6 +78,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'      " that awesome statusbar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
@@ -101,22 +104,36 @@ let g:auto_save = 1  " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 " ------------------------------------------------------------------------ }}}
 
-" FZF -------------------------------------------------------------------- {{{
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" Comments (vim-commentary) ---------------------------------------------- {{{
+map  gc  <plug>Commentary
+nmap gcc <plug>CommentaryLine
 " ------------------------------------------------------------------------ }}}
 
-" Ruby (vim-rspec) ------------------------------------------------------- {{{
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" Git Remote Open -------------------------------------------------------- {{{
+nmap <Leader>gou <Plug>OpenRemoteUrl
+nmap <Leader>gcu <Plug>CopyRemoteUrl
+" ------------------------------------------------------------------------ }}}
 
-let g:rspec_runner = "os_x_iterm"
+" FZF -------------------------------------------------------------------- {{{
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
-augroup crystal_rspec_bind
-  autocmd!
-  autocmd Filetype crystal let g:rspec_command="!crystal spec"
-augroup END
+nnoremap <c-p> :FZF<cr>
+" ------------------------------------------------------------------------ }}}
+
+" Quicker Window Movement ------------------------------------------------ {{{
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" ------------------------------------------------------------------------ }}}
+
+" Test (vim-test) -------------------------------------------------------- {{{
+map <Leader>t :TestFile<CR>
+map <Leader>s :TestNearest<CR>
+map <Leader>l :TestLast<CR>
+map <Leader>a :TestSuite<CR>
+
+let test#strategy = "basic"
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
@@ -137,21 +154,8 @@ nmap <s-w> :BD<cr>
 " Select All
 nnoremap <c-a> ggVG
 
-" FZF to Ctrl+P
-nnoremap <c-p> :FZF<cr>
-
 " Limelight
 nmap <leader>ll :Limelight!!<cr>
-
-" Quicker Window Movement
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" vim-commentary
-map  gc  <plug>Commentary
-nmap gcc <plug>CommentaryLine
 
 " Igbanam's Functions ---------------------------------------------------- {{{
 " ===========
