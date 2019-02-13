@@ -109,6 +109,13 @@ map  gc  <plug>Commentary
 nmap gcc <plug>CommentaryLine
 " ------------------------------------------------------------------------ }}}
 
+" Discipline ------------------------------------------------------------- {{{
+nnoremap <Left> :echoe "!!! Use h !!!"<CR>
+nnoremap <Right> :echoe "!!! Use l !!!"<CR>
+nnoremap <Up> :echoe "!!! Use k !!!"<CR>
+nnoremap <Down> :echoe "!!! Use j !!!"<CR>
+" ------------------------------------------------------------------------ }}}
+
 " Git Remote Open -------------------------------------------------------- {{{
 nmap <Leader>gou <Plug>OpenRemoteUrl
 nmap <Leader>gcu <Plug>CopyRemoteUrl
