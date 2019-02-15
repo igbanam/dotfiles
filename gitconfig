@@ -61,6 +61,9 @@
   # commit with a message
   csm = commit -S --message
 
+  # number of commits in the repo
+  commits-count = rev-list --all --count
+
   ### diff ###
 
   # diff - show changes not yet staged
