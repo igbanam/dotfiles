@@ -154,6 +154,8 @@ let ruby_foldable_groups = 'def do'
 set hidden
 nnoremap [b :bprev<cr>
 nnoremap ]b :bnext<cr>
+nmap <leader>cab :CloseAllBuffers<cr>
+nmap <leader>chb :CloseHiddenBuffers<cr>
 
 " Window Shenanigans
 nmap <leader>w :bp<bar>sp<bar>bn<bar>bd<cr>
