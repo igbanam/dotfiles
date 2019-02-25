@@ -92,7 +92,8 @@ endif
 call plug#end()
 
 """ Configurations
-colorscheme minimalist
+colorscheme tomorrow-night
+" colorscheme minimalist
 
 " Airline ---------------------------------------------------------------- {{{
 let g:airline_theme='minimalist'
@@ -135,10 +136,10 @@ nnoremap <c-l> <c-w>l
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
-map <Leader>t :TestFile<CR>
-map <Leader>s :TestNearest<CR>
-map <Leader>l :TestLast<CR>
-map <Leader>a :TestSuite<CR>
+map <leader>t :TestFile<CR>
+map <leader>s :TestNearest<CR>
+map <leader>l :TestLast<CR>
+map <leader>a :TestSuite<CR>
 
 let test#strategy = "basic"
 " ------------------------------------------------------------------------ }}}
@@ -158,8 +159,7 @@ nmap <leader>cab :CloseAllBuffers<cr>
 nmap <leader>chb :CloseHiddenBuffers<cr>
 
 " Window Shenanigans
-nmap <leader>w :bp<bar>sp<bar>bn<bar>bd<cr>
-nmap <s-w> :BD<cr>
+nmap <leader>w :BD<cr>
 " Select All
 nnoremap <c-a> ggVG
 
