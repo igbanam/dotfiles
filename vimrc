@@ -49,7 +49,7 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " colours
-Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/vim-tomorrow-theme'
 
 " plugins
 Plug 'asheq/close-buffers.vim'
@@ -61,7 +61,6 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'nwochaadim/git-remote-open'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
@@ -118,8 +117,8 @@ nnoremap <Down> :echoe "!!! Use j !!!"<CR>
 " ------------------------------------------------------------------------ }}}
 
 " Git Remote Open -------------------------------------------------------- {{{
-nmap <Leader>gou <Plug>OpenRemoteUrl
-nmap <Leader>gcu <Plug>CopyRemoteUrl
+nmap <Leader>gho :Gbrowse <CR>
+nmap <Leader>ghc :Gbrowse! <CR>
 " ------------------------------------------------------------------------ }}}
 
 " FZF -------------------------------------------------------------------- {{{
