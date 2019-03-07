@@ -48,40 +48,36 @@ let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
-" colours
-Plug 'chriskempson/vim-tomorrow-theme'
-
 " plugins
 Plug 'asheq/close-buffers.vim'
-Plug 'chiedojohn/vim-case-convert'
+Plug 'dikiaap/minimalist'
 Plug 'docunext/closetag.vim'
-Plug 'elixir-editors/vim-elixir'
+Plug 'ecomba/vim-ruby-refactoring'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'qpkorr/vim-bufkill'
 Plug 'sheerun/vim-polyglot'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-heroku'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
-Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'      " that awesome statusbar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
-Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-scripts/vim-auto-save'
 
 if g:has_async
@@ -91,17 +87,29 @@ endif
 call plug#end()
 
 """ Configurations
-colorscheme tomorrow-night
-" colorscheme minimalist
 
-" Airline ---------------------------------------------------------------- {{{
+" colorscheme tomorrow-night
+colorscheme minimalist
+
+" Airline (vim-airline) -------------------------------------------------- {{{
 let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
 " ------------------------------------------------------------------------ }}}
 
-" Auto Save -------------------------------------------------------------- {{{
+" Auto Save (vim-auto-save) ---------------------------------------------- {{{
 let g:auto_save = 1  " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+" ------------------------------------------------------------------------ }}}
+
+" Buffers ---------------------------------------------------------------- {{{
+set hidden
+nnoremap [b :bprev<cr>
+nnoremap ]b :bnext<cr>
+
+" Closers
+nmap <leader>w :CloseThisBuffer<cr>
+nmap <leader>bda :CloseAllBuffers<cr>
+nmap <leader>bdh :CloseHiddenBuffers<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
@@ -116,22 +124,45 @@ nnoremap <Up> :echoe "!!! Use k !!!"<CR>
 nnoremap <Down> :echoe "!!! Use j !!!"<CR>
 " ------------------------------------------------------------------------ }}}
 
-" Git Remote Open -------------------------------------------------------- {{{
+" Fugitive (vim-fugitive) ------------------------------------------------ {{{
 nmap <Leader>gho :Gbrowse <CR>
 nmap <Leader>ghc :Gbrowse! <CR>
 " ------------------------------------------------------------------------ }}}
 
-" FZF -------------------------------------------------------------------- {{{
+" FZF (fzf) -------------------------------------------------------------- {{{
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 nnoremap <c-p> :FZF<cr>
 " ------------------------------------------------------------------------ }}}
 
-" Quicker Window Movement ------------------------------------------------ {{{
+" Limelight (limelight) -------------------------------------------------- {{{
+nmap <leader>ll :Limelight!!<cr>
+" ------------------------------------------------------------------------ }}}
+
+" Miscellaneous ---------------------------------------------------------- {{{
+" Select All
+nnoremap <c-a> ggVG
+
+" Quicker Window Movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" My Config
+nmap <leader>so :source $MYVIMRC<cr>
+nmap <leader>eo :e $MYVIMRC<cr>
+" ------------------------------------------------------------------------ }}}
+
+" Plug (vim-plug) -------------------------------------------------------- {{{
+map <leader>plc :PlugClean<cr>
+map <leader>pli :PlugInstall<cr>
+map <leader>plu :PlugUpdate<cr>
+" ------------------------------------------------------------------------ }}}
+
+" Ruby (vim-ruby) -------------------------------------------------------- {{{
+let ruby_fold = 1
+let ruby_foldable_groups = 'def do if'
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
@@ -140,30 +171,13 @@ map <leader>s :TestNearest<CR>
 map <leader>l :TestLast<CR>
 map <leader>a :TestSuite<CR>
 
-let test#strategy = "basic"
+" let test#strategy = "dispatch_background"
+let test#strategy = {
+ \ "nearest": "basic",
+ \ "file": "dispatch",
+ \ "suite": "dispatch_background"
+ \ }
 " ------------------------------------------------------------------------ }}}
-
-" Ruby (vim-ruby) -------------------------------------------------------- {{{
-let ruby_fold = 1
-let ruby_foldable_groups = 'def do'
-" ------------------------------------------------------------------------ }}}
-
-""" Mappings
-
-" Buffers
-set hidden
-nnoremap [b :bprev<cr>
-nnoremap ]b :bnext<cr>
-nmap <leader>cab :CloseAllBuffers<cr>
-nmap <leader>chb :CloseHiddenBuffers<cr>
-
-" Window Shenanigans
-nmap <leader>w :BD<cr>
-" Select All
-nnoremap <c-a> ggVG
-
-" Limelight
-nmap <leader>ll :Limelight!!<cr>
 
 " Igbanam's Functions ---------------------------------------------------- {{{
 " ===========
