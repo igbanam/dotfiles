@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 " leader
 let mapleader = " "
 
@@ -48,26 +51,26 @@ let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
+" colors
+Plug 'dikiaap/minimalist'
+
 " plugins
 Plug 'asheq/close-buffers.vim'
-Plug 'dikiaap/minimalist'
-Plug 'docunext/closetag.vim'
+" Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'sheerun/vim-polyglot'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -96,6 +99,10 @@ let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
 " ------------------------------------------------------------------------ }}}
 
+" Ale (ale) -------------------------------------------------------------- {{{
+let g:ale_set_highlights = 0
+" ------------------------------------------------------------------------ }}}
+
 " Auto Save (vim-auto-save) ---------------------------------------------- {{{
 let g:auto_save = 1  " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
@@ -108,8 +115,8 @@ nnoremap ]b :bnext<cr>
 
 " Closers
 nmap <leader>w :CloseThisBuffer<cr>
-nmap <leader>bda :CloseAllBuffers<cr>
-nmap <leader>bdh :CloseHiddenBuffers<cr>
+nmap <leader>aw :CloseAllBuffers<cr>
+nmap <leader>hw :CloseHiddenBuffers<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
@@ -171,12 +178,7 @@ map <leader>s :TestNearest<CR>
 map <leader>l :TestLast<CR>
 map <leader>a :TestSuite<CR>
 
-" let test#strategy = "dispatch_background"
-let test#strategy = {
- \ "nearest": "basic",
- \ "file": "dispatch",
- \ "suite": "dispatch_background"
- \ }
+let test#strategy = "basic"
 " ------------------------------------------------------------------------ }}}
 
 " Igbanam's Functions ---------------------------------------------------- {{{
