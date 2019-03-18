@@ -3,6 +3,7 @@ awscli
 awsebcli
 bash-git-prompt
 elixir
+fzf
 git
 gpg1
 heroku
