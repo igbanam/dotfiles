@@ -56,8 +56,9 @@ Plug 'dikiaap/minimalist'
 
 " plugins
 Plug 'asheq/close-buffers.vim'
-" Plug 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -66,7 +67,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'slashmili/alchemist.vim'
+" Plug 'slashmili/alchemist.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -169,7 +170,7 @@ map <leader>plu :PlugUpdate<cr>
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
 let ruby_fold = 1
-let ruby_foldable_groups = 'def do if'
+let ruby_foldable_groups = 'def do'
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
