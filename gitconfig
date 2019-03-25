@@ -66,9 +66,6 @@
 
   ### diff ###
 
-  # diff - show changes not yet staged
-  dc = diff --cached
-
   # diff - changes about to be commited
   ds = diff --staged
 
@@ -79,7 +76,6 @@
   diff-branch-changes = !"git diff-changes `git fork-point`..HEAD"
   diff-branch-files-changed = !"git diff-stat `git fork-point`..HEAD | grep files | awk '{print $1}'"
   diff-changes = diff --name-status -r
-  diff-staged = !git dc
   diff-stat = diff --stat --ignore-space-change -r
 
   gobble-squash = !"git reset --soft `git fork-point` && git c -S -t ~/.gobble-final-commit"
@@ -257,7 +253,7 @@
 
   topic-sync = "!f(){ \
     git topic-pull; \
-    git topic-push; \
+    git push --force-with-lease; \
   };f"
 
   ### MAINTENANCE ALIASES ###
@@ -440,7 +436,6 @@
 
   # Nicknames
   uncommit = reset --soft HEAD~1
-  unadd = reset HEAD
   unstage = reset HEAD
 
   # Discard changes in a (list of) file(s) in working tree
