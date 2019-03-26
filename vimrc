@@ -102,6 +102,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Ale (ale) -------------------------------------------------------------- {{{
 let g:ale_set_highlights = 0
+let g:ale_linters = {
+\  'elixir': ['credo'. 'dialyxir', 'dogma', 'mix'],
+\}
 " ------------------------------------------------------------------------ }}}
 
 " Auto Save (vim-auto-save) ---------------------------------------------- {{{
