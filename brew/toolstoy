@@ -10,6 +10,7 @@ composer
 coreutils
 elixir
 fzf
+gcc
 ghostscript
 git
 gnupg@1.4
@@ -18,8 +19,9 @@ heroku/brew/heroku
 hivemind
 hub
 imagemagick@6
-jq
 jenkins-x/jx/jx
+joshuaclayton/formulae/unused
+jq
 kubernetes-cli
 libheif
 libksba
@@ -28,6 +30,7 @@ libomp
 libtermkey
 libuv
 libvterm
+libxml2
 msgpack
 node@8
 openssl@1.1
@@ -38,9 +41,9 @@ rabbitmq
 redis
 scons
 sphinx-doc
+sqlite
 timescale/tap/timescaledb
 tree
 unrar
-joshuaclayton/formulae/unused
 vim
 yarn
