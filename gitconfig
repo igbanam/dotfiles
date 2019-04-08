@@ -214,7 +214,7 @@
   rspec-branch = !"git diff-branch-changes | awk '{print $2}' | grep _spec.rb | xargs rspec"
 
   # Topics and Flow
-  topic-base-branch-name = "! echo develop"
+  topic-base-branch-name = "! echo $GIT_BASE_BRANCH"
 
   topic-create = "!f(){ \
     branch=\"$1\"; \
