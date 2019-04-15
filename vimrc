@@ -56,6 +56,7 @@ Plug 'dikiaap/minimalist'
 
 " plugins
 Plug 'asheq/close-buffers.vim'
+Plug 'chrisbra/Colorizer'
 Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'elixir-editors/vim-elixir'
