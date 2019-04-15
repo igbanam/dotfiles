@@ -166,6 +166,7 @@ nnoremap <c-l> <c-w>l
 " My Config
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>eo :e $MYVIMRC<cr>
+nmap <leader>r  :redraw!<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Plug (vim-plug) -------------------------------------------------------- {{{
