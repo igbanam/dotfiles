@@ -177,6 +177,15 @@
 
   ########### IGBANAM'S ##########
 
+  # "Rebuild"
+  # When you are plagued flakey builds, when something just wouldn't work for some
+  # reason unknown to man and gods alike, when all that is needed is a trial and
+  # error of empty rebuilds, this is necessary
+  #
+  # The idea is to use this when you are at the foremost tip of the branch. To
+  # bring the branch up to the foremost tip, it is best to use "topic-sync"
+  rebuild = !git can && git push --force-with-lease
+
   # Originally built for bringing a late origin up to speed with its forked
   # upstream, this is something which aligns two remotes.
   #
