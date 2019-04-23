@@ -82,6 +82,7 @@ Plug 'tpope/vim-heroku'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'      " that awesome statusbar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
