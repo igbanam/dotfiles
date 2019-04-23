@@ -202,4 +202,10 @@ endfunction
 vnoremap <leader>pp :call FormatJSON()<cr>
 "Convert entire file
 nnoremap <leader>pp  :0,$call FormatJSON()<cr>
+" Bubble lines
+nmap <C-k> ddkP
+nmap <C-j> ddp
+" Bubble blocks
+vmap <C-k> xkP`[V`]
+vmap <C-j> xp`[V`]
 " ------------------------------------------------------------------------ }}}
