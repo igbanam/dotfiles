@@ -76,6 +76,7 @@
   diff-branch-changes = !"git diff-changes `git fork-point`..HEAD"
   diff-branch-files-changed = !"git diff-stat `git fork-point`..HEAD | grep files | awk '{print $1}'"
   diff-changes = diff --name-status -r
+  diff-staged = diff --cached
   diff-stat = diff --stat --ignore-space-change -r
 
   gobble-squash = !"git reset --soft `git fork-point` && git c -S -t ~/.gobble-final-commit"
