@@ -58,7 +58,7 @@
   # commit with a message
   cm = commit --message
 
-  # commit with a message
+  # sign a commit with a message
   csm = commit -S --message
 
   # number of commits in the repo
