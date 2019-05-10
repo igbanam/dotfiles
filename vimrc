@@ -208,4 +208,6 @@ nmap <leader>md ddp
 " Bubble blocks
 vmap <leader>mu xkP`[V`]
 vmap <leader>md xp`[V`]
+" Copy blocks to Mac clipboard
+vmap <leader>cp "+y
 " ------------------------------------------------------------------------ }}}
