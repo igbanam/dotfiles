@@ -162,8 +162,9 @@
   # Show who contributed with summarized changes
   who = shortlog --summary --
 
-  # Show who contributed, in descending order by number of commits
-  whorank = shortlog --summary --numbered --no-merges
+  # Show who contributed, in descending order
+  whorank-commits = shortlog --summary --numbered --no-merges
+  whorank-loc = !"git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n"
 
   # Show contributors to a file or folder
   whotouched = !"f() { git log --pretty=\"format:%an%x09\" $@ | sort | uniq; }; f"
