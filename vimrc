@@ -29,6 +29,7 @@ set shiftround
 set shiftwidth=2
 set showcmd            " display incomplete commands
 set tabstop=2          " softtabs, 2 spaces
+set background=light
 
 " display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -53,6 +54,10 @@ call plug#begin('~/.vim/bundle')
 
 " colors
 Plug 'dikiaap/minimalist'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'rakr/vim-one'
+Plug 'rakr/vim-two-firewatch'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " plugins
 Plug 'asheq/close-buffers.vim'
@@ -96,11 +101,10 @@ call plug#end()
 
 """ Configurations
 
-" colorscheme tomorrow-night
-colorscheme minimalist
+colorscheme onehalflight
 
 " Airline (vim-airline) -------------------------------------------------- {{{
-let g:airline_theme='minimalist'
+let g:airline_theme='atomic'
 let g:airline#extensions#tabline#enabled = 1
 " ------------------------------------------------------------------------ }}}
 
