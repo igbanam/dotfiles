@@ -30,6 +30,7 @@ set shiftwidth=2
 set showcmd            " display incomplete commands
 set tabstop=2          " softtabs, 2 spaces
 set background=light
+set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
 " display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -54,9 +55,6 @@ call plug#begin('~/.vim/bundle')
 
 " colors
 Plug 'dikiaap/minimalist'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'rakr/vim-one'
-Plug 'rakr/vim-two-firewatch'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " plugins
@@ -84,6 +82,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-heroku'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
@@ -101,7 +100,7 @@ call plug#end()
 
 """ Configurations
 
-colorscheme onehalflight
+colorscheme minimalist
 
 " Airline (vim-airline) -------------------------------------------------- {{{
 let g:airline_theme='atomic'
