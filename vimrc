@@ -73,6 +73,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'scrooloose/nerdtree'
 Plug 'slashmili/alchemist.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'StanAngeloff/php.vim'
@@ -179,6 +180,12 @@ nmap <leader>r  :redraw!<cr>
 map <leader>plc :PlugClean<cr>
 map <leader>pli :PlugInstall<cr>
 map <leader>plu :PlugUpdate<cr>
+" ------------------------------------------------------------------------ }}}
+
+" NerdTree (nerdtree) ---------------------------------------------------- {{{
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+map <C-n> :NERDTreeToggle<CR>
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
