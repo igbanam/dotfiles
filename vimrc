@@ -138,15 +138,15 @@ nmap gcc <plug>CommentaryLine
 " ------------------------------------------------------------------------ }}}
 
 " Discipline ------------------------------------------------------------- {{{
-nnoremap <Left> :echoe "!!! Use h !!!"<CR>
-nnoremap <Right> :echoe "!!! Use l !!!"<CR>
-nnoremap <Up> :echoe "!!! Use k !!!"<CR>
-nnoremap <Down> :echoe "!!! Use j !!!"<CR>
+nnoremap <left>  :echoe "!!! Use h !!!"<cr>
+nnoremap <right> :echoe "!!! Use l !!!"<cr>
+nnoremap <up>    :echoe "!!! Use k !!!"<cr>
+nnoremap <down>  :echoe "!!! Use j !!!"<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Fugitive (vim-fugitive) ------------------------------------------------ {{{
-nmap <Leader>gho :Gbrowse <CR>
-nmap <Leader>ghc :Gbrowse! <CR>
+nmap <Leader>gho :Gbrowse <cr>
+nmap <Leader>ghc :Gbrowse! <cr>
 " ------------------------------------------------------------------------ }}}
 
 " FZF (fzf) -------------------------------------------------------------- {{{
@@ -184,7 +184,7 @@ map <leader>plu :PlugUpdate<cr>
 " NerdTree (nerdtree) ---------------------------------------------------- {{{
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
@@ -193,10 +193,10 @@ let ruby_fold = 1
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
-map <leader>t :TestFile<CR>
-map <leader>s :TestNearest<CR>
-map <leader>l :TestLast<CR>
-map <leader>a :TestSuite<CR>
+map <leader>t :TestFile<cr>
+map <leader>s :TestNearest<cr>
+map <leader>l :TestLast<cr>
+map <leader>a :TestSuite<cr>
 
 let test#strategy = "basic"
 " ------------------------------------------------------------------------ }}}
