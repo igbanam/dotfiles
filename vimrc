@@ -205,6 +205,8 @@ let test#strategy = "basic"
 " ===========
 " Format JSON
 " ===========
+command! GenerateTags !ctags -R .
+
 function! FormatJSON() range
   silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
 endfunction
