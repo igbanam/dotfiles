@@ -125,8 +125,6 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " Buffers ---------------------------------------------------------------- {{{
 set hidden
-nnoremap [b :bprev<cr>
-nnoremap ]b :bnext<cr>
 
 " Closers
 nmap <leader>w :CloseThisBuffer<cr>
