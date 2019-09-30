@@ -16,50 +16,63 @@ set autowrite          " automatically :write before running commands
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
 set diffopt+=vertical  " forcing figutive to diff using vertical splits
-set expandtab
-set history=50
+set expandtab          " convert tabs to spaces; KISS
+set history=50         " increase how many entries we can keep in the history
 set incsearch          " do incremental searching
 set laststatus=2       " always display the status line
-set nobackup
+set nobackup           " I don't like them .swp files; I already have Git
 set noswapfile         " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set nowritebackup
+set nowritebackup      " Still on them .swp files; don't need them
 set number             " numbers
-set numberwidth=5
-set relativenumber
+set numberwidth=5      " How big do you want your gutter to the left?
+set relativenumber     " This makes the line numbers +/- relative to the cursor
 set ruler              " show the cursor position all the time
-set shiftround
-set shiftwidth=2
+set shiftround         " Round the indentation to the nearest shiftwidth
+set shiftwidth=2       " How big should our shifts/tabs be?
 set showcmd            " display incomplete commands
 set tabstop=2          " softtabs, 2 spaces
-set background=light
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
 " display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-""" auto groups
+" Smart Toggling -------------------------------------------------------- {{{
+"
+" When working in a file, I would like to jump around quickly based on the
+" relative position of the line from the cursor. When reading a file in an
+" inactive buffer, I would like to say the exact line number I am referring to
+" since the cursor would not be in that buffer.
+
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
+" ------------------------------------------------------------------------ }}}
+
+" How to Fold ------------------------------------------------------------ {{{
 augroup fold_schemes
   autocmd!
   autocmd Filetype crystal setlocal foldmethod=syntax
   autocmd Syntax xml,html.erb,xhtml setlocal foldmethod=indent
 augroup END
-""" bundles
+" ------------------------------------------------------------------------ }}}
 
-let g:has_async = v:version >= 800 || has('nvim')
+""" Plugins with Vim-Plug
 
 call plug#begin('~/.vim/bundle')
 
-" colors
+" Colors ----------------------------------------------------------------- {{{
+"
+" These are colots I like using in vim. It should be minimalist for when the
+" terminal is in dark mode, and onehalf-light for when the term is white.
+
 Plug 'dikiaap/minimalist'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-" plugins
+" ------------------------------------------------------------------------ }}}
+
 Plug 'asheq/close-buffers.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'docunext/closetag.vim'
@@ -98,7 +111,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/vim-auto-save'
 
-if g:has_async
+if v:version >= 800 || has('nvim')
   Plug 'w0rp/ale'
 endif
 
@@ -109,7 +122,7 @@ call plug#end()
 colorscheme minimalist
 
 " Airline (vim-airline) -------------------------------------------------- {{{
-let g:airline_theme='atomic'
+let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
 " ------------------------------------------------------------------------ }}}
 
@@ -121,17 +134,23 @@ let g:ale_linters = {
 " ------------------------------------------------------------------------ }}}
 
 " Auto Save (vim-auto-save) ---------------------------------------------- {{{
-let g:auto_save = 1  " enable autosave on vim startup
+let g:auto_save = 1                 " enable autosave on vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 " ------------------------------------------------------------------------ }}}
 
 " Buffers ---------------------------------------------------------------- {{{
 set hidden
 
-" Closers
+" Closers (close-buffers)
 nmap <leader>w :CloseThisBuffer<cr>
 nmap <leader>aw :CloseAllBuffers<cr>
 nmap <leader>hw :CloseHiddenBuffers<cr>
+
+" Quicker Window Movement
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
@@ -165,13 +184,7 @@ nmap <leader>ll :Limelight!!<cr>
 " Select All
 nnoremap <c-a> ggVG
 
-" Quicker Window Movement
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" My Config
+" Finger Motions
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>eo :e $MYVIMRC<cr>
 nmap <leader>r  :redraw!<cr>
