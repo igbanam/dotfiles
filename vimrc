@@ -30,6 +30,7 @@ set ruler              " show the cursor position all the time
 set shiftround         " Round the indentation to the nearest shiftwidth
 set shiftwidth=2       " How big should our shifts/tabs be?
 set showcmd            " display incomplete commands
+set splitright         " open a new split in the more natural position
 set tabstop=2          " softtabs, 2 spaces
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
