@@ -1,30 +1,19 @@
 #!/bin/sh
 
-# Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+echo "Setup critical environment variables..."
+export COTG_PATH
+COTG_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Install Brew toys
-if [ -x which brew ]; then
-  cat brew/faucets | xards brew tap
-  cat brew/toolstoy | xargs brew install
+echo "Checking for updates..."
+if is-executable git -a -d "$DOTFILES_DIR/.git"; then
+  git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master;
 fi
 
-if [ ! -f "~/.bashrc" ]; then
-  touch ~/.bashrc
-fi
+echo "Installing Homebrew..."
+. "$COTG_PATH/bootstrap/brew.sh"
 
-cat << BASH_GIT_PROMPT_CONFIG >> ~/.bashrc
-  if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-  fi
-BASH_GIT_PROMPT_CONFIG
-
-source ~/.bashrc
-
-# Install RVM
-curl -sSL https://get.rvm.io | bash -s stable
-source $HOME/.rvm/scripts/rvm
+echo "Installing RVM..."
+. "$COTG_PATH/bootstrap/rvm.sh"
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -32,15 +21,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Projects Directory
 if [ ! -d "~/projects" ]; then
-  mkdir ~/.projects
+  mkdir ~/projects
 fi
 
-# Clone the "Configuration of the Gods"
-echo Clone the "Configuration of the Gods"
-
-# Copy the VIMRC into place
-echo "Copy the VIMRC into place"
-
-# get all the repos in an organization
-# IFS=' ' read -r -a repos <<< "all the repos in the organization"
-# for repo in ${repos[@]}; do git clone git@github.com:org/$repo.git; done
+# Configure!
+ln -sfv "$COTG_PATH/vimrc" ~/.vimrc
+ln -sfv "$COTG_PATH/gitconfig" ~/.gitconfig
+ln -sfv "$COTG_PATH/gitignore-system" ~/.gitignore-system
