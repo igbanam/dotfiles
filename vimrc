@@ -113,7 +113,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/vim-auto-save'
 
 if v:version >= 800 || has('nvim')
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
 endif
 
 call plug#end()
@@ -189,6 +189,11 @@ nnoremap <c-a> ggVG
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>eo :e $MYVIMRC<cr>
 nmap <leader>r  :redraw!<cr>
+" ------------------------------------------------------------------------ }}}
+
+
+" PHP (pxp) -------------------------------------------------------- {{{
+let php_folding = 1
 " ------------------------------------------------------------------------ }}}
 
 " Plug (vim-plug) -------------------------------------------------------- {{{
