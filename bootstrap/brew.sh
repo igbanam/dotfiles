@@ -30,6 +30,7 @@ packages=(
   joshuaclayton/formulae/unused
   jq
   kubernetes-cli
+  neovim
   node
   openssl@1.1
   php@7.1
