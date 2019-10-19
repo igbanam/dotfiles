@@ -543,3 +543,9 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[github]
+	user = igbanam
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
