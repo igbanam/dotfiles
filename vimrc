@@ -12,7 +12,6 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-set autowrite          " automatically :write before running commands
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
 set diffopt+=vertical  " forcing figutive to diff using vertical splits
@@ -20,6 +19,7 @@ set expandtab          " convert tabs to spaces; KISS
 set history=50         " increase how many entries we can keep in the history
 set incsearch          " do incremental searching
 set laststatus=2       " always display the status line
+set noautowrite        " handled by vim-auto-save
 set nobackup           " I don't like them .swp files; I already have Git
 set noswapfile         " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set nowritebackup      " Still on them .swp files; don't need them
