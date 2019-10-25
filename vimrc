@@ -12,6 +12,14 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+" When the file is large, we have some performance issues.
+" I define a large file as a file with more than 1000 lines
+" For these files, I have realized using the old regexengine
+" serves me better
+if line('$') > 1000
+  set re=1
+endif
+
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
 set diffopt+=vertical  " forcing figutive to diff using vertical splits
