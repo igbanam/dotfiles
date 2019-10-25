@@ -57,6 +57,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * if line("$") < 1000 | set relativenumber | endif
+    autocmd BufEnter,FocusGained,InsertLeave * if line("$") > 1000 | set norelativenumber | endif
     autocmd BufLeave,FocusLost,InsertEnter * if line("$") < 1000 | set norelativenumber | endif
 augroup END
 
