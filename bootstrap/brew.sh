@@ -42,7 +42,6 @@ packages=(
   timescale/tap/timescaledb
   tree
   unrar
-  vim
   yarn
 )
 
