@@ -21,11 +21,13 @@ set incsearch          " do incremental searching
 set laststatus=2       " always display the status line
 set noautowrite        " handled by vim-auto-save
 set nobackup           " I don't like them .swp files; I already have Git
+set nocursorcolumn
+set nocursorline
+set norelativenumber   " Cool +/- relative to the cursor; but heavy for large files
 set noswapfile         " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set nowritebackup      " Still on them .swp files; don't need them
 set number             " numbers
 set numberwidth=5      " How big do you want your gutter to the left?
-set relativenumber     " This makes the line numbers +/- relative to the cursor
 set ruler              " show the cursor position all the time
 set shiftround         " Round the indentation to the nearest shiftwidth
 set shiftwidth=2       " How big should our shifts/tabs be?
@@ -45,9 +47,9 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " since the cursor would not be in that buffer.
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * if line("$") < 1000 | set relativenumber | endif
+    autocmd BufLeave,FocusLost,InsertEnter * if line("$") < 1000 | set norelativenumber | endif
 augroup END
 
 " ------------------------------------------------------------------------ }}}
