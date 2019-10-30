@@ -256,3 +256,22 @@ vmap <leader>md xp`[V`]
 " Copy blocks to Mac clipboard
 vmap <leader>cp "+y
 " ------------------------------------------------------------------------ }}}
+
+" Per Project Setup ------------------------------------------------------ {{{
+function SetupLocalEnvironment()
+  let l:root_directory = expand('%:p')
+  if l:root_directory =~ '/github/github'
+    " GitHub-specific configuration
+    syntax off
+  endif
+endfunction
+
+" Run this everytime we read a buffer - may not be as performant
+autocmd! vimenter,BufReadPost,BufNewFile * call SetupLocalEnvironment()
+
+" Another way to do this would be
+" 
+"   augroup ProjectSetup
+"     au vimenter,BufRead,BufEnter /path/to/a/project/* set syntax=off
+"   augroup END
+" ------------------------------------------------------------------------ }}}
