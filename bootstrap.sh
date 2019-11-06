@@ -25,9 +25,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Projects Directory
-if [ ! -d "~/projects" ]; then
-  mkdir ~/projects
-fi
+mkdir -p ~/projects
 
 # Configure!
 ln -sfv "$COTG_PATH/vimrc" ~/.vimrc
