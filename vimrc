@@ -230,7 +230,11 @@ map <leader>s :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>a :TestSuite<cr>
 
-let test#strategy = "basic"
+if has('nvim')
+  let test#strategy = "neovim"
+else
+  let test#strategy = "vimterminal"
+endif
 " ------------------------------------------------------------------------ }}}
 
 " Igbanam's Functions ---------------------------------------------------- {{{
