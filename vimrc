@@ -213,6 +213,22 @@ map <leader>pli :PlugInstall<cr>
 map <leader>plu :PlugUpdate<cr>
 " ------------------------------------------------------------------------ }}}
 
+" Projectionist (vim-projectionist) -------------------------------------- {{{
+"
+" This is a living mapping document for different projects I work on. Since
+" there is no way to comment within the VimScript, I will list the projects
+" supported by these heuristics in the order they appear top-level
+"
+" PROJECTS
+" - A Ruby Gem
+let g:projectionist_heuristics = {
+      \ "*.gemspec": {
+      \   "spec/*_spec.rb": { "alternate": "lib/{}.rb" },
+      \   "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
+      \   }
+      \ }
+" ------------------------------------------------------------------------ }}}
+
 " NerdTree (nerdtree) ---------------------------------------------------- {{{
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
