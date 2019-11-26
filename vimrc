@@ -222,11 +222,31 @@ map <leader>plu :PlugUpdate<cr>
 " PROJECTS
 " - A Ruby Gem
 let g:projectionist_heuristics = {
-      \ "*.gemspec": {
-      \   "spec/*_spec.rb": { "alternate": "lib/{}.rb" },
+      \ "*.gemspec|.hanamirc": {
+      \   "spec/*_spec.rb": {
+      \     "alternate": "lib/{}.rb",
+      \     "command": "spec"
+      \   },
       \   "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
+      \ },
+      \ "build.gradle": {
+      \   "src/main/java/*.java": {
+      \     "alternate": "src/test/java/{}Tests.java",
+      \   },
+      \   "src/test/java/*Tests.java": {
+      \     "alternate": "src/main/java/{}.java",
+      \     "command": "spec"
+      \   },
+      \ },
+      \ "Gemfile": {
+      \   "app/serializers/*_serializer.rb": {
+      \     "command": "serializer",
+      \     "affinity": "model",
+      \     "test": "spec/serializers/{}_spec.rb",
+      \     "related": "app/models/{}.rb",
+      \     "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend"
       \   }
-      \ }
+      \ }}
 " ------------------------------------------------------------------------ }}}
 
 " NerdTree (nerdtree) ---------------------------------------------------- {{{
