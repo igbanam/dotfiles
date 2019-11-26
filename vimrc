@@ -298,7 +298,7 @@ vmap <leader>cp "+y
 " ------------------------------------------------------------------------ }}}
 
 " Per Project Setup ------------------------------------------------------ {{{
-function SetupLocalEnvironment()
+function! SetupLocalEnvironment()
   let l:root_directory = expand('%:p')
   if l:root_directory =~ '/github/github'
     " GitHub-specific configuration
