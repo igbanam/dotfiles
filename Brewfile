@@ -1,3 +1,5 @@
+cask_args appdir: '/Applications'
+
 # Delivery
 brew "aws-elasticbeanstalk"
 brew "awscli"
@@ -44,3 +46,14 @@ brew "scons"
 brew "tree"
 tap "joshuaclayton/formulae"
 brew "unused"
+
+# Apps
+cask "slack"
+cask "virtualbox"
+cask "gramps"
+cask "evernote"
+cask "dashlane"
+cask "iterm2"
+cask "udeler"
+cask "google-chrome"
+cask "java" unless system "/usr/libexec/java_home --failfast"
