@@ -15,15 +15,15 @@ fi
 brew bundle
 
 echo "Finish up installation for bash-git-prompt"
-if [ ! -f "~/.bashrc" ]; then
-  touch ~/.bashrc
+if [ ! -f "~/.bash_profile" ]; then
+  touch ~/.bash_profile
 fi
 
-cat << BASH_GIT_PROMPT_CONFIG >> ~/.bashrc
+cat << BASH_GIT_PROMPT_CONFIG >> ~/.bash_profile
   if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
     source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
   fi
 BASH_GIT_PROMPT_CONFIG
 
-. ~/.bashrc
+. ~/.bash_profile
