@@ -4,48 +4,15 @@ if ! is-macos -o ! is-executable ruby -o ! is-executable curl -o ! is-executable
   return
 fi
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+which -s brew
+if [[ $? != 0 ]] ; then
+  # Install Homebrew
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  brew update
+fi
 
-brew update
-brew upgrade
-
-packages=(
-  amberframework/amber/amber
-  aws-elasticbeanstalk
-  awscli
-  bash-completion
-  bash-git-prompt
-  bat
-  cmake
-  composer
-  elixir
-  fzf
-  git
-  git-quick-stats
-  gnupg@1.4
-  graphviz
-  heroku/brew/heroku
-  hub
-  jenkins-x/jx/jx
-  joshuaclayton/formulae/unused
-  jq
-  kubernetes-cli
-  neovim
-  node
-  openssl@1.1
-  php@7.1
-  postgresql
-  rabbitmq
-  redis
-  scons
-  sqlite
-  timescale/tap/timescaledb
-  tree
-  unrar
-  yarn
-)
-
-brew install "${apps[@]}"
+brew bundle
 
 echo "Finish up installation for bash-git-prompt"
 if [ ! -f "~/.bashrc" ]; then

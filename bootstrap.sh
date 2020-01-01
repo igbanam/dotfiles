@@ -31,3 +31,7 @@ mkdir -p ~/projects
 ln -sfv "$COTG_PATH/vimrc" ~/.vimrc
 ln -sfv "$COTG_PATH/gitconfig" ~/.gitconfig
 ln -sfv "$COTG_PATH/gitignore-system" ~/.gitignore-system
+
+if [ ! -z `grep "alias vim=nvim" "$HOME/.bashrc"` ]; then
+  echo "alias vim=nvim" >> $HOME/.bashrc
+fi
