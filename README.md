@@ -1,12 +1,10 @@
 # dotfiles
 Configuration of the Gods
 
-### Need to Have
-* Vim
-* Git
+### Reason
+Every now and then, there is a new computer to setup. Over the years, I have been able to reduce setup times from weeks to days. With this, it's possible to reduce this to hours or minutes depending on internet speed.
 
-### Nice to have
-* Homebrew
-
-#### Brew Packages
-elixir, jq, heroku, git, rabbitmq, tree, node, bash-git-prompt, hub, hivemind, postgresql, redis, yarn, the_silver_searcher
+### How To Use
+* Clone the repository
+* Enter into the repository with `cd path/to/repo`
+* sh bootstrap.sh
