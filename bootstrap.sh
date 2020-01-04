@@ -24,6 +24,15 @@ echo "Installing RVM..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Setup NVim from Vim
+mkdir -p "$HOME/.config/nvim" 
+touch "$HOME/.config/nvim/init.vim"
+cat << NVIM_FROM_VIM >> $HOME/.config/nvim/init.vim
+  set runtimepath^=~/.vim runtimepath+=~/.vim/after
+  let &packpath = &runtimepath
+  source ~/.vimrc
+NVIM_FROM_VIM
+
 # Projects Directory
 mkdir -p ~/projects
 
