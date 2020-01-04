@@ -155,9 +155,9 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 set hidden
 
 " Closers (close-buffers)
-nmap <leader>w :CloseThisBuffer<cr>
-nmap <leader>aw :CloseAllBuffers<cr>
-nmap <leader>hw :CloseHiddenBuffers<cr>
+nmap <leader>w :Bdelete this<cr>
+nmap <leader>aw :Bdelete all<cr>
+nmap <leader>hw :Bdelete hidden<cr>
 
 " Quicker Window Movement
 nnoremap <c-j> <c-w>j
