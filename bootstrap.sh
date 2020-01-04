@@ -27,6 +27,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # Projects Directory
 mkdir -p ~/projects
 
+echo "export GIT_BASE_BRANCH=master" >> $HOME/.bash_profile
+
 # Configure!
 ln -sfv "$COTG_PATH/vimrc" ~/.vimrc
 ln -sfv "$COTG_PATH/gitconfig" ~/.gitconfig
