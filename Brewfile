@@ -6,6 +6,8 @@ brew "awscli"
 tap "heroku/brew"
 brew "heroku"
 brew "kubernetes-cli"
+brew "minikube"
+# brew "hyperkit" # Uncomment if no "Docker Desktop"
 
 # IDEs
 brew "neovim"
