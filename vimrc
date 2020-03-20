@@ -103,6 +103,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/nerdtree'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'StanAngeloff/php.vim'
@@ -136,8 +137,14 @@ call plug#end()
 colorscheme minimalist
 
 " Airline (vim-airline) -------------------------------------------------- {{{
-let g:airline_theme='minimalist'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" ------------------------------------------------------------------------ }}}
+
+" Asyncrun (asyncrun) ---------------------------------------------------- {{{
+let g:asyncrun_open = 8
+let g:asyncrun_status = ''
 " ------------------------------------------------------------------------ }}}
 
 " Ale (ale) -------------------------------------------------------------- {{{
@@ -269,7 +276,7 @@ map <leader>l :TestLast<cr>
 map <leader>a :TestSuite<cr>
 
 if has('nvim')
-  let test#strategy = "neovim"
+  let test#strategy = "asyncrun"
 else
   let test#strategy = "vimterminal"
 endif
