@@ -24,6 +24,7 @@ set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
 set diffopt+=vertical  " forcing figutive to diff using vertical splits
 set expandtab          " convert tabs to spaces; KISS
+set exrc               " project-specific vimrc
 set history=50         " increase how many entries we can keep in the history
 set incsearch          " do incremental searching
 set laststatus=2       " always display the status line
