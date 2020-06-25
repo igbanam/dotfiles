@@ -43,6 +43,7 @@ set shiftwidth=2       " How big should our shifts/tabs be?
 set showcmd            " display incomplete commands
 set splitright         " open a new split in the more natural position
 set tabstop=2          " softtabs, 2 spaces
+set textwidth=80       " so we can wrap text
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
 " display extra whitespace
@@ -87,8 +88,10 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " ------------------------------------------------------------------------ }}}
 
 Plug 'asheq/close-buffers.vim'
+Plug 'colmbus72/slim'
 Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
@@ -186,6 +189,10 @@ nnoremap <up>    :echoe "!!! Use k !!!"<cr>
 nnoremap <down>  :echoe "!!! Use j !!!"<cr>
 " ------------------------------------------------------------------------ }}}
 
+" EditorConfig ----------------------------------------------------------- {{{
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+" ------------------------------------------------------------------------ }}}
+
 " Fugitive (vim-fugitive) ------------------------------------------------ {{{
 nmap <Leader>gho :Gbrowse <cr>
 nmap <Leader>ghc :Gbrowse! <cr>
@@ -238,6 +245,16 @@ let g:projectionist_heuristics = {
       \   },
       \   "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
       \ },
+      \ "shard.yml": {
+      \   "src/*.cr": {
+      \     "type": "source",
+      \     "alternate": "spec/{}_spec.cr"
+      \   },
+      \   "spec/*_spec.cr": {
+      \     "type": "test",
+      \     "alternate": "src/{}.cr"
+      \   },
+      \ },
       \ "build.gradle": {
       \   "src/main/java/*.java": {
       \     "alternate": "src/test/java/{}Tests.java",
@@ -255,13 +272,18 @@ let g:projectionist_heuristics = {
       \     "related": "app/models/{}.rb",
       \     "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend"
       \   }
-      \ }}
+      \ },
+      \ }
 " ------------------------------------------------------------------------ }}}
 
 " NerdTree (nerdtree) ---------------------------------------------------- {{{
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<cr>
+" ------------------------------------------------------------------------ }}}
+
+" Slim (Slack + Vim) -------------------------------------------------------- {{{
+command! Slack :call slim#StartSlack()
 " ------------------------------------------------------------------------ }}}
 
 " Ruby (vim-ruby) -------------------------------------------------------- {{{
