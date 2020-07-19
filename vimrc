@@ -194,8 +194,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " ------------------------------------------------------------------------ }}}
 
 " Fugitive (vim-fugitive) ------------------------------------------------ {{{
-nmap <Leader>gho :Gbrowse <cr>
-nmap <Leader>ghc :Gbrowse! <cr>
 " ------------------------------------------------------------------------ }}}
 
 " FZF (fzf) -------------------------------------------------------------- {{{
@@ -209,8 +207,6 @@ nmap <leader>ll :Limelight!!<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Miscellaneous ---------------------------------------------------------- {{{
-" Select All
-nnoremap <c-a> ggVG
 
 " Finger Motions
 nmap <leader>so :source $MYVIMRC<cr>
@@ -326,22 +322,4 @@ vmap <leader>mu xkP`[V`]
 vmap <leader>md xp`[V`]
 " Copy blocks to Mac clipboard
 vmap <leader>cp "+y
-" ------------------------------------------------------------------------ }}}
-
-" Per Project Setup ------------------------------------------------------ {{{
-function! SetupLocalEnvironment()
-  let l:root_directory = expand('%:p')
-  if l:root_directory =~ '/github/github'
-    " GitHub-specific configuration
-  endif
-endfunction
-
-" Run this everytime we read a buffer - may not be as performant
-autocmd! vimenter,BufReadPost,BufNewFile * call SetupLocalEnvironment()
-
-" Another way to do this would be
-" 
-"   augroup ProjectSetup
-"     au vimenter,BufRead,BufEnter /path/to/a/project/* set syntax=off
-"   augroup END
 " ------------------------------------------------------------------------ }}}
