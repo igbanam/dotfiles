@@ -233,6 +233,18 @@ map <leader>plu :PlugUpdate<cr>
 " PROJECTS
 " - A Ruby Gem
 let g:projectionist_heuristics = {
+      \ "Poet": {
+      \   "*.txt": {
+      \     "type": "note",
+      \     "template": "title: {basename|capitalize}\ntags:\n\n"
+      \   },
+      \ },
+      \ ".hanamirc": {
+      \   "*": {
+      \     "start": "hanami server",
+      \     "console": "hanami console",
+      \   },
+      \ },
       \ "*.gemspec|.hanamirc": {
       \   "spec/*_spec.rb": {
       \     "alternate": "lib/{}.rb",
