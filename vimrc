@@ -69,7 +69,7 @@ augroup END
 augroup fold_schemes
   autocmd!
   autocmd Filetype crystal setlocal foldmethod=syntax
-  autocmd Syntax xml,html.erb,xhtml setlocal foldmethod=indent
+  autocmd Syntax xml,html.erb,xhtml,html setlocal foldmethod=indent
 augroup END
 " ------------------------------------------------------------------------ }}}
 
@@ -98,14 +98,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'logico/typewriter-vim'
 Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'pseewald/vim-anyfold'
 Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'rhysd/vim-crystal'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -134,12 +138,18 @@ call plug#end()
 
 """ Configurations
 
-colorscheme minimalist
+colorscheme typewriter-night
 
 " Airline (vim-airline) -------------------------------------------------- {{{
 let g:airline_theme = 'minimalist'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" ------------------------------------------------------------------------ }}}
+
+" AnyFold (vim-anyfold) -------------------------------------------------- {{{
+autocmd Filetype ruby AnyFoldActivate
+" let g:anyfold_identify_comments=2 " fold comments w.r.t syntax also
+let g:anyfold_fold_comments=1
 " ------------------------------------------------------------------------ }}}
 
 " Asyncrun (asyncrun) ---------------------------------------------------- {{{
@@ -172,6 +182,27 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+" ------------------------------------------------------------------------ }}}
+
+" Coc (coc.nvim) --------------------------------------------------------- {{{
+set shortmess+=c      " Don't give |ins-completion-menu| messages
+set updatetime=300    " Diagnostic messages disappear faster
+
+" For expanding decorations in Scala worksheets
+nmap <leader>ws <Plug>(coc-metals-expand-decoration)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Navigating the diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev>)
+nmap <silent> ]g <Plug>(coc-diagnostic-next>)
+
+" Trigger Code Actions
+nnoremap <leader>cl :<c-u>call CocActionAsync('codeLensAction')<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
@@ -284,13 +315,15 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<cr>
 " ------------------------------------------------------------------------ }}}
 
+" Ruby (vim-ruby) -------------------------------------------------------- {{{
+" ------------------------------------------------------------------------ }}}
+
 " Slim (Slack + Vim) ----------------------------------------------------- {{{
 command! Slack :call slim#StartSlack()
 " ------------------------------------------------------------------------ }}}
 
-" Ruby (vim-ruby) -------------------------------------------------------- {{{
-let ruby_fold = 1
-" let ruby_foldable_groups = 'def do'
+" SuperTab (supertab) ---------------------------------------------------- {{{
+let g:SuperTabDefaultCompletionType = "<c-n>"
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
@@ -328,4 +361,9 @@ vmap <leader>mu xkP`[V`]
 vmap <leader>md xp`[V`]
 " Copy blocks to Mac clipboard
 vmap <leader>cp "+y
+
+augroup all_things_scala
+  au!
+  autocmd BufNewFile,BufRead *.sbt,*.sc set filetype=scala
+augroup END
 " ------------------------------------------------------------------------ }}}
