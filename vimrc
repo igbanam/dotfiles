@@ -115,6 +115,8 @@ Plug 'pseewald/vim-anyfold'
 Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
 Plug 'rhysd/vim-crystal'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tmhedberg/matchit'
@@ -134,6 +136,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'      " that awesome statusbar
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/vim-auto-save'
 
@@ -246,6 +250,25 @@ nmap <leader>eo :e $MYVIMRC<cr>
 nmap <leader>r  :redraw!<cr>
 " ------------------------------------------------------------------------ }}}
 
+" Pencil (vim-pencil) ---------------------------------------------------- {{{
+augroup pencil
+  autocmd!
+  autocmd filetype markdown,mkd call pencil#init()
+        " \ | call lexical#init()
+        " \ | call litecorrect#init()
+        \ | setl spell spl=en_us fdl=4 noru nonu nornu
+        \ | setl fdo+=search
+augroup END
+
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#textwidth = 74
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
+let g:pencil#softDetectSample = 20
+let g:pencil#softDetectThreshold = 130
+" ------------------------------------------------------------------------ }}}
 
 " PHP (php) -------------------------------------------------------------- {{{
 let php_folding = 1
@@ -294,6 +317,9 @@ let g:projectionist_heuristics = {
       \     "type": "test",
       \     "alternate": "src/{}.cr"
       \   },
+      \   "*": {
+      \     "make": "shards build --no-color",
+      \   }
       \ },
       \ "build.gradle": {
       \   "src/main/java/*.java": {
