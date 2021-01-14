@@ -73,6 +73,13 @@ augroup fold_schemes
 augroup END
 " ------------------------------------------------------------------------ }}}
 
+" Writing for Quip ------------------------------------------------------- {{{
+augroup writing_for_quip
+  autocmd!
+  autocmd Filetype markdown setlocal textwidth=93
+augroup END
+" ------------------------------------------------------------------------ }}}
+
 """ Plugins with Vim-Plug
 
 call plug#begin('~/.vim/bundle')
