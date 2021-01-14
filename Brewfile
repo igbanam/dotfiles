@@ -21,8 +21,6 @@ brew "postgresql"
 brew "rabbitmq"
 brew "redis"
 brew "sqlite"
-tap "timescale/tap"
-brew "timescaledb"
 
 # Bundlers
 brew "cmake"
@@ -33,6 +31,7 @@ brew "yarn"
 tap "amberframework/amber"
 brew "amber"
 brew "elixir"
+brew "pip"
 
 # Command Line Tools
 brew "bash-completion"
