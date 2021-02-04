@@ -158,7 +158,7 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 " ------------------------------------------------------------------------ }}}
 
 " AnyFold (vim-anyfold) -------------------------------------------------- {{{
-autocmd Filetype ruby AnyFoldActivate
+autocmd Filetype ruby,javascriptreact,javascript,json,jsx AnyFoldActivate
 " let g:anyfold_identify_comments=2 " fold comments w.r.t syntax also
 let g:anyfold_fold_comments=1
 " ------------------------------------------------------------------------ }}}
