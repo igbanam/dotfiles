@@ -76,7 +76,7 @@ augroup END
 " Writing for Quip ------------------------------------------------------- {{{
 augroup writing_for_quip
   autocmd!
-  autocmd Filetype markdown setlocal textwidth=93
+  autocmd Filetype markdown setlocal textwidth=120
 augroup END
 " ------------------------------------------------------------------------ }}}
 
