@@ -20,29 +20,38 @@ echo "Installing Homebrew..."
 echo "Installing RVM..."
 . "$COTG_PATH/bootstrap/rvm.sh"
 
-# Install vim-plug
+echo "Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Setup NVim from Vim
-mkdir -p "$HOME/.config/nvim" 
-touch "$HOME/.config/nvim/init.vim"
-cat << NVIM_FROM_VIM >> $HOME/.config/nvim/init.vim
-  set runtimepath^=~/.vim runtimepath+=~/.vim/after
-  let &packpath = &runtimepath
-  source ~/.vimrc
+echo "Setup NVim from Vim..."
+if [[ -f "$HOME/.config/nvim" ]]; then
+  echo "NVim is already configured... nothing to do here."
+else
+  mkdir -p "$HOME/.config/nvim"
+  touch "$HOME/.config/nvim/init.vim"
+  cat << NVIM_FROM_VIM >> $HOME/.config/nvim/init.vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
 NVIM_FROM_VIM
+fi
 
-# Projects Directory
+echo "Check and create the ~/projects directory..."
 mkdir -p ~/projects
 
-echo "export GIT_BASE_BRANCH=master" >> $HOME/.bash_profile
+if [[ ! -z `grep "export GIT_BASE_BRANCH=master" "$HOME/.zprofile"` ]]; then
+  echo "export GIT_BASE_BRANCH=master" >> $HOME/.zprofile
+fi
 
 # Configure!
+rm ~/.vimrc
+rm ~/.gitconfig
+rm ~/.gitignore-system
 ln -sfv "$COTG_PATH/vimrc" ~/.vimrc
 ln -sfv "$COTG_PATH/gitconfig" ~/.gitconfig
 ln -sfv "$COTG_PATH/gitignore-system" ~/.gitignore-system
 
-if [ ! -z `grep "alias vim=nvim" "$HOME/.bashrc"` ]; then
-  echo "alias vim=nvim" >> $HOME/.bashrc
+if [ ! -z `grep "alias vim=nvim" "$HOME/.zshrc"` ]; then
+  echo "alias vim=nvim" >> $HOME/.zshrc
 fi
