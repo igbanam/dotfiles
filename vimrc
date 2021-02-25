@@ -63,7 +63,6 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * if line("$") > 1000 | set norelativenumber | endif
     autocmd BufLeave,FocusLost,InsertEnter * if line("$") < 1000 | set norelativenumber | endif
 augroup END
-
 " ------------------------------------------------------------------------ }}}
 
 " How to Fold ------------------------------------------------------------ {{{
@@ -78,6 +77,13 @@ augroup END
 augroup writing_for_quip
   autocmd!
   autocmd Filetype markdown setlocal textwidth=120
+augroup END
+" ------------------------------------------------------------------------ }}}
+
+" Spaces for specific file types ----------------------------------------- {{{
+augroup IntentionalIndentations
+  autocmd!
+  autocmd Filetype php setlocal tabstop=4 expandtab shiftwidth=4
 augroup END
 " ------------------------------------------------------------------------ }}}
 
@@ -159,7 +165,7 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 " ------------------------------------------------------------------------ }}}
 
 " AnyFold (vim-anyfold) -------------------------------------------------- {{{
-autocmd Filetype ruby,javascriptreact,javascript,json,jsx AnyFoldActivate
+autocmd Filetype php,ruby,javascriptreact,javascript,json,jsx AnyFoldActivate
 " let g:anyfold_identify_comments=2 " fold comments w.r.t syntax also
 let g:anyfold_fold_comments=1
 " ------------------------------------------------------------------------ }}}
@@ -250,6 +256,36 @@ nmap <leader>ll :Limelight!!<cr>
 " ------------------------------------------------------------------------ }}}
 
 " Miscellaneous ---------------------------------------------------------- {{{
+" ===========
+" Format JSON
+" ===========
+command! GenerateTags !ctags -R .
+
+function! FormatJSON() range
+  silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
+endfunction
+
+" Convert within visual selection
+vnoremap <leader>pp :call FormatJSON()<cr>
+
+" Convert entire file
+nnoremap <leader>pp  :0,$call FormatJSON()<cr>
+
+" Bubble lines
+nmap <leader>mu ddkP
+nmap <leader>md ddp
+
+" Bubble blocks
+vmap <leader>mu xkP`[V`]
+vmap <leader>md xp`[V`]
+
+" Copy blocks to Mac clipboard
+vmap <leader>cp "+y
+
+augroup all_things_scala
+  au!
+  autocmd BufNewFile,BufRead *.sbt,*.sc set filetype=scala
+augroup END
 
 " Finger Motions
 nmap <leader>so :source $MYVIMRC<cr>
@@ -377,33 +413,4 @@ if has('nvim')
 else
   let test#strategy = "vimterminal"
 endif
-" ------------------------------------------------------------------------ }}}
-
-" Igbanam's Functions ---------------------------------------------------- {{{
-" ===========
-" Format JSON
-" ===========
-command! GenerateTags !ctags -R .
-
-function! FormatJSON() range
-  silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
-endfunction
-
-"Convert within visual selection
-vnoremap <leader>pp :call FormatJSON()<cr>
-"Convert entire file
-nnoremap <leader>pp  :0,$call FormatJSON()<cr>
-" Bubble lines
-nmap <leader>mu ddkP
-nmap <leader>md ddp
-" Bubble blocks
-vmap <leader>mu xkP`[V`]
-vmap <leader>md xp`[V`]
-" Copy blocks to Mac clipboard
-vmap <leader>cp "+y
-
-augroup all_things_scala
-  au!
-  autocmd BufNewFile,BufRead *.sbt,*.sc set filetype=scala
-augroup END
 " ------------------------------------------------------------------------ }}}
