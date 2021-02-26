@@ -22,7 +22,6 @@ endif
 
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
-set diffopt-=internal
 set diffopt+=vertical  " forcing figutive to diff using vertical splits
 set expandtab          " convert tabs to spaces; KISS
 set exrc               " project-specific vimrc
