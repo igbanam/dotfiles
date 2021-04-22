@@ -82,7 +82,7 @@ augroup END
 " Spaces for specific file types ----------------------------------------- {{{
 augroup IntentionalIndentations
   autocmd!
-  autocmd Filetype php setlocal tabstop=4 expandtab shiftwidth=4
+  autocmd Filetype php,java setlocal tabstop=4 expandtab shiftwidth=4
 augroup END
 " ------------------------------------------------------------------------ }}}
 
