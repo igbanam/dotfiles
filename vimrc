@@ -101,11 +101,11 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " ------------------------------------------------------------------------ }}}
 
 Plug 'asheq/close-buffers.vim'
-Plug 'colmbus72/slim'
 Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'igbanam/slim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -119,6 +119,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'pseewald/vim-anyfold'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'reedes/vim-pencil'
@@ -146,6 +147,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/vim-auto-save'
+Plug 'wellle/targets.vim'
 
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
@@ -220,6 +222,23 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next>)
 
 " Trigger Code Actions
 nnoremap <leader>cl :<c-u>call CocActionAsync('codeLensAction')<cr>
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+let g:coc_global_extensions = [
+      \ 'coc-java',
+      \ 'coc-json',
+      \ 'coc-phpactor',
+      \ 'coc-solargraph',
+      \ ]
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
