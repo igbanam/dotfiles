@@ -167,6 +167,7 @@
 
   # Show contributors to a file or folder
   whotouched = !"f() { git log --pretty=\"format:%an%x09\" $@ | sort | uniq; }; f"
+  whotouchede = !"f() { git log --pretty=\"format:%al%x09\" $@ | sort | uniq; }; f"
 
   # Publish the current branch by pushing it to the remote "origin",
   # and setting the current branch to track the upstream branch.
