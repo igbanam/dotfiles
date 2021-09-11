@@ -240,6 +240,7 @@
     git checkout \"$base\"; \
     git branch --delete \"$branch\"; \
     git push origin \":$branch\"; \
+    git p --rebase; \
   };f"
 
   topic-finish = "!f(){ \
