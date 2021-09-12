@@ -91,14 +91,11 @@ augroup END
 call plug#begin('~/.vim/bundle')
 
 " Colors ----------------------------------------------------------------- {{{
-"
-" These are colots I like using in vim. It should be minimalist for when the
-" terminal is in dark mode, and onehalf-light for when the term is white.
 
 Plug 'dikiaap/minimalist'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'logico/typewriter-vim'
 
-" ------------------------------------------------------------------------ }}}
+" IDE Capabilities ------------------------------------------------------- }}}
 
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim'
@@ -111,21 +108,20 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'logico/typewriter-vim'
-Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'preservim/tagbar'
 Plug 'pseewald/vim-anyfold'
-Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'slashmili/alchemist.vim'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rhysd/vim-crystal'
 Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'slashmili/alchemist.vim'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -160,7 +156,7 @@ call plug#end()
 colorscheme typewriter-night
 
 " Airline (vim-airline) -------------------------------------------------- {{{
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'typewriter'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 " ------------------------------------------------------------------------ }}}
