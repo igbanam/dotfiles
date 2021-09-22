@@ -149,6 +149,15 @@ if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
 endif
 
+" Neovim Natives --------------------------------------------------------- }}}
+
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-telescope/telescope-github.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+endif
+
 call plug#end()
 
 """ Configurations
@@ -256,7 +265,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " FZF (fzf) -------------------------------------------------------------- {{{
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
-nnoremap <c-p> :FZF<cr>
+if !has('nvim')
+  nnoremap <c-p> :FZF<cr>
+endif
 " ------------------------------------------------------------------------ }}}
 
 " FZF (fzf) -------------------------------------------------------------- {{{
@@ -414,6 +425,46 @@ command! Slack :call slim#StartSlack()
 
 " SuperTab (supertab) ---------------------------------------------------- {{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" ------------------------------------------------------------------------ }}}
+
+" Telescope (telescope.nvim) --------------------------------------------- {{{
+if exists("loaded_telescope")
+  " be sure to change this to Lua scripts sometime in the future
+  " These Lua scripts would live in ~/config/nvim/lua/namescoped/component.lua
+  " and can be added to a vimscript (either .vimrc, or init.vim) as
+  "
+  "   lua require('namescoped.component')
+  "
+  " I think this is a lot cleaner in the long run. But for now, jumbling lua
+  " as heredoc strings in the vimrc would do.
+
+lua <<TELESCOPE_CONFIG
+require('telescope').setup{
+  defaults = {
+  },
+  pickers = {
+    find_files = {
+      find_command = { "ag", "--hidden", "--ignore", ".git", "-l", "-g", "" },
+    }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = smart_case,
+    }
+  }
+}
+
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('gh')
+TELESCOPE_CONFIG
+endif
+
+if has('nvim')
+  nnoremap <c-p> :Telescope find_files<cr>
+endif
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
