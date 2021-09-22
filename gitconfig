@@ -545,12 +545,14 @@
   process = git-lfs filter-process
   required = true
 [github]
-	user = igbanam
+  user = igbanam
 [push]
-	default = simple
+  default = simple
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [pull]
-	rebase = true
+  rebase = true
 [init]
-	defaultBranch = release
+  defaultBranch = release
+[merge]
+  tool = nvimdiff
