@@ -4,16 +4,22 @@
 
 - clean: ['~']
 
-- create:
-    - ~/projects
-
 - link:
     ~/.gitconfig: gitconfig
     ~/.gitignore-system: gitignore-system
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
 
+- brewfile:
+    - Brewfile
+
+- create:
+    - ~/projects
+
 - shell:
+    -
+      command: echo true
+      description: Remember to install RVM manually!!!
     -
       command: read var && echo Your variable is $var
       stdin: true
