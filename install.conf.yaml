@@ -18,8 +18,20 @@
 
 - shell:
     -
-      command: echo true
-      description: Remember to install RVM manually!!!
+      command: curl -sSL https://get.rvm.io | bash -s stable
+      description: Bring RVM in
+    -
+      command: . $HOME/.rvm/scripts/rvm
+      description: Activate RVM
+    -
+      command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      description: Install vim-plug: Packaage Management for [Neo]Vim
+    -
+      command: ./nvim-from-vim.sh
+      description: Link Neovim to resident vimrc.
+    -
+      command: echo "export GIT_BASE_BRANCH=release" >> $HOME/.zprofile
+      description: Default Git branch is "release"
     -
       command: read var && echo Your variable is $var
       stdin: true
