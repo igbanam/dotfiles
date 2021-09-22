@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/projects
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.gitignore-system: gitignore-system
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+
+- shell:
+    -
+      command: read var && echo Your variable is $var
+      stdin: true
+      stdout: true
+      description: Reading and printing variable
+      quiet: true
+    -
+      command: read fail
+      stderr: true
