@@ -26,7 +26,6 @@ brew "yarn"
 
 # Languages and Frameworks
 brew "elixir"
-brew "java"
 
 # Command Line Tools
 brew "bat"
@@ -40,8 +39,6 @@ brew "the_silver_searcher"
 brew "tree"
 
 # Apps
-cask "dashlane"
-cask "evernote"
 cask "google-chrome"
 cask "gramps"
 cask "iterm2"
