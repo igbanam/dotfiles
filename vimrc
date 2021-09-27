@@ -463,7 +463,7 @@ TELESCOPE_CONFIG
 endif
 
 if has('nvim')
-  nnoremap <c-p> :Telescope find_files<cr>
+  nnoremap <c-p> :Telescope find_files prompt_prefix=<cr>
 endif
 " ------------------------------------------------------------------------ }}}
 
