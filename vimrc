@@ -267,9 +267,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " FZF (fzf) -------------------------------------------------------------- {{{
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
-if !has('nvim')
+" if !has('nvim')
   nnoremap <c-p> :FZF<cr>
-endif
+" endif
 " ------------------------------------------------------------------------ }}}
 
 " Himalaya (himalaya) ---------------------------------------------------- {{{
@@ -468,9 +468,9 @@ require('telescope').load_extension('gh')
 TELESCOPE_CONFIG
 endif
 
-if has('nvim')
-  nnoremap <c-p> :Telescope find_files prompt_prefix=<cr>
-endif
+" if has('nvim')
+"   nnoremap <c-p> :Telescope find_files prompt_prefix=<cr>
+" endif
 " ------------------------------------------------------------------------ }}}
 
 " Test (vim-test) -------------------------------------------------------- {{{
