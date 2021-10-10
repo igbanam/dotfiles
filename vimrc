@@ -122,6 +122,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim'
+Plug 'soywod/himalaya', {'rtp': 'vim', 'tag': 'v0.4.0'}
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -269,6 +270,10 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 if !has('nvim')
   nnoremap <c-p> :FZF<cr>
 endif
+" ------------------------------------------------------------------------ }}}
+
+" Himalaya (himalaya) ---------------------------------------------------- {{{
+let g:himalaya_mailbox_picker = 'fzf'
 " ------------------------------------------------------------------------ }}}
 
 " FZF (fzf) -------------------------------------------------------------- {{{
