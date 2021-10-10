@@ -8,6 +8,7 @@ brew "heroku"
 
 # IDEs
 brew "neovim"
+brew "ctags-exuberant"
 
 # Security
 brew "gnupg@1.4"
