@@ -105,6 +105,7 @@ Plug 'docunext/closetag.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'github/copilot.vim'
 Plug 'igbanam/slim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -249,6 +250,15 @@ let g:coc_global_extensions = [
       \ 'coc-solargraph',
       \ 'coc-tsserver',
       \ ]
+" ------------------------------------------------------------------------ }}}
+
+" Copilot (copilot.vim) -------------------------------------------------- {{{
+let g:copilot_filetypes = {
+      \ '*': v:false,
+      \ 'php': v:true,
+      \ 'python': v:true,
+      \ 'ruby': v:true,
+      \ }
 " ------------------------------------------------------------------------ }}}
 
 " Comments (vim-commentary) ---------------------------------------------- {{{
