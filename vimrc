@@ -372,6 +372,11 @@ let g:projectionist_heuristics = {
       \     "template": "title: {basename|capitalize}\ntags:\n\n"
       \   },
       \ },
+      \ "Cargo.toml": {
+      \   "*": {
+      \     "make": "cargo",
+      \   },
+      \ },
       \ ".hanamirc": {
       \   "*": {
       \     "start": "hanami server",
