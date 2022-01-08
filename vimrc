@@ -414,6 +414,12 @@ let g:projectionist_heuristics = {
       \     "make": "shards build --no-color",
       \   }
       \ },
+      \ "composer.json": {
+      \   "*": {
+      \     "start": "composer serve",
+      \     "make": "composer update",
+      \   },
+      \ },
       \ "build.gradle": {
       \   "src/main/java/*.java": {
       \     "alternate": "src/test/java/{}Tests.java",
