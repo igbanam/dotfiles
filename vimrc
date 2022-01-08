@@ -97,6 +97,9 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'dikiaap/minimalist'
 Plug 'logico/typewriter-vim'
+Plug 'ray-x/aurora'
+Plug 'sainnhe/everforest'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " IDE Capabilities ------------------------------------------------------- }}}
 
