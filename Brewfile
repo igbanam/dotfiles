@@ -1,8 +1,6 @@
 cask_args appdir: '/Applications'
 
 # Delivery
-brew "aws-elasticbeanstalk"
-brew "awscli"
 tap "heroku/brew"
 brew "heroku"
 
@@ -27,9 +25,10 @@ brew "yarn"
 
 # Languages and Frameworks
 brew "elixir"
+brew "elm"
+brew "gradle"
 
 # Command Line Tools
-brew "bat"
 brew "fzf"
 brew "gh"
 brew "git"
@@ -38,6 +37,8 @@ brew "graphviz"
 brew "jq"
 brew "the_silver_searcher"
 brew "tree"
+brew "wtfutil"
+brew "bitwarden-cli"
 
 # Apps
 cask "google-chrome"
