@@ -249,7 +249,6 @@ let g:coc_global_extensions = [
       \ 'coc-java',
       \ 'coc-json',
       \ 'coc-phpactor',
-      \ 'coc-solargraph',
       \ 'coc-tsserver',
       \ ]
 " ------------------------------------------------------------------------ }}}
