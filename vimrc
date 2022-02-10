@@ -20,9 +20,9 @@ if line('$') > 1000
   set re=1
 endif
 
-if &diff
+" if &diff
   set diffopt+=vertical  " forcing figutive to diff using vertical splits
-endif
+" endif
 
 set backspace=2        " backspace deletes like most programs in insert mode
 set complete-=i        " do not parse included files in autocomplete
@@ -97,7 +97,6 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'dikiaap/minimalist'
 Plug 'logico/typewriter-vim'
-Plug 'ray-x/aurora'
 Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
@@ -105,9 +104,9 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim'
-Plug 'ecomba/vim-ruby-refactoring'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'igbanam/slim'
 Plug 'janko-m/vim-test'
@@ -115,7 +114,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
@@ -178,7 +176,7 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 " ------------------------------------------------------------------------ }}}
 
 " AnyFold (vim-anyfold) -------------------------------------------------- {{{
-autocmd Filetype php,ruby,javascriptreact,javascript,json,jsx AnyFoldActivate
+autocmd Filetype php,ruby,json AnyFoldActivate
 " let g:anyfold_identify_comments=2 " fold comments w.r.t syntax also
 let g:anyfold_fold_comments=1
 " ------------------------------------------------------------------------ }}}
@@ -189,9 +187,11 @@ let g:asyncrun_status = ''
 " ------------------------------------------------------------------------ }}}
 
 " Ale (ale) -------------------------------------------------------------- {{{
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
-\  'elixir': ['credo'. 'dialyxir', 'dogma', 'mix'],
+\  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
+\  'ruby': ['ruby', 'rails_best_practices'],
 \}
 " ------------------------------------------------------------------------ }}}
 
@@ -413,6 +413,12 @@ let g:projectionist_heuristics = {
       \   "*": {
       \     "make": "shards build --no-color",
       \   }
+      \ },
+      \ "package.json": {
+      \   "*": {
+      \     "start": "yarn start",
+      \     "make": "yarn build",
+      \   },
       \ },
       \ "composer.json": {
       \   "*": {
