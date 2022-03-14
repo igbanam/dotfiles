@@ -41,7 +41,7 @@ brew "wtfutil"
 brew "bitwarden-cli"
 
 # Apps
-cask "google-chrome"
+cask "brave-browser"
 cask "gramps"
 cask "iterm2"
 cask "slack"
