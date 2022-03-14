@@ -106,7 +106,7 @@ Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'evanleck/vim-svelte'
 Plug 'github/copilot.vim'
 Plug 'igbanam/slim'
 Plug 'janko-m/vim-test'
