@@ -1,6 +1,3 @@
-[user]
-  name = Owajigbanam Ogbuluijah ✊🏾
-  email = xigbanam@gmail.com
 [protocol]
   ; version = 2
 [gpg]
@@ -557,4 +554,6 @@
 [merge]
   tool = nvimdiff
 [advice]
-	addIgnoredFile = false
+  addIgnoredFile = false
+[include]
+  path = ~/.gitconfig.includeables

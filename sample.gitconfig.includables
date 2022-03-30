@@ -1,0 +1,3 @@
+[include]
+  path = /path/to/custom/git_config
+  path = /path/to/another/git_config
