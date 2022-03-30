@@ -103,29 +103,30 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " IDE Capabilities ------------------------------------------------------- }}}
 
 Plug 'asheq/close-buffers.vim'
-Plug 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
-Plug 'evanleck/vim-svelte'
+Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'github/copilot.vim'
 Plug 'janko-m/vim-test'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'
+Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
+Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
 Plug 'preservim/tagbar'
 Plug 'pseewald/vim-anyfold'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-wordy'
-Plug 'rhysd/vim-crystal'
+Plug 'reedes/vim-pencil',               { 'for': 'markdown' }
+Plug 'reedes/vim-wordy',                { 'for': 'markdown' }
+Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
+Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
@@ -141,11 +142,11 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'      " that awesome statusbar
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
+Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
+Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
 Plug 'vim-scripts/vim-auto-save'
 Plug 'wellle/targets.vim'
 
