@@ -432,7 +432,9 @@ map <leader>s :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>a :TestSuite<cr>
 
-if has('nvim')
+if exists('$TMUX')
+  let test#strategy = "dispatch"
+elseif has('nvim')
   let test#strategy = "asyncrun"
 else
   let test#strategy = "vimterminal"
