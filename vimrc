@@ -441,19 +441,10 @@ else
 endif
 " ------------------------------------------------------------------------ }}}
 
-" Writing (vim-pencil, goyo.vim) ----------------------------------------- {{{
+" Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
 let g:goyo_width = 100
 let g:goyo_height = 40
 let g:goyo_linenr = 1
-
-augroup pencil
-  autocmd!
-  autocmd filetype markdown,mkd call pencil#init()
-        " \ | call lexical#init()
-        " \ | call litecorrect#init()
-        \ | setl spell spl=en_us fdl=4 noru nonu nornu
-        \ | setl fdo+=search
-augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
@@ -463,4 +454,14 @@ let g:pencil#conceallevel = 3
 let g:pencil#concealcursor = 'c'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
+
+let g:pandoc#filetypes#pandoc_markdown = 0
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+        \ | setl spell spl=en_gb fdl=4
+        \ | setl fdo+=search
+        \ | nnoremap <buffer> <leader>mg :<c-u>call GraphThis()<cr>
+augroup END
 " ------------------------------------------------------------------------ }}}
