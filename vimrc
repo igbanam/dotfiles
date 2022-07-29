@@ -83,7 +83,6 @@ Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bi
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
@@ -196,6 +195,7 @@ nnoremap <c-p> :FZF<cr>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<cr>
+map <leader>nf :NERDTreeFind<cr>
 
 " Telescope
 if exists("loaded_telescope")
