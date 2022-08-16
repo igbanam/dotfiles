@@ -142,9 +142,9 @@ call plug#end()
 colorscheme embark
 
 # Airline (vim-airline) -------------------------------------------------- {{{
-var g:airline_theme = 'everforest'
-var g:airline#extensions#tabline#enabled = 1
-var g:airline_powerline_fonts = 1
+g:airline_theme = 'everforest'
+g:airline#extensions#tabline#enabled = 1
+g:airline_powerline_fonts = 1
 # lua <<FELINE
 # local feline_components = {
 #   active = {},
@@ -155,13 +155,13 @@ var g:airline_powerline_fonts = 1
 # ------------------------------------------------------------------------ }}}
 
 # Asyncrun (asyncrun) ---------------------------------------------------- {{{
-var g:asyncrun_open = 8
-var g:asyncrun_status = ''
+g:asyncrun_open = 8
+g:asyncrun_status = ''
 # ------------------------------------------------------------------------ }}}
 
 # Auto Save (vim-auto-save) ---------------------------------------------- {{{
-var g:auto_save = 1                 " enable autosave on vim startup
-var g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+g:auto_save = 1                 " enable autosave on vim startup
+g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 # ------------------------------------------------------------------------ }}}
 
 # Buffers ---------------------------------------------------------------- {{{
@@ -192,7 +192,7 @@ nnoremap <down>  :echoe "!!! Use j !!!"<cr>
 # ------------------------------------------------------------------------ }}}
 
 # Embark (embark-theme) -------------------------------------------------- {{{
-var g:embark_terminal_italics = 1
+g:embark_terminal_italics = 1
 # ------------------------------------------------------------------------ }}}
 
 # File Navigation (fzf, fzf.vim, nerdtree, telescope.nvim) --------------- {{{
@@ -201,8 +201,8 @@ var $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :FZF<cr>
 
 # NERDTree
-var g:NERDTreeDirArrowExpandable = '▸'
-var g:NERDTreeDirArrowCollapsible = '▾'
+g:NERDTreeDirArrowExpandable = '▸'
+g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 
@@ -241,7 +241,7 @@ augroup fold_schemes
   autocmd Filetype vim set foldmethod=marker
   autocmd Syntax xml,html.erb,xhtml,html setlocal foldmethod=indent
 augroup END
-var g:anyfold_fold_comments=1
+g:anyfold_fold_comments=1
 # ------------------------------------------------------------------------ }}}
 
 # Intellisense (coc.nvim, copilot.vim, ale) ------------------------------ {{{
@@ -274,7 +274,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-var g:coc_global_extensions = [
+g:coc_global_extensions = [
       \ 'coc-java',
       \ 'coc-json',
       \ 'coc-phpactor',
@@ -282,7 +282,7 @@ var g:coc_global_extensions = [
       \ ]
 
 # Copilot
-var g:copilot_filetypes = {
+g:copilot_filetypes = {
       \ '*': v:false,
       \ 'php': v:true,
       \ 'python': v:true,
@@ -290,9 +290,9 @@ var g:copilot_filetypes = {
       \ }
 
 # Ale
-var g:ale_set_highlights = 1
-var g:ale_linters_explicit = 1
-var g:ale_linters = {
+g:ale_set_highlights = 1
+g:ale_linters_explicit = 1
+g:ale_linters = {
 \  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
 \  'ruby': ['ruby', 'rails_best_practices'],
 \}
@@ -351,9 +351,9 @@ map <leader>plu :PlugUpdate<cr>
 # ------------------------------------------------------------------------ }}}
 
 # Projects (vim-projectionist, editorconfig-vim) ------------------------- {{{
-var g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-var g:projectionist_heuristics = {
+g:projectionist_heuristics = {
       \ "Poet": {
       \   "*.txt": {
       \     "type": "note",
@@ -432,7 +432,7 @@ command AC :execute "e " . eval('rails#buffer().alternate()')
 # ------------------------------------------------------------------------ }}}
 
 # SuperTab (supertab) ---------------------------------------------------- {{{
-var g:SuperTabDefaultCompletionType = "<c-n>"
+g:SuperTabDefaultCompletionType = "<c-n>"
 # ------------------------------------------------------------------------ }}}
 
 # Test (vim-test) -------------------------------------------------------- {{{
@@ -451,20 +451,20 @@ endif
 # ------------------------------------------------------------------------ }}}
 
 # Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
-var g:goyo_width = 100
-var g:goyo_height = 40
-var g:goyo_linenr = 1
+g:goyo_width = 100
+g:goyo_height = 40
+g:goyo_linenr = 1
 
-var g:pencil#wrapModeDefault = 'soft'
-var g:pencil#textwidth = 74
-var g:pencil#joinspaces = 0
-var g:pencil#cursorwrap = 1
-var g:pencil#conceallevel = 3
-var g:pencil#concealcursor = 'c'
-var g:pencil#softDetectSample = 20
-var g:pencil#softDetectThreshold = 130
+g:pencil#wrapModeDefault = 'soft'
+g:pencil#textwidth = 74
+g:pencil#joinspaces = 0
+g:pencil#cursorwrap = 1
+g:pencil#conceallevel = 3
+g:pencil#concealcursor = 'c'
+g:pencil#softDetectSample = 20
+g:pencil#softDetectThreshold = 130
 
-var g:pandoc#filetypes#pandoc_markdown = 0
+g:pandoc#filetypes#pandoc_markdown = 0
 
 augroup pencil
   autocmd!
