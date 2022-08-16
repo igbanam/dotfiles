@@ -1,66 +1,68 @@
+vim9script
+
 scriptencoding utf-8
 set encoding=utf-8
 
-" leader
-let mapleader = " "
+# leader
+var mapleader = " "
 
-" switch syntax highlighting on, when the terminal has colors
-" also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+# switch syntax highlighting on, when the terminal has colors
+# also switch on highlighting the last used search pattern.
+if (str2nr(&t_Co) > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-" When the file is large, we have some performance issues.
-" I define a large file as a file with more than 1000 lines
-" For these files, I have realized using the old regexengine
-" serves me better
+# When the file is large, we have some performance issues.
+# I define a large file as a file with more than 1000 lines
+# For these files, I have realized using the old regexengine
+# serves me better
 if line('$') > 1000
   set re=1
 endif
 
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+var &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+var &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
-set backspace=2        " backspace deletes like most programs in insert mode
-set complete-=i        " do not parse included files in autocomplete
-set diffopt+=vertical  " force fugitive to diff using vertical splits
-set expandtab          " convert tabs to spaces; KISS
-set exrc               " project-specific vimrc
-set history=50         " increase how many entries we can keep in the history
-set incsearch          " do incremental searching
-set laststatus=2       " always display the status line
-set noautowrite        " handled by vim-auto-save
-set nobackup           " I don't like them .swp files; I already have Git
+set backspace=2        # backspace deletes like most programs in insert mode
+set complete-=i        # do not parse included files in autocomplete
+set diffopt+=vertical  # force fugitive to diff using vertical splits
+set expandtab          # convert tabs to spaces; KISS
+set exrc               # project-specific vimrc
+set history=50         # increase how many entries we can keep in the history
+set incsearch          # do incremental searching
+set laststatus=2       # always display the status line
+set noautowrite        # handled by vim-auto-save
+set nobackup           # I don't like them .swp files; I already have Git
 set nocursorcolumn
 set nocursorline
-set noswapfile         " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set nowritebackup      " Still on them .swp files; don't need them
-set number             " numbers
-set numberwidth=5      " How big do you want your gutter to the left?
-set relativenumber     " Cool +/- relative to the cursor
-set ruler              " show the cursor position all the time
-set shiftround         " Round the indentation to the nearest shiftwidth
-set shiftwidth=2       " How big should our shifts/tabs be?
-set showcmd            " display incomplete commands
-set splitright         " open a new split in the more natural position
-set tabstop=2          " softtabs, 2 spaces
-set textwidth=80       " so we can wrap text
+set noswapfile         # http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set nowritebackup      # Still on them .swp files; don't need them
+set number             # numbers
+set numberwidth=5      # How big do you want your gutter to the left?
+set relativenumber     # Cool +/- relative to the cursor
+set ruler              # show the cursor position all the time
+set shiftround         # Round the indentation to the nearest shiftwidth
+set shiftwidth=2       # How big should our shifts/tabs be?
+set showcmd            # display incomplete commands
+set splitright         # open a new split in the more natural position
+set tabstop=2          # softtabs, 2 spaces
+set textwidth=80       # so we can wrap text
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
-" display extra whitespace
+# display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" Spaces for specific file types ----------------------------------------- {{{
+# Spaces for specific file types ----------------------------------------- {{{
 augroup IntentionalIndentations
   autocmd!
   autocmd Filetype php,java setlocal tabstop=4 expandtab shiftwidth=4
 augroup END
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
 call plug#begin('~/.vim/bundle')
 
-" Colors ----------------------------------------------------------------- {{{
+# Colors ----------------------------------------------------------------- {{{
 Plug 'dikiaap/minimalist'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'logico/typewriter-vim'
@@ -68,9 +70,9 @@ Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'rktjmp/lush.nvim'
 Plug 'rktjmp/shipwright.nvim'
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" IDE Capabilities ------------------------------------------------------- {{{
+# IDE Capabilities ------------------------------------------------------- {{{
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
 Plug 'editorconfig/editorconfig-vim'
@@ -112,6 +114,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+# Plug 'feline-nvim/feline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
@@ -123,81 +126,87 @@ Plug 'wellle/targets.vim'
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
 endif
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Neovim Natives --------------------------------------------------------- {{{
+# Neovim Natives --------------------------------------------------------- {{{
 if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-telescope/telescope-github.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 endif
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
 call plug#end()
 
 colorscheme embark
 
-" Airline (vim-airline) -------------------------------------------------- {{{
-let g:airline_theme = 'embark'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-let g:airline_powerline_fonts = 1
-" ------------------------------------------------------------------------ }}}
+# Airline (vim-airline) -------------------------------------------------- {{{
+var g:airline_theme = 'everforest'
+var g:airline#extensions#tabline#enabled = 1
+var g:airline_powerline_fonts = 1
+# lua <<FELINE
+# local feline_components = {
+#   active = {},
+#   inactive = {}
+# }
+# require('feline').setup()
+# FELINE
+# ------------------------------------------------------------------------ }}}
 
-" Asyncrun (asyncrun) ---------------------------------------------------- {{{
-let g:asyncrun_open = 8
-let g:asyncrun_status = ''
-" ------------------------------------------------------------------------ }}}
+# Asyncrun (asyncrun) ---------------------------------------------------- {{{
+var g:asyncrun_open = 8
+var g:asyncrun_status = ''
+# ------------------------------------------------------------------------ }}}
 
-" Auto Save (vim-auto-save) ---------------------------------------------- {{{
-let g:auto_save = 1                 " enable autosave on vim startup
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-" ------------------------------------------------------------------------ }}}
+# Auto Save (vim-auto-save) ---------------------------------------------- {{{
+var g:auto_save = 1                 " enable autosave on vim startup
+var g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+# ------------------------------------------------------------------------ }}}
 
-" Buffers ---------------------------------------------------------------- {{{
+# Buffers ---------------------------------------------------------------- {{{
 set hidden
 
-" Closers (close-buffers)
+# Closers (close-buffers)
 nmap <leader>w :Bdelete this<cr>
 nmap <leader>aw :Bdelete all<cr>
 nmap <leader>hw :Bdelete hidden<cr>
 
-" Quicker Window Movement
+# Quicker Window Movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Comments (vim-commentary) ---------------------------------------------- {{{
+# Comments (vim-commentary) ---------------------------------------------- {{{
 map  gc  <plug>Commentary
 nmap gcc <plug>CommentaryLine
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Discipline ------------------------------------------------------------- {{{
+# Discipline ------------------------------------------------------------- {{{
 nnoremap <left>  :echoe "!!! Use h !!!"<cr>
 nnoremap <right> :echoe "!!! Use l !!!"<cr>
 nnoremap <up>    :echoe "!!! Use k !!!"<cr>
 nnoremap <down>  :echoe "!!! Use j !!!"<cr>
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Embark (embark-theme) -------------------------------------------------- {{{
-let g:embark_terminal_italics = 1
-" ------------------------------------------------------------------------ }}}
+# Embark (embark-theme) -------------------------------------------------- {{{
+var g:embark_terminal_italics = 1
+# ------------------------------------------------------------------------ }}}
 
-" File Navigation (fzf, fzf.vim, nerdtree, telescope.nvim) --------------- {{{
-" FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+# File Navigation (fzf, fzf.vim, nerdtree, telescope.nvim) --------------- {{{
+# FZF
+var $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :FZF<cr>
 
-" NERDTree
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+# NERDTree
+var g:NERDTreeDirArrowExpandable = '▸'
+var g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 
-" Telescope
+# Telescope
 if exists("loaded_telescope")
 lua <<TELESCOPE_CONFIG
 require('telescope').setup{
@@ -222,9 +231,9 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('gh')
 TELESCOPE_CONFIG
 endif
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Folding (vim-anyfold) -------------------------------------------------- {{{
+# Folding (vim-anyfold) -------------------------------------------------- {{{
 augroup fold_schemes
   autocmd!
   autocmd Filetype crystal setlocal foldmethod=syntax
@@ -232,30 +241,30 @@ augroup fold_schemes
   autocmd Filetype vim set foldmethod=marker
   autocmd Syntax xml,html.erb,xhtml,html setlocal foldmethod=indent
 augroup END
-let g:anyfold_fold_comments=1
-" ------------------------------------------------------------------------ }}}
+var g:anyfold_fold_comments=1
+# ------------------------------------------------------------------------ }}}
 
-" Intellisense (coc.nvim, copilot.vim, ale) ------------------------------ {{{
+# Intellisense (coc.nvim, copilot.vim, ale) ------------------------------ {{{
 set shortmess+=c      " Don't give |ins-completion-menu| messages
 set updatetime=300    " Diagnostic messages disappear faster
 
-" For expanding decorations in Scala worksheets
+# For expanding decorations in Scala worksheets
 nmap <leader>ws <Plug>(coc-metals-expand-decoration)
 
-" Remap keys for gotos
+# Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Navigating the diagnostics
+# Navigating the diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev>)
 nmap <silent> ]g <Plug>(coc-diagnostic-next>)
 
-" Trigger Code Actions
+# Trigger Code Actions
 nnoremap <leader>cl :<c-u>call CocActionAsync('codeLensAction')<cr>
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
+# Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -265,59 +274,59 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-let g:coc_global_extensions = [
+var g:coc_global_extensions = [
       \ 'coc-java',
       \ 'coc-json',
       \ 'coc-phpactor',
       \ 'coc-tsserver',
       \ ]
 
-" Copilot
-let g:copilot_filetypes = {
+# Copilot
+var g:copilot_filetypes = {
       \ '*': v:false,
       \ 'php': v:true,
       \ 'python': v:true,
       \ 'ruby': v:true,
       \ }
 
-" Ale
-let g:ale_set_highlights = 1
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
+# Ale
+var g:ale_set_highlights = 1
+var g:ale_linters_explicit = 1
+var g:ale_linters = {
 \  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
 \  'ruby': ['ruby', 'rails_best_practices'],
 \}
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Limelight (limelight) -------------------------------------------------- {{{
+# Limelight (limelight) -------------------------------------------------- {{{
 nmap <leader>ll :Limelight!!<cr>
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Miscellaneous ---------------------------------------------------------- {{{
+# Miscellaneous ---------------------------------------------------------- {{{
 command! GenerateTags !ctags -R .
 
-" ===========
-" Format JSON
-" ===========
+# ===========
+# Format JSON
+# ===========
 function! FormatJSON() range
   silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
 endfunction
 
-" Convert within visual selection
+# Convert within visual selection
 vnoremap <leader>pp :call FormatJSON()<cr>
 
-" Convert entire file
+# Convert entire file
 nnoremap <leader>pp  :0,$call FormatJSON()<cr>
 
-" Bubble lines
+# Bubble lines
 nmap <leader>mu ddkP
 nmap <leader>md ddp
 
-" Bubble blocks
+# Bubble blocks
 vmap <leader>mu xkP`[V`]
 vmap <leader>md xp`[V`]
 
-" Copy blocks to Mac clipboard
+# Copy blocks to Mac clipboard
 vmap <leader>cp "+y
 
 augroup all_things_scala
@@ -325,26 +334,26 @@ augroup all_things_scala
   autocmd BufNewFile,BufRead *.sbt,*.sc set filetype=scala
 augroup END
 
-" Finger Motions
+# Finger Motions
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>eo :e $MYVIMRC<cr>
 nmap <leader>r  :redraw!<cr>
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" PHP (php) -------------------------------------------------------------- {{{
-let php_folding = 1
-" ------------------------------------------------------------------------ }}}
+# PHP (php) -------------------------------------------------------------- {{{
+var php_folding = 1
+# ------------------------------------------------------------------------ }}}
 
-" Plug (vim-plug) -------------------------------------------------------- {{{
+# Plug (vim-plug) -------------------------------------------------------- {{{
 map <leader>plc :PlugClean<cr>
 map <leader>pli :PlugInstall<cr>
 map <leader>plu :PlugUpdate<cr>
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Projects (vim-projectionist, editorconfig-vim) ------------------------- {{{
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+# Projects (vim-projectionist, editorconfig-vim) ------------------------- {{{
+var g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-let g:projectionist_heuristics = {
+var g:projectionist_heuristics = {
       \ "Poet": {
       \   "*.txt": {
       \     "type": "note",
@@ -413,20 +422,20 @@ let g:projectionist_heuristics = {
       \   }
       \ },
       \ }
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Ruby (vim-ruby) -------------------------------------------------------- {{{
-" ------------------------------------------------------------------------ }}}
+# Ruby (vim-ruby) -------------------------------------------------------- {{{
+# ------------------------------------------------------------------------ }}}
 
-" Rails (vim-rails) ------------------------------------------------------ {{{
+# Rails (vim-rails) ------------------------------------------------------ {{{
 command AC :execute "e " . eval('rails#buffer().alternate()')
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" SuperTab (supertab) ---------------------------------------------------- {{{
-let g:SuperTabDefaultCompletionType = "<c-n>"
-" ------------------------------------------------------------------------ }}}
+# SuperTab (supertab) ---------------------------------------------------- {{{
+var g:SuperTabDefaultCompletionType = "<c-n>"
+# ------------------------------------------------------------------------ }}}
 
-" Test (vim-test) -------------------------------------------------------- {{{
+# Test (vim-test) -------------------------------------------------------- {{{
 map <leader>t :TestFile<cr>
 map <leader>s :TestNearest<cr>
 map <leader>l :TestLast<cr>
@@ -439,23 +448,23 @@ elseif has('nvim')
 else
   let test#strategy = "vimterminal"
 endif
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
 
-" Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
-let g:goyo_width = 100
-let g:goyo_height = 40
-let g:goyo_linenr = 1
+# Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
+var g:goyo_width = 100
+var g:goyo_height = 40
+var g:goyo_linenr = 1
 
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#textwidth = 74
-let g:pencil#joinspaces = 0
-let g:pencil#cursorwrap = 1
-let g:pencil#conceallevel = 3
-let g:pencil#concealcursor = 'c'
-let g:pencil#softDetectSample = 20
-let g:pencil#softDetectThreshold = 130
+var g:pencil#wrapModeDefault = 'soft'
+var g:pencil#textwidth = 74
+var g:pencil#joinspaces = 0
+var g:pencil#cursorwrap = 1
+var g:pencil#conceallevel = 3
+var g:pencil#concealcursor = 'c'
+var g:pencil#softDetectSample = 20
+var g:pencil#softDetectThreshold = 130
 
-let g:pandoc#filetypes#pandoc_markdown = 0
+var g:pandoc#filetypes#pandoc_markdown = 0
 
 augroup pencil
   autocmd!
@@ -464,4 +473,4 @@ augroup pencil
         \ | setl fdo+=search
         \ | nnoremap <buffer> <leader>mg :<c-u>call GraphThis()<cr>
 augroup END
-" ------------------------------------------------------------------------ }}}
+# ------------------------------------------------------------------------ }}}
