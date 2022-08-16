@@ -160,8 +160,8 @@ g:asyncrun_status = ''
 # ------------------------------------------------------------------------ }}}
 
 # Auto Save (vim-auto-save) ---------------------------------------------- {{{
-g:auto_save = 1                 " enable autosave on vim startup
-g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+g:auto_save = 1                 # enable autosave on vim startup
+g:auto_save_in_insert_mode = 0  # do not save while in insert mode
 # ------------------------------------------------------------------------ }}}
 
 # Buffers ---------------------------------------------------------------- {{{
@@ -245,8 +245,8 @@ g:anyfold_fold_comments=1
 # ------------------------------------------------------------------------ }}}
 
 # Intellisense (coc.nvim, copilot.vim, ale) ------------------------------ {{{
-set shortmess+=c      " Don't give |ins-completion-menu| messages
-set updatetime=300    " Diagnostic messages disappear faster
+set shortmess+=c      # Don't give |ins-completion-menu| messages
+set updatetime=300    # Diagnostic messages disappear faster
 
 # For expanding decorations in Scala worksheets
 nmap <leader>ws <Plug>(coc-metals-expand-decoration)
