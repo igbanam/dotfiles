@@ -114,7 +114,6 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-# Plug 'feline-nvim/feline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
@@ -130,6 +129,7 @@ endif
 
 # Neovim Natives --------------------------------------------------------- {{{
 if has('nvim')
+  Plug 'feline-nvim/feline.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-telescope/telescope-github.nvim'
@@ -276,27 +276,27 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 g:coc_global_extensions = [
-      \ 'coc-java',
-      \ 'coc-json',
-      \ 'coc-phpactor',
-      \ 'coc-tsserver',
-      \ ]
+  'coc-java',
+  'coc-json',
+  'coc-phpactor',
+  'coc-tsserver'
+]
 
 # Copilot
 g:copilot_filetypes = {
-      \ '*': v:false,
-      \ 'php': v:true,
-      \ 'python': v:true,
-      \ 'ruby': v:true,
-      \ }
+  '*': v:false,
+  'php': v:true,
+  'python': v:true,
+  'ruby': v:true
+}
 
 # Ale
 g:ale_set_highlights = 1
 g:ale_linters_explicit = 1
 g:ale_linters = {
-\  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
-\  'ruby': ['ruby', 'rails_best_practices']
-\}
+  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
+  'ruby': ['ruby', 'rails_best_practices']
+}
 # ------------------------------------------------------------------------ }}}
 
 # Limelight (limelight) -------------------------------------------------- {{{
@@ -357,74 +357,74 @@ map <leader>plu :PlugUpdate<cr>
 g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 g:projectionist_heuristics = {
-      \ "Poet": {
-      \   "*.txt": {
-      \     "type": "note",
-      \     "template": "title: {basename|capitalize}\ntags:\n\n"
-      \   },
-      \ },
-      \ "Cargo.toml": {
-      \   "*": {
-      \     "make": "cargo",
-      \   },
-      \ },
-      \ ".hanamirc": {
-      \   "*": {
-      \     "start": "hanami server",
-      \     "console": "hanami console",
-      \   },
-      \ },
-      \ "*.gemspec|.hanamirc": {
-      \   "spec/*_spec.rb": {
-      \     "alternate": "lib/{}.rb",
-      \     "command": "spec"
-      \   },
-      \   "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
-      \ },
-      \ "shard.yml": {
-      \   "src/*.cr": {
-      \     "type": "source",
-      \     "alternate": "spec/{}_spec.cr"
-      \   },
-      \   "spec/*_spec.cr": {
-      \     "type": "test",
-      \     "alternate": "src/{}.cr"
-      \   },
-      \   "*": {
-      \     "make": "shards build --no-color",
-      \   }
-      \ },
-      \ "package.json": {
-      \   "*": {
-      \     "start": "yarn start",
-      \     "make": "yarn build",
-      \   },
-      \ },
-      \ "composer.json": {
-      \   "*": {
-      \     "start": "composer serve",
-      \     "make": "composer update",
-      \   },
-      \ },
-      \ "build.gradle": {
-      \   "src/main/java/*.java": {
-      \     "alternate": "src/test/java/{}Tests.java",
-      \   },
-      \   "src/test/java/*Tests.java": {
-      \     "alternate": "src/main/java/{}.java",
-      \     "command": "spec"
-      \   },
-      \ },
-      \ "Gemfile": {
-      \   "app/serializers/*_serializer.rb": {
-      \     "command": "serializer",
-      \     "affinity": "model",
-      \     "test": "spec/serializers/{}_spec.rb",
-      \     "related": "app/models/{}.rb",
-      \     "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend"
-      \   }
-      \ },
-      \ }
+  "Poet": {
+    "*.txt": {
+      "type": "note",
+      "template": "title: {basename|capitalize}\ntags:\n\n"
+      },
+    },
+  "Cargo.toml": {
+    "*": {
+      "make": "cargo",
+      },
+    },
+  ".hanamirc": {
+    "*": {
+      "start": "hanami server",
+      "console": "hanami console",
+      },
+    },
+  "*.gemspec|.hanamirc": {
+    "spec/*_spec.rb": {
+      "alternate": "lib/{}.rb",
+      "command": "spec"
+      },
+    "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
+    },
+  "shard.yml": {
+    "src/*.cr": {
+      "type": "source",
+      "alternate": "spec/{}_spec.cr"
+      },
+    "spec/*_spec.cr": {
+      "type": "test",
+      "alternate": "src/{}.cr"
+      },
+    "*": {
+      "make": "shards build --no-color",
+      }
+    },
+  "package.json": {
+    "*": {
+      "start": "yarn start",
+      "make": "yarn build",
+      },
+    },
+  "composer.json": {
+    "*": {
+      "start": "composer serve",
+      "make": "composer update",
+      },
+    },
+  "build.gradle": {
+    "src/main/java/*.java": {
+      "alternate": "src/test/java/{}Tests.java",
+      },
+    "src/test/java/*Tests.java": {
+      "alternate": "src/main/java/{}.java",
+      "command": "spec"
+      },
+    },
+  "Gemfile": {
+    "app/serializers/*_serializer.rb": {
+      "command": "serializer",
+      "affinity": "model",
+      "test": "spec/serializers/{}_spec.rb",
+      "related": "app/models/{}.rb",
+      "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend"
+      }
+    },
+  }
 # ------------------------------------------------------------------------ }}}
 
 # Ruby (vim-ruby) -------------------------------------------------------- {{{
@@ -474,6 +474,6 @@ augroup pencil
   autocmd FileType markdown,mkd call pencil#init()
         \ | setl spell spl=en_gb fdl=4
         \ | setl fdo+=search
-        \ | nnoremap <buffer> <leader>mg :<c-u>call GraphThis()<cr>
+        # \ | nnoremap <buffer> <leader>mg :<c-u>call GraphThis()<cr>
 augroup END
 # ------------------------------------------------------------------------ }}}
