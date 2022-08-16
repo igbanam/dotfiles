@@ -309,15 +309,16 @@ command! GenerateTags !ctags -R .
 # ===========
 # Format JSON
 # ===========
-function! FormatJSON() range
-  silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
-endfunction
+# TODO(igbanam): Fix the range function
+# def FormatJSON() range
+#   silent! execute a:firstline . "," . a:lastline . '!python -m json.tool'
+# enddef
 
-# Convert within visual selection
-vnoremap <leader>pp :call FormatJSON()<cr>
+# # Convert within visual selection
+# vnoremap <leader>pp :call FormatJSON()<cr>
 
-# Convert entire file
-nnoremap <leader>pp  :0,$call FormatJSON()<cr>
+# # Convert entire file
+# nnoremap <leader>pp  :0,$call FormatJSON()<cr>
 
 # Bubble lines
 nmap <leader>mu ddkP
