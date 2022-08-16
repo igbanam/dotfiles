@@ -444,11 +444,11 @@ map <leader>l :TestLast<cr>
 map <leader>a :TestSuite<cr>
 
 if exists('$TMUX')
-  var test#strategy = "dispatch"
+  g:test#strategy = "dispatch"
 elseif has('nvim')
-  var test#strategy = "asyncrun"
+  g:test#strategy = "asyncrun"
 else
-  var test#strategy = "vimterminal"
+  g:test#strategy = "vimterminal"
 endif
 # ------------------------------------------------------------------------ }}}
 
