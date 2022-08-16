@@ -197,7 +197,7 @@ g:embark_terminal_italics = 1
 
 # File Navigation (fzf, fzf.vim, nerdtree, telescope.nvim) --------------- {{{
 # FZF
-var $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+$FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :FZF<cr>
 
 # NERDTree
