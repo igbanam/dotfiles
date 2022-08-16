@@ -4,7 +4,7 @@ scriptencoding utf-8
 set encoding=utf-8
 
 # leader
-var mapleader = " "
+g:mapleader = " "
 
 # switch syntax highlighting on, when the terminal has colors
 # also switch on highlighting the last used search pattern.
