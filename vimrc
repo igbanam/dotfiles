@@ -60,7 +60,7 @@ augroup IntentionalIndentations
 augroup END
 # ------------------------------------------------------------------------ }}}
 
-call plug#begin('~/.vim/bundle')
+plug#begin('~/.vim/bundle')
 
 # Colors ----------------------------------------------------------------- {{{
 Plug 'dikiaap/minimalist'
@@ -137,7 +137,7 @@ if has('nvim')
 endif
 # ------------------------------------------------------------------------ }}}
 
-call plug#end()
+plug#end()
 
 colorscheme everforest
 
