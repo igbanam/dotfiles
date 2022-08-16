@@ -241,7 +241,8 @@ augroup fold_schemes
   autocmd Filetype vim set foldmethod=marker
   autocmd Syntax xml,html.erb,xhtml,html setlocal foldmethod=indent
 augroup END
-g:anyfold_fold_comments=1
+
+g:anyfold_fold_comments = 1
 # ------------------------------------------------------------------------ }}}
 
 # Intellisense (coc.nvim, copilot.vim, ale) ------------------------------ {{{
@@ -294,7 +295,7 @@ g:ale_set_highlights = 1
 g:ale_linters_explicit = 1
 g:ale_linters = {
 \  'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
-\  'ruby': ['ruby', 'rails_best_practices'],
+\  'ruby': ['ruby', 'rails_best_practices']
 \}
 # ------------------------------------------------------------------------ }}}
 
