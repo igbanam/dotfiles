@@ -139,7 +139,7 @@ endif
 
 call plug#end()
 
-colorscheme embark
+colorscheme everforest
 
 # Airline (vim-airline) -------------------------------------------------- {{{
 g:airline_theme = 'everforest'
