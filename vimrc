@@ -20,8 +20,8 @@ if line('$') > 1000
   set re=1
 endif
 
-var &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-var &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+set t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 set backspace=2        # backspace deletes like most programs in insert mode
