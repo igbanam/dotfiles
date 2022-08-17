@@ -6,4 +6,4 @@ if (str2nr(&t_Co) > 2 || has("gui_running")) && !exists("syntax_on")
   syntax enable
 endif
 
-colorscheme onehalfdark
+colorscheme everforest
