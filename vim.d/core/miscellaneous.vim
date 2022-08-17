@@ -38,4 +38,18 @@ augroup END
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>eo :e $MYVIMRC<cr>
 nmap <leader>r  :redraw!<cr>
+
+# Vertical cursor for INSERT
+# Underscore cursor for REPLACE
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+        \ if v:insertmode == 'i' |
+        \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+        \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
 # ------------------------------------------------------------------------ }}}
