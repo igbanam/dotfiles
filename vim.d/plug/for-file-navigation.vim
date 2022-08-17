@@ -1,6 +1,6 @@
 vim9script
 
-# File Navigation (fzf, fzf.vim, nerdtree, telescope.nvim) --------------- {{{
+# File Navigation (fzf, fzf.vim, nerdtree) ------------------------------- {{{
 # FZF
 $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <c-p> :FZF<cr>
@@ -19,31 +19,5 @@ map <leader>nf :NERDTreeFind<cr>
 set conceallevel=3
 if exists('g:loaded_webdevicons')
   webdevicons#refresh()
-endif
-
-# Telescope
-if exists("loaded_telescope")
-lua <<TELESCOPE_CONFIG
-require('telescope').setup{
-  defaults = {
-  },
-  pickers = {
-    find_files = {
-      find_command = { "ag", "--hidden", "--ignore", ".git", "-l", "-g", "" },
-    }
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = smart_case,
-    }
-  }
-}
-
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('gh')
-TELESCOPE_CONFIG
 endif
 # ------------------------------------------------------------------------ }}}

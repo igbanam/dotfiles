@@ -8,8 +8,6 @@ Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'logico/typewriter-vim'
 Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'rktjmp/lush.nvim'
-Plug 'rktjmp/shipwright.nvim'
 # ------------------------------------------------------------------------ }}}
 
 # IDE Capabilities ------------------------------------------------------- {{{
@@ -37,7 +35,6 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
@@ -64,16 +61,6 @@ Plug 'wellle/targets.vim'
 
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
-endif
-# ------------------------------------------------------------------------ }}}
-
-# Neovim Natives --------------------------------------------------------- {{{
-if has('nvim')
-  Plug 'feline-nvim/feline.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  Plug 'nvim-telescope/telescope-github.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
 endif
 # ------------------------------------------------------------------------ }}}
 
