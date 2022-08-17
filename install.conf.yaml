@@ -9,6 +9,7 @@
     ~/.gitignore-system: gitignore-system
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
+    ~/.vim/vim.d: vim.d
 
 - brewfile:
     - Brewfile
