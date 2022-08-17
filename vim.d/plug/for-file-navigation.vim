@@ -2,7 +2,7 @@ vim9script
 
 # File Navigation (fzf, fzf.vim, nerdtree) ------------------------------- {{{
 # FZF
-$FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+$FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore sorbet -l -g ""'
 nnoremap <c-p> :FZF<cr>
 
 # NERDTree
