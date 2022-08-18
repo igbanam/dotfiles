@@ -3,6 +3,7 @@ vim9script
 plug#begin('~/.vim/bundle')
 
 # Colors ----------------------------------------------------------------- {{{
+
 Plug 'dikiaap/minimalist'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'logico/typewriter-vim'
@@ -13,6 +14,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
+Plug 'edgedb/edgedb-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
