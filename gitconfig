@@ -37,8 +37,7 @@
   # branch - hard delete
   bdd = !git bd --force
 
-  branches-age = !"for branch in `git branch -r | grep -v HEAD`;do echo `git show --format='%ci %cr' $branch | head -n 1` \t$branch; done | sort -r"
-  branches-ages = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  branches-age = branch -r --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
   ### commit ###
 
