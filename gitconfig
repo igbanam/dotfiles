@@ -110,7 +110,7 @@
   # TODO
   log-fetched = !git lo HEAD..origin/master
   log-local = !git lo origin..HEAD
-  log-refs = log --all --graph --decorate --oneline --simplify-by-decoration --no-merges
+  log-refs = !git lo --all --graph --decorate --simplify-by-decoration --no-merges
   log-timeline = log --format='%h %an %ar - %s'
 
   ### rebase ###
@@ -140,11 +140,8 @@
 
   ### remote ###
 
-  # remote - manage set of tracked repositories [same as "r"].
-  rr = remote
-
   # remote show - gives some information about the remote <name>.
-  rrs = remote show
+  rs = remote show
 
   ### status ###
 
