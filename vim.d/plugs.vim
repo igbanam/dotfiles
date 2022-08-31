@@ -12,6 +12,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
 
 # IDE Capabilities ------------------------------------------------------- {{{
+Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
 Plug 'edgedb/edgedb-vim'
