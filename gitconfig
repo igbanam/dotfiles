@@ -181,27 +181,6 @@
   # bring the branch up to the foremost tip, it is best to use "topic-sync"
   rebuild = !git can && git push --force-with-lease
 
-  # Originally built for bringing a late origin up to speed with its forked
-  # upstream, this is something which aligns two remotes.
-  #
-  # You can use it thus
-  #
-  #   git sync-up
-  #
-  # This would sync up "origin's master" with "upstream' master"
-  #
-  #   git sync-up uplink develop
-  #
-  # This would sync up the "uplink" remote's "develop" branch with "origin"
-  # remote's develop branch.
-  sync-up = "!f() { \
-    url=\"${1:-upstream}\"; \
-    ref=\"${2:-master}\"; \
-    git o $ref; \
-    git p $url $ref; \
-    git push; \
-  };f"
-
   # "Ancestral Bounds"
   # These two commands seek to get the internal boundaries of a branch. In the
   # case of the graph below, the oldest ancestor of topic-branch is G and the
