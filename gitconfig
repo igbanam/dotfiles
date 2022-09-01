@@ -68,11 +68,8 @@
   dw = diff --word-diff
 
   diff-all = !"for name in $(git diff --name-only $1); do git difftool $1 $name & done"
-  diff-branch-changes = !"git diff-changes `git fork-point`..HEAD"
-  diff-branch-files-changed = !"git diff-stat `git fork-point`..HEAD | grep files | awk '{print $1}'"
-  diff-changes = diff --name-status -r
-  diff-staged = diff --cached
-  diff-stat = diff --stat --ignore-space-change -r
+  diff-branch-changes = !git diff --stat $(git merge-base HEAD ${1:-$GIT_BASE_BRANCH})
+  diff-local-changes = diff --stat --ignore-space-change -r
 
   # Logs and Logging
   # log with a text-based graphical representation of the commit history.
