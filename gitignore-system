@@ -4,3 +4,5 @@
 !.elasticbeanstalk/*.global.yml
 
 Session.vim
+
+node_modules
