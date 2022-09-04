@@ -11,4 +11,6 @@ if exists('$TMUX')
 else
   g:test#strategy = "vimterminal"
 endif
+
+g:test#ruby#minitest#options = '--verbose'
 # ------------------------------------------------------------------------ }}}
