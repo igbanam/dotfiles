@@ -8,7 +8,7 @@ nnoremap <c-p> :FZF<cr>
 # NERDTree
 g:NERDTreeDirArrowExpandable = '▸'
 g:NERDTreeDirArrowCollapsible = '▾'
-g:NERDTreeMinimalMenu=1
+g:NERDTreeMinimalMenu = 1
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 # This segment should remove the square brackets in NERDTree. But to do this,
