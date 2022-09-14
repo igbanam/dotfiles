@@ -42,7 +42,8 @@ nmap <leader>r  :redraw!<cr>
 # Vertical cursor for INSERT
 # Underscore cursor for REPLACE
 if has("autocmd")
-  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"'
+  au VimEnter * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertLeave * silent execute '!echo -ne "\e[2 q"'
   au InsertEnter,InsertChange *
         \ if v:insertmode == 'i' |
         \   silent execute '!echo -ne "\e[6 q"' |
