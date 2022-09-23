@@ -1,5 +1,13 @@
 vim9script
 
+# Formatting (vim-easy-align) -------------------------------------------- {{{
+# Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+# Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+# ------------------------------------------------------------------------ }}}
+
 # Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
 g:goyo_width = 100
 g:goyo_height = 40
