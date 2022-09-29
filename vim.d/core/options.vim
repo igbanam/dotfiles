@@ -33,5 +33,6 @@ set list listchars=tab:»·,trail:·,nbsp:·
 augroup IntentionalIndentations
   autocmd!
   autocmd Filetype php,java setlocal tabstop=4 expandtab shiftwidth=4
+  autocmd Filetype svelte setlocal textwidth=0
 augroup END
 # ------------------------------------------------------------------------ }}}
