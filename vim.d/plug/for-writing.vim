@@ -31,4 +31,33 @@ augroup pencil
         \ | setl fdo+=search
         # \ | nnoremap <buffer> <leader>mg :<c-u>call GraphThis()<cr>
 augroup END
+
+def GoyoEnter()
+  if executable('tmux') && exists('$TMUX')
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set nonu
+  set nornu
+  set scrolloff=999
+  Limelight
+enddef
+
+def GoyoLeave()
+  if executable('tmux') && exists('$TMUX')
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set nu
+  set rnu
+  set scrolloff=5
+  Limelight!
+enddef
+
+autocmd! User GoyoEnter ++nested GoyoEnter()
+autocmd! User GoyoLeave ++nested GoyoLeave()
 # ------------------------------------------------------------------------ }}}
