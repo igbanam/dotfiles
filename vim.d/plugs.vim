@@ -1,7 +1,17 @@
 vim9script
 
-plug#begin('~/.vim/bundle')
+# Descriptions ----------------------------------------------------------- {{{
+# This file contains all the plugins I use for Vim + the configuration of the
+# plugin manager I use: vim-plug.
+#
+# The differnt files in the folder goes on to configure the plugins which need
+# configuration. There are three groups of files in this folder by prefix:
+# - `for-...`: configures plugins based on use-cases (e.g. for-folding.vim)
+# - `my-...`: which hold custom functions I write myself
+# - `...`: configuring plugins directly (e.g. vim-airline.vim)
+# ------------------------------------------------------------------------ }}}
 
+plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
 
 Plug 'dikiaap/minimalist'
@@ -10,7 +20,6 @@ Plug 'logico/typewriter-vim'
 Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
-
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
@@ -67,7 +76,6 @@ if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
 endif
 # ------------------------------------------------------------------------ }}}
-
 plug#end()
 
 # Plug (vim-plug) -------------------------------------------------------- {{{

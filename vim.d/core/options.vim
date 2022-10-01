@@ -26,9 +26,9 @@ set tabstop=2          # softtabs, 2 spaces
 set textwidth=80       # so we can wrap text
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
 
-# display extra whitespace
+# Display extra whitespace ----------------------------------------------- {{{
 set list listchars=tab:»·,trail:·,nbsp:·
-
+# Display extra whitespace ----------------------------------------------- }}}
 # Spaces for specific file types ----------------------------------------- {{{
 augroup IntentionalIndentations
   autocmd!

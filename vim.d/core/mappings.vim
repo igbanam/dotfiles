@@ -14,7 +14,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 # ------------------------------------------------------------------------ }}}
-
 # Discipline ------------------------------------------------------------- {{{
 nnoremap <left>  :echoe "!!! Use h !!!"<cr>
 nnoremap <right> :echoe "!!! Use l !!!"<cr>
