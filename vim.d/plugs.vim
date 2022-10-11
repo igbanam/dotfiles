@@ -30,6 +30,7 @@ Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
+Plug 'igbanam/vim-notify'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -48,6 +49,7 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'

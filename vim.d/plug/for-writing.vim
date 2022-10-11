@@ -7,7 +7,7 @@ xmap ga <Plug>(EasyAlign)
 # Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 # ------------------------------------------------------------------------ }}}
-# Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim) -------------------- {{{
+# Writing (vim-pandoc[-syntax], vim-pencil, goyo.vim, ultisnips) --------- {{{
 g:goyo_width = 100
 g:goyo_height = 40
 g:goyo_linenr = 1
@@ -59,6 +59,8 @@ enddef
 
 autocmd! User GoyoEnter ++nested GoyoEnter()
 autocmd! User GoyoLeave ++nested GoyoLeave()
+
+g:UltiSnipsEditSplit = "vertical"
 # ------------------------------------------------------------------------ }}}
 # Auto Save (vim-auto-save) ---------------------------------------------- {{{
 g:auto_save = 1                 # enable autosave on vim startup
