@@ -25,6 +25,8 @@ set splitright         # open a new split in the more natural position
 set tabstop=2          # softtabs, 2 spaces
 set textwidth=80       # so we can wrap text
 set thesaurus=/Users/igbanam/.vim/thesaurus.txt
+set wildmenu
+set wildoptions=pum
 
 # Display extra whitespace ----------------------------------------------- {{{
 set list listchars=tab:»·,trail:·,nbsp:·
