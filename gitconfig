@@ -1,12 +1,12 @@
 [protocol]
   ; version = 2
 [gpg]
-  program = gpg1
+  program = gpg
 [core]
   editor = vim
   excludesfile = /Users/igbanam/.gitignore-system
 [commit]
-  ; gpgsign = true
+  gpgsign = true
 [alias]
   a = add
   b = branch
