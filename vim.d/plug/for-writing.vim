@@ -1,5 +1,7 @@
 vim9script
 
+g:markdown_folding = 1
+
 # Formatting (vim-easy-align) -------------------------------------------- {{{
 # Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

@@ -1,5 +1,7 @@
 vim9script
 
+filetype plugin on
+
 # Descriptions ----------------------------------------------------------- {{{
 # This file contains all the plugins I use for Vim + the configuration of the
 # plugin manager I use: vim-plug.
