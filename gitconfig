@@ -527,3 +527,6 @@
   addIgnoredFile = false
 [include]
   path = ~/.gitconfig.includeables
+[user]
+	name = Igbanam Ogbuluijah
+	email = xigbanam@gmail.com
