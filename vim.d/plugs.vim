@@ -34,11 +34,11 @@ Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries'
 Plug 'github/copilot.vim'
 Plug 'igbanam/vim-notify'
 Plug 'janko-m/vim-test'
-Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
@@ -51,7 +51,7 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips'
+Plug 'sirver/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
@@ -75,6 +75,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
 Plug 'vim-scripts/vim-auto-save'
 Plug 'wellle/targets.vim'
+Plug '~/projects/igbanam/vim-startify'
 
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
