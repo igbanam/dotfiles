@@ -51,7 +51,7 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'sirver/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-abolish'
