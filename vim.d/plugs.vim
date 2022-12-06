@@ -18,7 +18,7 @@ plug#begin('~/.vim/bundle')
 
 Plug 'dikiaap/minimalist'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'logico/typewriter-vim'
+Plug '~/projects/igbanam/typewriter-vim'
 Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
