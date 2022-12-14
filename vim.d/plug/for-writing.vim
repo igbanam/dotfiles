@@ -35,7 +35,7 @@ augroup END
 
 def GoyoEnter()
   if executable('tmux') && exists('$TMUX')
-    silent !tmux set status off
+    # silent !tmux set status off
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   endif
   set noshowmode
@@ -48,7 +48,7 @@ enddef
 
 def GoyoLeave()
   if executable('tmux') && exists('$TMUX')
-    silent !tmux set status on
+    # silent !tmux set status on
     silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   endif
   set showmode
