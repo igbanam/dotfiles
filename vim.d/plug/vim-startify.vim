@@ -6,7 +6,7 @@ g:startify_commands = [
   {'c': ['Show All Commands', ':Commands']},
   {'o': ['Go To File', ':FZF']},
   {'f': ['Find in Files', ':Ag']},
-  {'m': ['Toggle Terminal', ':bot term']},
+  {'g': ['Open Git', ':G']},
 ]
 var longest_command = g:startify_commands
                         ->mapnew((_, f) => f->values()->flattennew(1)[0])
