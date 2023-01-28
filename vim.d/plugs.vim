@@ -36,6 +36,7 @@ Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bi
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
