@@ -7,10 +7,11 @@ g:startify_commands = [
   {'o': ['Go To File', ':FZF']},
   {'f': ['Find in Files', ':Ag']},
   {'g': ['Open Git', ':G']},
+  {'l': ['Show Branch Commits', ':Gclog']},
 ]
 var longest_command = g:startify_commands
                         ->mapnew((_, f) => f->values()->flattennew(1)[0])
-                        ->mapnew((_, g) => len(g))
+                        ->mapnew((_, g) => g->len())
                         ->max()
 g:startify_padding_left = (winwidth(0) - longest_command) / 2
 g:startify_lists = [
