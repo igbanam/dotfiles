@@ -30,6 +30,7 @@ Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
+Plug 'honza/vim-snippets'
 Plug 'igbanam/vim-notify'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
