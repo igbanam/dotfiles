@@ -21,6 +21,7 @@ Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
@@ -30,9 +31,11 @@ Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
-Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets',              { 'for': 'html' }
 Plug 'igbanam/vim-notify'
+Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
@@ -51,7 +54,6 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'thinca/vim-themis'
 Plug 'tmhedberg/matchit'
@@ -69,15 +71,14 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-# Plug 'vim-airline/vim-airline'
-Plug '~/projects/igbanam/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
 Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
 Plug 'vim-scripts/vim-auto-save'
 Plug 'wellle/targets.vim'
-Plug '~/projects/igbanam/vim-startify'
+Plug '~/projects/igbanam/bob.vim'
 
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
