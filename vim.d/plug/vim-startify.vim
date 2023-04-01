@@ -1,5 +1,9 @@
 vim9script
 
+if (!exists('g:loaded_startify'))
+  finish
+endif
+
 g:startify_files_number = 0
 g:startify_enable_special = 1
 g:startify_commands = [

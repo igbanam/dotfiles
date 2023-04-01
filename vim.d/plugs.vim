@@ -21,7 +21,6 @@ Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
@@ -32,8 +31,6 @@ Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets',              { 'for': 'html' }
-Plug 'igbanam/vim-notify'
-Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -42,7 +39,6 @@ Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'pbrisbin/vim-mkdir'
 Plug 'preservim/tagbar'
@@ -82,6 +78,16 @@ Plug '~/projects/igbanam/bob.vim'
 
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
+endif
+
+if has("python")
+  Plug 'SirVer/ultisnips'
+endif
+
+if (has('patch-8.2.4608'))
+  Plug 'igbanam/vim-notify'
+  Plug 'igbanam/vim-startify'
+  Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 endif
 # ------------------------------------------------------------------------ }}}
 plug#end()
