@@ -9,10 +9,21 @@ g:startify_commands = [
   {'g': ['Open Git', ':G']},
   {'l': ['Show Branch Commits', ':Gclog']},
 ]
-var longest_command = g:startify_commands
-                        ->mapnew((_, f) => f->values()->deepcopy()->flatten(1)[0])
-                        ->mapnew((_, g) => g->len())
-                        ->max()
+
+var longest_command: number
+
+if (has('patch-8.2.2449'))
+  longest_command = g:startify_commands
+    ->mapnew((_, f) => f->values()->flattennew(1)[0])
+    ->mapnew((_, g) => g->len())
+    ->max()
+else
+  longest_command = g:startify_commands
+    ->mapnew((_, f) => f->values()->deepcopy()->flatten(1)[0])
+    ->mapnew((_, g) => g->len())
+    ->max()
+endif
+
 g:startify_padding_left = (winwidth(0) - longest_command) / 2
 g:startify_lists = [
   { 'header': [repeat(' ', g:startify_padding_left) .. 'Commands'], 'type': 'commands' }
