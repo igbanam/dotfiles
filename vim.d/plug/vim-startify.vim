@@ -1,9 +1,5 @@
 vim9script
 
-if (!exists('g:loaded_startify'))
-  finish
-endif
-
 g:startify_files_number = 0
 g:startify_enable_special = 1
 g:startify_commands = [
@@ -14,7 +10,7 @@ g:startify_commands = [
   {'l': ['Show Branch Commits', ':Gclog']},
 ]
 var longest_command = g:startify_commands
-                        ->mapnew((_, f) => f->values()->flattennew(1)[0])
+                        ->mapnew((_, f) => f->values()->deepcopy()->flatten(1)[0])
                         ->mapnew((_, g) => g->len())
                         ->max()
 g:startify_padding_left = (winwidth(0) - longest_command) / 2

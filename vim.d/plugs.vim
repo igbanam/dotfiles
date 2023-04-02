@@ -31,6 +31,7 @@ Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets',              { 'for': 'html' }
+Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -86,7 +87,6 @@ endif
 
 if (has('patch-8.2.4608'))
   Plug 'igbanam/vim-notify'
-  Plug 'igbanam/vim-startify'
   Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 endif
 # ------------------------------------------------------------------------ }}}
