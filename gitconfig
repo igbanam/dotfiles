@@ -4,9 +4,7 @@
   program = gpg
 [core]
   editor = vim
-  excludesfile = /Users/igbanam/.gitignore-system
-[commit]
-  gpgsign = true
+  excludesfile = ~/.gitignore-system
 [alias]
   a = add
   b = branch
@@ -527,6 +525,3 @@
   addIgnoredFile = false
 [include]
   path = ~/.gitconfig.includeables
-[user]
-	name = Igbanam Ogbuluijah
-	email = xigbanam@gmail.com
