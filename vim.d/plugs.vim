@@ -81,8 +81,9 @@ if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
 endif
 
-if has("python")
+if has("python") || has("python3")
   Plug 'SirVer/ultisnips'
+  Plug 'puremourning/vimspector'
 endif
 
 if (has('patch-8.2.4608'))
