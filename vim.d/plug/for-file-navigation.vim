@@ -3,6 +3,7 @@ vim9script
 # File Navigation (fzf, fzf.vim, nerdtree) ------------------------------- {{{
 # FZF
 $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore sorbet -l -g ""'
+# $FZF_DEFAULT_OPTS = '--track'
 g:fzf_colors =
   { 'fg':      ['fg', 'Normal'],
     'bg':      ['bg', 'Normal'],
