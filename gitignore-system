@@ -10,3 +10,5 @@ node_modules
 .dog-fooding
 
 .exercism
+
+__pycache__
