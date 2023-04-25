@@ -14,13 +14,13 @@ colorscheme onehalfdark
 if (has('termguicolors'))
   set termguicolors
 endif
-# ------------------------------------------------------------------------ {{{
+# ------------------------------------------------------------------------ }}}
 # Terse Programming, shall we? ------------------------------------------- {{{
 augroup TooLong
     autocmd!
     autocmd winEnter,BufEnter * call clearmatches() | call matchadd('ColorColumn', '\%>' .. eval('&tw') .. 'v', 100)
 augroup END
-# ------------------------------------------------------------------------ {{{
+# ------------------------------------------------------------------------ }}}
 # Everforest ------------------------------------------------------------- {{{
 g:everforest_background = 'soft'
 g:everforest_better_performance = 1
