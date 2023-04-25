@@ -18,7 +18,7 @@ endif
 # Terse Programming, shall we? ------------------------------------------- {{{
 augroup TooLong
     autocmd!
-    autocmd winEnter,BufEnter * call clearmatches() | call matchadd('ColorColumn', '\%>' .. eval('&tw') .. 'v', 100)
+    autocmd winEnter,BufEnter * call clearmatches() | call matchadd('ColorColumn', '\%>100v', 100)
 augroup END
 # ------------------------------------------------------------------------ }}}
 # Everforest ------------------------------------------------------------- {{{
