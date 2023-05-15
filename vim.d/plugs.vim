@@ -75,6 +75,7 @@ Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
 Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
 Plug 'vim-scripts/vim-auto-save'
+Plug 'wakatime/vim-wakatime'
 Plug 'wellle/targets.vim'
 Plug '~/projects/igbanam/bob.vim'
 
