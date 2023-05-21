@@ -46,6 +46,7 @@ Plug 'pseewald/vim-anyfold'
 Plug 'reedes/vim-pencil',               { 'for': 'markdown' }
 Plug 'reedes/vim-wordy',                { 'for': 'markdown' }
 Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
+Plug 'rhysd/git-messenger.vim'
 Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
