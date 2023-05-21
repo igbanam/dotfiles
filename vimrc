@@ -16,6 +16,6 @@ if line('$') > 1000
   set re=1
 endif
 
-runtime vim.d/plugs.vim
-runtime! vim.d/core/*.vim
-runtime! vim.d/plug/*.vim
+runtime ./vim.d/plugs.vim
+runtime! ./vim.d/core/*.vim
+runtime! ./vim.d/plug/*.vim
