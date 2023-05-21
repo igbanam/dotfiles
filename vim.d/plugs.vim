@@ -41,7 +41,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
-Plug 'pbrisbin/vim-mkdir'
 Plug 'preservim/tagbar'
 Plug 'pseewald/vim-anyfold'
 Plug 'reedes/vim-pencil',               { 'for': 'markdown' }
