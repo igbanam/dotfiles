@@ -5,6 +5,7 @@
 
 .vim
 Session.vim
+.vimspector.json
 
 node_modules
 
