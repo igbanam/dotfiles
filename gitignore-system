@@ -4,6 +4,7 @@
 !.elasticbeanstalk/*.global.yml
 
 .vim
+.vimrc
 Session.vim
 .vimspector.json
 
