@@ -71,13 +71,13 @@
 
   # Logs and Logging
   # log with a text-based graphical representation of the commit history.
-  lg = log --graph
+  lg = !git log ${1:-$(git branch-name)} --graph
 
   # log with one line per item.
-  lo = log --oneline
+  lo = log ${1:-$(git branch-name)} --oneline
 
   # log relative
-  lr = !git lg --pretty=format:'%Cred%h%Creset %C(bold cyan)%G?%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+  lr = !git lg ${1:-$(git branch-name)} --pretty=format:'%Cred%h%Creset %C(bold cyan)%G?%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
   log-retro = !git log-me --since '1 week ago' --pretty=short --oneline
   log-standup = !git log-me --since yesterday --pretty=short --oneline
@@ -89,7 +89,7 @@
   log-fresh = log ORIG_HEAD.. --stat --no-merges
 
   # Show the log for my own user email
-  log-me = !git log --author $(git config user.email)
+  log-me = !git log ${1:-$(git branch-name)} --author $(git config user.email)
 
   # Show log as a graph
   log-graph = !git lg --all --oneline --decorate
@@ -150,6 +150,9 @@
   # Show who contributed, in descending order
   whorank-commits = shortlog --summary --numbered --no-merges
   whorank-loc = !"git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n"
+
+  # Show who created the file
+  whocreated = !"f() { git log --reverse --format=\"%cn\" \"$@\" | head -1; }; f"
 
   # Show contributors to a file or folder
   whotouched = !"f() { git log --pretty=\"format:%an%x09\" $@ | sort | uniq; }; f"

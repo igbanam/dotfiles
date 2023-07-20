@@ -24,3 +24,14 @@ nnoremap <c-p> :FZF<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 # ------------------------------------------------------------------------ }}}
+
+# Git Ops (fzf + git) ---------------------------------------------------- {{{
+command! -bang -nargs=0 Branches
+            \ call fzf#run({
+            \   'source': "git branch -a",
+            \   'sink': 'git o',
+            \   'down': '40%',
+            \   'options': '--prompt="*Branches> " --bind="ctrl-d:page-down,ctrl-u:page-up" --preview="echo {} | sed \"s/\*//\" | sed \"s/^ *//;s/ *$//\" | xargs git lr"'
+            \ })
+# Courtesy of https://stackoverflow.com/a/76731081/393021
+# ------------------------------------------------------------------------ }}}
