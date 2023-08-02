@@ -79,7 +79,7 @@
   # log relative
   lr = !git lg ${1:-$(git branch-name)} --pretty=format:'%Cred%h%Creset %C(bold cyan)%G?%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
-  log-retro = !git log-me --since '1 week ago' --pretty=short --oneline
+  log-retro = !git log-me --oneline --since '1 week ago'
   log-standup = !git log-me --since yesterday --pretty=short --oneline
 
   # Show log of changes, oldest first
