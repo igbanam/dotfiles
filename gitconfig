@@ -528,3 +528,5 @@
   addIgnoredFile = false
 [include]
   path = ~/.gitconfig.includeables
+[diff]
+	colorMoved = dimmed-zebra
