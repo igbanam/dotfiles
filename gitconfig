@@ -523,7 +523,7 @@
 [init]
   defaultBranch = release
 [merge]
-  tool = nvimdiff
+  tool = vimdiff
 [advice]
   addIgnoredFile = false
 [include]
