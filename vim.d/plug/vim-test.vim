@@ -14,4 +14,5 @@ endif
 
 g:test#ruby#minitest#options = '--verbose'
 g:test#crystal#crystalspec#options = '--no-color'
+g:test#dart#darttest#options = '--no-color'
 # ------------------------------------------------------------------------ }}}
