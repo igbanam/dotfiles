@@ -1,7 +1,7 @@
 vim9script
 
 # Airline (vim-airline) -------------------------------------------------- {{{
-g:airline_theme = 'apprentice'
+g:airline_theme = 'zenburn'
 g:airline#extensions#tabline#enabled = 1
 g:airline_powerline_fonts = 1
 g:airline#extensions#coc#enabled = 1

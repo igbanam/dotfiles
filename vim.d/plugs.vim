@@ -15,8 +15,6 @@ filetype plugin on
 
 plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
-Plug 'jaredgorski/Mies.vim'
-Plug '~/projects/igbanam/typewriter-vim'
 Plug 'sainnhe/everforest'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
