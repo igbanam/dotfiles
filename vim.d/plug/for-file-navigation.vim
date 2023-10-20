@@ -23,6 +23,7 @@ nnoremap <c-p> :FZF<cr>
 # NERDTree
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
+g:NERDTreeNaturalSort = 1
 # ------------------------------------------------------------------------ }}}
 
 # Git Ops (fzf + git) ---------------------------------------------------- {{{
