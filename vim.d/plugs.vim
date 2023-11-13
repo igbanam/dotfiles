@@ -28,7 +28,7 @@ Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
-Plug 'honza/vim-snippets',              { 'for': 'html' }
+Plug 'honza/vim-snippets'
 Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
 Plug 'JuliaEditorSupport/julia-vim'
