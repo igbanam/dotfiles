@@ -10,4 +10,11 @@ augroup fold_schemes
 augroup END
 
 g:anyfold_fold_comments = 1
+g:anyfold_identify_comments = 2
+g:anyfold_comments = [
+  'comment',
+  'string',
+  'external',
+  'include'
+]
 # ------------------------------------------------------------------------ }}}
