@@ -1,6 +1,6 @@
 vim9script
 
-# Intellisense (coc.nvim, copilot.vim, ale, supertab) -------------------- {{{
+# Intellisense (coc.nvim, ale, supertab) -------------------- {{{
 set shortmess+=c      # Don't give |ins-completion-menu| messages
 set updatetime=300    # Diagnostic messages disappear faster
 
@@ -37,14 +37,6 @@ g:coc_global_extensions = [
   'coc-phpactor',
   'coc-tsserver'
 ]
-
-# Copilot
-g:copilot_filetypes = {
-  '*': v:false,
-  'php': v:true,
-  'python': v:true,
-  'ruby': v:true
-}
 
 # Ale
 g:ale_set_highlights = 1
