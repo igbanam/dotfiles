@@ -39,6 +39,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
+Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'pseewald/vim-anyfold'
 Plug 'reedes/vim-pencil',               { 'for': 'markdown' }
@@ -47,7 +48,6 @@ Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
 Plug 'rhysd/git-messenger.vim'
 Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'sotte/presenting.vim'
