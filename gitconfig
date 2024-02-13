@@ -530,3 +530,5 @@
   path = ~/.gitconfig.includeables
 [diff]
 	colorMoved = dimmed-zebra
+[rerere]
+	enabled = true
