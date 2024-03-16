@@ -23,3 +23,6 @@ __pycache__
 
 # Ultralist
 .todos.json
+
+# vimtheme
+.vimtheme

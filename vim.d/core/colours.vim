@@ -8,7 +8,34 @@ if (str2nr(&t_Co) > 2 || has("gui_running")) && !exists("syntax_on")
 endif
 # ------------------------------------------------------------------------ }}}
 # Colour Scheme ---------------------------------------------------------- {{{
-colorscheme quiet
+
+def ColorExists(color: string): bool
+  var color_path: string = "colors/" .. color .. ".vim"
+  return !empty(globpath(&rtp, color_path))
+enddef
+
+def ThemeExists(vimtheme: string): bool
+  return vimtheme->filereadable() && vimtheme->readfile('', 1)->get(0)->ColorExists()
+enddef
+
+def GetThemeFile(): string
+  if 'g:vimtheme_location'->exists()
+    return getcwd() .. g:vimtheme_location
+  endif
+  return getcwd() .. '/.vimtheme'
+enddef
+
+def Theme(theme_file: string, default_theme: string)
+  var active_theme: string
+  if ThemeExists(theme_file)
+    active_theme = theme_file->readfile('', 1)->get(0)
+  else
+    active_theme = "sorbet"
+  endif
+  execute 'colorscheme ' .. active_theme
+enddef
+
+Theme(GetThemeFile(), "sorbet")
 # ------------------------------------------------------------------------ }}}
 # GUI Colours ------------------------------------------------------------ {{{
 if (has('termguicolors'))
