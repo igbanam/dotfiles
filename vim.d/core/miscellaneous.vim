@@ -11,7 +11,7 @@ command! GenerateTags !ctags -R .
 # Custom Comment Markers ------------------------------------------------- {{{
 augroup custom_comment_markers
     au!
-    au Syntax * syn match myCCM /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX|STUCK)/
+    au Syntax * syn match myCCM /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX|BLOCKED)/
           \ containedin=.*Comment,vimCommentTitle
 augroup END
 hi def link MyCCM Todo
