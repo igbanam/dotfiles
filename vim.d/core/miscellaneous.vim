@@ -8,6 +8,14 @@ augroup END
 
 command! GenerateTags !ctags -R .
 # ------------------------------------------------------------------------ }}}
+# Custom Comment Markers ------------------------------------------------- {{{
+augroup custom_comment_markers
+    au!
+    au Syntax * syn match myCCM /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX|STUCK)/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyCCM Todo
+# ------------------------------------------------------------------------ }}}
 # Format JSON ------------------------------------------------------------ {{{
 command! -range FormatJSON FormatJSON(<line1>, <line2>)
 def FormatJSON(line1: number, line2: number)
