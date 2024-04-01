@@ -24,5 +24,8 @@ __pycache__
 # Ultralist
 .todos.json
 
+# Jujutsu
+.jj
+
 # vimtheme
 .vimtheme
