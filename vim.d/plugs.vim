@@ -21,6 +21,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
+Plug 'dense-analysis/ale'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
 Plug 'edgedb/edgedb-vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -65,7 +66,6 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'unisonweb/unison',                { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
@@ -75,10 +75,6 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'wakatime/vim-wakatime'
 Plug 'wellle/targets.vim'
 Plug '~/projects/igbanam/bob.vim'
-
-if v:version >= 800 || has('nvim')
-  Plug 'dense-analysis/ale'
-endif
 
 if has("python") || has("python3")
   Plug 'SirVer/ultisnips'
