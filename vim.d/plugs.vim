@@ -50,7 +50,6 @@ Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
-Plug 'sotte/presenting.vim'
 Plug 'thinca/vim-themis'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler'
