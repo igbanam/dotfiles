@@ -19,8 +19,16 @@ nmap <leader>ca  <Plug>(coc-codeaction-cursor)
 nmap <silent> [g <Plug>(coc-diagnostic-prev>)
 nmap <silent> ]g <Plug>(coc-diagnostic-next>)
 
-# Trigger Code Actions
-nnoremap <leader>cl :<c-u>call CocActionAsync('codeLensAction')<cr>
+function ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+# Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 # Remap <C-f> and <C-b> for scroll float windows/popups.
 # -- currently doesn't work in Vim9 because of different scroll semantics
@@ -49,3 +57,5 @@ g:ale_linters = {
 # SuperTab
 g:SuperTabDefaultCompletionType = "<c-n>"
 # ------------------------------------------------------------------------ }}}
+
+defcompile
