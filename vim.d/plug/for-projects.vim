@@ -22,11 +22,15 @@ g:projectionist_heuristics = {
       },
     },
   "*.gemspec|.hanamirc": {
+    "test/*_test.rb": {
+      "alternate": "lib/{}.rb",
+      "command": "test"
+      },
     "spec/*_spec.rb": {
       "alternate": "lib/{}.rb",
       "command": "spec"
       },
-    "lib/*.rb": { "alternate": "spec/{}_spec.rb" }
+    "lib/*.rb": { "alternate": ["test/{}_test.rb", "spec/{}_spec.rb"] }
     },
   "shard.yml": {
     "src/*.cr": {
