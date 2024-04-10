@@ -101,7 +101,7 @@
   log-day = log --since yesterday
 
   # TODO
-  log-fetched = !git lo HEAD..origin/master
+  log-fetched = !git lo HEAD..origin/$(git topic-base-branch-name)
   log-local = !git lo origin..HEAD
   log-refs = !git lo --all --graph --decorate --simplify-by-decoration --no-merges
   log-timeline = log --format='%h %an %ar - %s'
@@ -185,9 +185,8 @@
   #           \     /   \     /
   #            \   /     \   /
   #              G -- H -- I -- J  (topic-branch)
-  fork-point = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-master}") | grep "^\\ [a-z0-9]" | sed -ne "s/^\\ //p" | head -n 1' -
-  oldest-ancestor = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-master}") | grep "^\\-[a-z0-9]" | sed -ne "s/^\\-//p" | tail -n 1' -
-  oldest-ancestor-2 = !"git log ${1:-master}..${2:-HEAD} --oneline | tail -1 | awk '{print $1}'"
+  fork-point = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-$GIT_BASE_BRANCH}") | grep "^\\ [a-z0-9]" | sed -ne "s/^\\ //p" | head -n 1' -
+  oldest-ancestor = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-$GIT_BASE_BRANCH}") | grep "^\\-[a-z0-9]" | sed -ne "s/^\\-//p" | tail -n 1' -
 
   ### Rails ###
   rspec-branch = !"git diff-branch-changes | awk '{print $2}' | grep _spec.rb | xargs rspec"
@@ -379,13 +378,13 @@
   assumed  = !"git ls-files -v | grep ^h | cut -c 3-"
 
   # Delete all branches that have already been merged into the master branch.
-  master-cleanse = !git master-cleanse-local; git master-cleanse-remote
+  cleanse = !git cleanse-local; git cleanse-remote
 
   # Delete all local branches that have been merged into the local master branch.
-  master-cleanse-local = "!git checkout master && git branch --merged | xargs git branch --delete"
+  cleanse-local = "!git checkout ${1:-$GIT_BASE_BRANCH} && git branch --merged | xargs git branch --delete"
 
   # Delete all remote branches that have been merged into the remote master branch.
-  master-cleanse-remote = !"git branch --remotes --merged origin/master | sed 's# *origin/##' | grep -v '^master$' xargs -I% git push origin :% 2>&1 | grep --colour=never 'deleted'"
+  cleanse-remote = !"git branch --remotes --merged origin/${1:-$GIT_BASE_BRANCH} | sed 's# *origin/##' | grep -v '^${1:-$GIT_BASE_BRANCH}$' xargs -I% git push origin :% 2>&1 | grep --colour=never 'deleted'"
 
   # Delete a branch name, then create the same branch name based on master -
   # useful if you have, for example, a development branch and master branch
@@ -393,7 +392,7 @@
   #
   # Calls the `publish` and `unpublish` aliases.
   #
-  reincarnate = !"f() { [[ -n $@ ]] && git checkout \"$@\" && git unpublish && git checkout master && git branch -D \"$@\" && git checkout -b \"$@\" && git publish; }; f"
+  reincarnate = !"f() { [[ -n $@ ]] && git checkout \"$@\" && git unpublish && git checkout $GIT_BASE_BRANCH && git branch -D \"$@\" && git checkout -b \"$@\" && git publish; }; f"
 
   ##
   # Reset & Undo
@@ -532,3 +531,6 @@
 	colorMoved = dimmed-zebra
 [rerere]
 	enabled = true
+[maintenance]
+	repo = /Users/igbanam/projects/igbanam/dotfiles
+	repo = /Users/igbanam/projects/frontedge/core-service
