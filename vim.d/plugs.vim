@@ -16,7 +16,6 @@ filetype plugin on
 plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
 Plug 'sainnhe/everforest'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'airblade/vim-gitgutter'
@@ -38,6 +37,7 @@ Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'ledger/vim-ledger'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
