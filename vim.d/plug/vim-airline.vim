@@ -10,8 +10,8 @@ g:airline_experimental = 1
 g:airline_powerline_fonts = 1
 g:airline_left_alt_sep = "\uE0C1"
 g:airline_left_sep = "\uE0C0"
-g:airline_right_alt_sep = "\uE0C3"
-g:airline_right_sep = "\uE0C2"
+g:airline_right_sep = ""
+g:airline_right_alt_sep = ""
 
 g:airline#extensions#coc#enabled = 1
 g:airline#extensions#coc#show_coc_status = 1
