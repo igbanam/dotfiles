@@ -1,6 +1,10 @@
 vim9script
 
-# Ruby (vim-ruby) -------------------------------------------------------- {{{
+# Ledger (vim-ledger) ---------------------------------------------------- {{{
+augroup ledger_filetypes
+  au!
+  autocmd BufNewFile,BufRead *.timeclock  set filetype=ledger
+augroup END
 # ------------------------------------------------------------------------ }}}
 # PHP (php) -------------------------------------------------------------- {{{
 var php_folding = 1
