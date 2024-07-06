@@ -29,3 +29,6 @@ __pycache__
 
 # vimtheme
 .vimtheme
+
+# sdkman
+.sdkmanrc
