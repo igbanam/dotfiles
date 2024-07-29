@@ -18,13 +18,10 @@ plug#begin('~/.vim/bundle')
 Plug 'sainnhe/everforest'
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
-Plug 'airblade/vim-gitgutter'
 Plug 'asheq/close-buffers.vim'
 Plug 'dense-analysis/ale'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
-Plug 'edgedb/edgedb-vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
 Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'honza/vim-snippets'
@@ -35,24 +32,20 @@ Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bi
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
+Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'preservim/nerdtree'
-Plug 'preservim/tagbar'
 Plug 'pseewald/vim-anyfold'
 Plug 'reedes/vim-pencil',               { 'for': 'markdown' }
 Plug 'reedes/vim-wordy',                { 'for': 'markdown' }
 Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
-Plug 'rhysd/git-messenger.vim'
 Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
-Plug 'thinca/vim-themis'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -78,11 +71,6 @@ Plug '~/projects/igbanam/bob.vim'
 if has("python") || has("python3")
   Plug 'SirVer/ultisnips'
   Plug 'puremourning/vimspector'
-endif
-
-if (has('patch-8.2.4608'))
-  Plug 'igbanam/vim-notify'
-  Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 endif
 # ------------------------------------------------------------------------ }}}
 plug#end()
