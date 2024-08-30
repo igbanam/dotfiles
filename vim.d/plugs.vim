@@ -2,6 +2,12 @@ vim9script
 
 filetype plugin on
 
+# Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
 # Descriptions ----------------------------------------------------------- {{{
 # This file contains all the plugins I use for Vim + the configuration of the
 # plugin manager I use: vim-plug.
