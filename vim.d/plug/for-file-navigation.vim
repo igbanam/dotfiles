@@ -23,7 +23,9 @@ nnoremap <c-p> :FZF<cr>
 # NERDTree
 map <C-n> :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
+g:NERDTreeFileLines = 1
 g:NERDTreeNaturalSort = 1
+g:NERDTreeWinSizeMax = 80
 # ------------------------------------------------------------------------ }}}
 
 # Git Ops (fzf + git) ---------------------------------------------------- {{{
