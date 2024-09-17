@@ -57,7 +57,7 @@ g:projectionist_heuristics = {
       "make": "composer update",
       },
     },
-  "build.gradle": {
+  "build.gradle|pom.xml": {
     "src/main/java/*.java": {
       "alternate": "src/test/java/{}Tests.java",
       },
