@@ -40,6 +40,7 @@ Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
+Plug 'mikelue/vim-maven-plugin'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'preservim/nerdtree'
