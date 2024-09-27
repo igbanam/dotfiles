@@ -5,6 +5,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore-system
+  whitespace = cr-at-eol
 [alias]
   a = add
   b = branch
