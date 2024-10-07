@@ -30,12 +30,12 @@ def Theme(theme_file: string, default_theme: string)
   if ThemeExists(theme_file)
     active_theme = theme_file->readfile('', 1)->get(0)
   else
-    active_theme = "sorbet"
+    active_theme = "everforest"
   endif
   execute 'colorscheme ' .. active_theme
 enddef
 
-Theme(GetThemeFile(), "sorbet")
+Theme(GetThemeFile(), "everforest")
 # ------------------------------------------------------------------------ }}}
 # GUI Colours ------------------------------------------------------------ {{{
 if (has('termguicolors'))
