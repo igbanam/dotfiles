@@ -21,6 +21,7 @@ endif
 
 plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
+Plug 'Alligator/accent.vim'
 Plug 'sainnhe/everforest'
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
@@ -50,7 +51,7 @@ Plug 'reedes/vim-wordy',                { 'for': 'markdown' }
 Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
 Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sheerun/vim-polyglot'
+# Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
