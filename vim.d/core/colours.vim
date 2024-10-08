@@ -42,6 +42,11 @@ if (has('termguicolors'))
   set termguicolors
 endif
 # ------------------------------------------------------------------------ }}}
+# Accent ----------------------------------------------------------------- {{{
+g:accent_colour = 'orange'
+g:accent_darken = 1
+g:accent_invert_status = 1
+# ------------------------------------------------------------------------ }}}
 # Everforest ------------------------------------------------------------- {{{
 g:everforest_background = 'soft'
 g:everforest_better_performance = 1
