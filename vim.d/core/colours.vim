@@ -1,5 +1,19 @@
 vim9script
 
+# GUI Colours ------------------------------------------------------------ {{{
+if (has('termguicolors'))
+  set termguicolors
+endif
+# ------------------------------------------------------------------------ }}}
+# Accent ----------------------------------------------------------------- {{{
+g:accent_colour = 'orange'
+g:accent_darken = 1
+g:accent_invert_status = 1
+# ------------------------------------------------------------------------ }}}
+# Everforest ------------------------------------------------------------- {{{
+g:everforest_background = 'soft'
+g:everforest_better_performance = 1
+# ------------------------------------------------------------------------ }}}
 # Highlighting ----------------------------------------------------------- {{{
 # switch syntax highlighting on, when the terminal has colors
 # also switch on highlighting the last used search pattern.
@@ -37,17 +51,3 @@ enddef
 
 Theme(GetThemeFile(), "everforest")
 # ------------------------------------------------------------------------ }}}
-# GUI Colours ------------------------------------------------------------ {{{
-if (has('termguicolors'))
-  set termguicolors
-endif
-# ------------------------------------------------------------------------ }}}
-# Accent ----------------------------------------------------------------- {{{
-g:accent_colour = 'orange'
-g:accent_darken = 1
-g:accent_invert_status = 1
-# ------------------------------------------------------------------------ }}}
-# Everforest ------------------------------------------------------------- {{{
-g:everforest_background = 'soft'
-g:everforest_better_performance = 1
-# ------------------------------------------------------------------------ {{{
