@@ -1,10 +1,13 @@
 vim9script
 
 # Test (vim-test) -------------------------------------------------------- {{{
+command! -nargs=* -bar TestNearestDebug call test#run('nearest', split(<q-args>)->add('-Dmaven.surefire.debug'))
+
 map <leader>t :TestFile<cr>
 map <leader>s :TestNearest<cr>
 map <leader>l :TestLast<cr>
 map <leader>a :TestSuite<cr>
+map <leader>d :TestNearestDebug<cr>
 
 if exists('$TMUX')
   g:test#strategy = "dispatch"
