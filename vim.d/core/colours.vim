@@ -14,6 +14,10 @@ g:accent_invert_status = 1
 g:everforest_background = 'soft'
 g:everforest_better_performance = 1
 # ------------------------------------------------------------------------ }}}
+# Komau ------------------------------------------------------------------ {{{
+g:komau_italic = 0
+g:komau_bold = 0
+# ------------------------------------------------------------------------ }}}
 # Highlighting ----------------------------------------------------------- {{{
 # switch syntax highlighting on, when the terminal has colors
 # also switch on highlighting the last used search pattern.
