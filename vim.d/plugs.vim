@@ -42,7 +42,6 @@ Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
-Plug 'mikelue/vim-maven-plugin'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'preservim/nerdtree'
@@ -52,7 +51,6 @@ Plug 'reedes/vim-wordy',                { 'for': 'markdown' }
 Plug 'rhysd/vim-crystal',               { 'for': 'crystal' }
 Plug 'romainl/vim-cool'
 Plug 'ryanoasis/vim-devicons'
-# Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
