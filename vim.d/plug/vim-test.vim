@@ -16,6 +16,10 @@ else
 endif
 
 g:test#ruby#minitest#options = '--verbose'
+g:test#ruby#rspec#options = {
+  'all': '--no-color',
+  'file': '--format documentation'
+}
 g:test#crystal#crystalspec#options = '--no-color'
 g:test#dart#darttest#options = '--no-color'
 # ------------------------------------------------------------------------ }}}
