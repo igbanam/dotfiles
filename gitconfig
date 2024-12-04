@@ -198,17 +198,26 @@
   topic-create = "!f(){ \
     branch=\"$1\"; \
     base=$(git topic-base-branch-name); \
+    echo; \
+    echo 📥 Checking out the latest \"$(tput bold)$base$(tput sgr0)\"; \
     git checkout \"$base\"; git pull; \
+    echo; \
+    echo ✨ Creating the new \"$(tput bold)$branch$(tput sgr0)\"; \
     git checkout -b \"$branch\" \"$base\"; \
   };f"
 
   topic-delete = "!f(){ \
     branch=$(git branch-name); \
     base=$(git topic-base-branch-name); \
-    git checkout \"$base\"; \
+    echo; \
+    echo 📥 Checking out the latest \"$(tput bold)$base$(tput sgr0)\"; \
+    git checkout \"$base\"; git p --rebase; \
+    echo; \
+    echo 💣 Delete local \"$(tput bold)$branch$(tput sgr0)\"; \
     git branch --delete \"$branch\"; \
+    echo; \
+    echo 💣 Delete remote \"$(tput bold)$branch$(tput sgr0)\"; \
     git push origin \":$branch\"; \
-    git p --rebase; \
   };f"
 
   topic-finish = "!f(){ \
@@ -219,7 +228,11 @@
   topic-pull = "!f(){ \
     branch=$(git branch-name); \
     base=$(git topic-base-branch-name); \
+    echo; \
+    echo 📥 Checking out the latest \"$(tput bold)$base$(tput sgr0)\"; \
     git checkout \"$base\"; git pull; \
+    echo; \
+    echo 🪜 Rebasing \"$(tput bold)$branch$(tput sgr0)\"...; \
     git checkout \"$branch\"; git rebase \"$base\"; \
   };f"
 
