@@ -19,3 +19,4 @@ endif
 runtime ./vim.d/plugs.vim
 runtime! ./vim.d/core/*.vim
 runtime! ./vim.d/plug/*.vim
+runtime ./vim.d/packs.vim
