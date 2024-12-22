@@ -57,5 +57,21 @@ g:ale_linters = {
 # SuperTab
 g:SuperTabDefaultCompletionType = "<c-n>"
 # ------------------------------------------------------------------------ }}}
+# AI (copilot.vim) ------------------------------------------------------- {{{
+var copilot_filetypes = [
+  'ruby',
+  'java',
+  'python',
+  'javascript',
+  'typescript',
+  'vim',
+]
+g:copilot_filetypes = {
+  '*': false,
+}
+for sel in copilot_filetypes
+  g:copilot_filetypes[sel] = true
+endfor
+# ------------------------------------------------------------------------ }}}
 
 defcompile
