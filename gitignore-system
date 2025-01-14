@@ -38,3 +38,7 @@ __pycache__
 # taste without committing this to the repository. This is particularly useful
 # for [experimentation in] open source projects
 .uncommitted
+
+# MSTY
+msty.*
+.msty.*
