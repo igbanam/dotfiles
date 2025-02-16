@@ -70,7 +70,7 @@ g:copilot_filetypes = {
   '*': false,
 }
 for sel in copilot_filetypes
-  g:copilot_filetypes[sel] = true
+  # g:copilot_filetypes[sel] = true
 endfor
 # ------------------------------------------------------------------------ }}}
 
