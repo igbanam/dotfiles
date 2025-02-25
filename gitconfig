@@ -2,6 +2,10 @@
   ; version = 2
 [gpg]
   program = gpg
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [core]
   editor = vim
   excludesfile = ~/.gitignore-system
@@ -482,22 +486,36 @@
   user = igbanam
 [push]
   default = simple
-[credential]
-  helper = osxkeychain
+  autoSetupRemote = true
+  followTags = true
 [pull]
   rebase = true
-[init]
-  defaultBranch = release
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [merge]
   tool = vimdiff
+  conflictStyle = zdiff3
+[rebase]
+  autosquash = true
+  autostash = true
+[credential]
+  helper = osxkeychain
+[init]
+  defaultBranch = release
 [advice]
   addIgnoredFile = false
+[help]
+  autocorrect = prompt
 [include]
   path = ~/.gitconfig.includeables
 [diff]
-	colorMoved = dimmed-zebra
+  algorithm = histogram
+  colorMoved = dimmed-zebra
+  renames = true
 [rerere]
-	enabled = true
+  enabled = true
+  autoupdate = true
 [maintenance]
-	repo = /Users/igbanam/projects/igbanam/dotfiles
-	repo = /Users/igbanam/projects/frontedge/core-service
+  repo = /Users/igbanam/projects/igbanam/dotfiles
