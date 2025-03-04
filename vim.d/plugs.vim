@@ -58,7 +58,6 @@ Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
