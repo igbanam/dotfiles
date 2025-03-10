@@ -4,7 +4,6 @@ filetype plugin on
 
 packadd! editorconfig
 packadd! helptoc
-packadd! comment
 
 # Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -56,6 +55,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
