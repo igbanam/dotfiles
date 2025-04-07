@@ -1,5 +1,6 @@
 vim9script
 
+set autoindent
 set backspace=2        # backspace deletes like most programs in insert mode
 set complete-=i        # do not parse included files in autocomplete
 set diffopt+=vertical  # force fugitive to diff using vertical splits
