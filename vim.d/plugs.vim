@@ -31,7 +31,7 @@ Plug 'sainnhe/everforest'
 Plug 'asheq/close-buffers.vim'
 Plug 'docunext/closetag.vim',           { 'for': ['html', 'xml'] }
 Plug 'evanleck/vim-svelte',             { 'for': 'svelte' }
-Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go',                    { 'for': 'go' }
 Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'igbanam/vim-startify'
