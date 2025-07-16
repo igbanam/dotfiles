@@ -4,7 +4,7 @@ vim9script
 augroup fold_schemes
   autocmd!
   autocmd Filetype crystal setlocal foldmethod=syntax
-  autocmd Filetype php,java,ruby,json,typescriptreact,ledger AnyFoldActivate
+  # autocmd Filetype php,java,ruby,json,typescriptreact,ledger AnyFoldActivate
   autocmd Filetype vim set foldmethod=marker
   autocmd Syntax xml,html.erb,xhtml,html setlocal foldmethod=indent
 augroup END
