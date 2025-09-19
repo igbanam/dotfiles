@@ -1,4 +1,14 @@
-background = 000000
-theme = Tomorrow Night Bright
+auto-update = download
+auto-update-channel = stable
+confirm-close-surface = false
+copy-on-select = true
+clipboard-read = allow
+cursor-click-to-move = true
+clipboard-write = allow
+font-family = Hack Nerd Font Mono Regular
+font-family-bold = Hack Nerd Font Mono Bold
+font-family-bold-italic = Hack Nerd Font Mono Bold Italic
+font-family-italic = Hack Nerd Font Mono Italic
 font-feature = -calt
-font-family = Hack Nerd Font Mono
+macos-icon = xray
+theme = Tomorrow Night Bright
