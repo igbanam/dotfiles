@@ -1,3 +1,6 @@
+# Project-specific
+Simple Server
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
@@ -42,3 +45,8 @@ __pycache__
 # MSTY
 msty.*
 .msty.*
+
+# A.I. shenanigans
+CLAUDE.md
+GEMINI.md
+.claude
