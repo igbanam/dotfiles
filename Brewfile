@@ -11,7 +11,6 @@ brew "openssl@1.1"
 brew "postgresql"
 brew "redis"
 brew "sqlite"
-brew "valkey"
 
 # Bundlers
 brew "cmake"
