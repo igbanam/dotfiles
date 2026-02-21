@@ -33,7 +33,8 @@ endif
 
 # Display extra whitespace ----------------------------------------------- {{{
 set list listchars=tab:»·,trail:·,nbsp:·
-# Display extra whitespace ----------------------------------------------- }}}
+# ------------------------------------------------------------------------ }}}
+
 # Spaces for specific file types ----------------------------------------- {{{
 augroup IntentionalIndentations
   autocmd!

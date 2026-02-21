@@ -26,6 +26,7 @@ plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/everforest'
+Plug 'igbanam/lantern.vim'
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'asheq/close-buffers.vim'
@@ -37,12 +38,13 @@ Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim',               { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim',               { 'for': ['pandoc', 'markdown'] }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'puremourning/vimspector'
 Plug 'preservim/nerdtree'
 Plug 'pseewald/vim-anyfold'
