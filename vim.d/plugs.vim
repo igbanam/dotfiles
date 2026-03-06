@@ -43,6 +43,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
+Plug 'ollykel/v-vim'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'puremourning/vimspector'
