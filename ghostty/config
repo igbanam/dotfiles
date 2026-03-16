@@ -1,4 +1,5 @@
 auto-update = download
+split-divider-color = #737373
 auto-update-channel = stable
 clipboard-read = allow
 clipboard-write = allow
