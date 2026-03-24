@@ -185,13 +185,13 @@
   # "Ancestral Bounds"
   # These two commands seek to get the internal boundaries of a branch. In the
   # case of the graph below, the oldest ancestor of topic-branch is G and the
-  # youngest descendant of topic-branch is J.
+  # youngest descendant of topic-branch is J; and fork-point is A
   # -- X -- A -- B -- C -- D -- F  (master)
   #           \     /   \     /
   #            \   /     \   /
   #              G -- H -- I -- J  (topic-branch)
-  fork-point = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-$(git topic-base-branch-name)}") | grep "^\\ [a-z0-9]" | sed -ne "s/^\\ //p" | head -n 1' -
-  oldest-ancestor = !bash -c 'diff --unified <(git rev-list --first-parent "${1:-HEAD}") <(git rev-list --first-parent "${2:-$(git topic-base-branch-name)}") | grep "^\\-[a-z0-9]" | sed -ne "s/^\\-//p" | tail -n 1' -
+  fork-point = !git merge-base "${1:-HEAD}" "${2:-$(git topic-base-branch-name)}"
+  oldest-ancestor = !git rev-list --reverse --topo-order "${2:-$(git topic-base-branch-name)}..${1:-HEAD}"
 
   ### Rails ###
   rspec-branch = !"git diff-branch-changes | awk '{print $2}' | grep _spec.rb | xargs rspec"
