@@ -9,7 +9,7 @@ set exrc               # project-specific vimrc
 set history=50         # increase how many entries we can keep in the history
 set incsearch          # do incremental searching
 set laststatus=2       # always display the status line
-set noautowrite        # handled by vim-auto-save
+set autowrite          # Write file when switching buffers
 set nobackup           # I don't like them .swp files; I already have Git
 set nocursorcolumn
 set nocursorline
@@ -30,6 +30,18 @@ set wildmenu
 if (has('patch-8.2.4608'))
   set wildoptions=pum,fuzzy
 endif
+
+# Persistent Undo -------------------------------------------------------- {{{
+set undofile
+set undodir=~/.vim/undo//
+set undolevels=10000
+set undoreload=10000
+
+# Create undo directory if missing
+if !isdirectory(expand(&undodir))
+  mkdir(expand(&undodir), 'p', 0700)
+endif
+# ------------------------------------------------------------------------ }}}
 
 # Display extra whitespace ----------------------------------------------- {{{
 set list listchars=tab:»·,trail:·,nbsp:·
