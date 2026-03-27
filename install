@@ -1,15 +1,135 @@
 #!/usr/bin/env bash
-
-set -e
+#
+# Dotfiles installer
+# https://github.com/igbanam/dotfiles
+#
+# Usage:
+#   ./install           # Full installation
+#   ./install --help    # Show help
+#
+set -euo pipefail
 
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+log_info()  { echo -e "${BLUE}[INFO]${NC} $*"; }
+log_ok()    { echo -e "${GREEN}[OK]${NC} $*"; }
+log_warn()  { echo -e "${YELLOW}[WARN]${NC} $*"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $*"; }
+
+show_help() {
+    cat <<EOF
+Dotfiles Installer
+
+Usage: ./install [OPTIONS]
+
+Options:
+    --help, -h      Show this help message
+    --no-brew       Skip Homebrew installation check
+    --verbose, -v   Verbose output
+
+This script will:
+  1. Check for and optionally install Homebrew
+  2. Initialize dotbot submodules
+  3. Symlink configuration files
+  4. Install Homebrew packages from Brewfile
+  5. Set up Vim plugins
+  6. Configure shell integrations
+
+EOF
+    exit 0
+}
+
+check_homebrew() {
+    if command -v brew &>/dev/null; then
+        log_ok "Homebrew found at $(command -v brew)"
+        return 0
+    fi
+
+    log_warn "Homebrew not found"
+    echo ""
+    read -rp "Install Homebrew? [y/N] " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            log_info "Installing Homebrew..."
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            # Add Homebrew to PATH for this session
+            if [[ -f /opt/homebrew/bin/brew ]]; then
+                eval "$(/opt/homebrew/bin/brew shellenv)"
+            elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+                eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            fi
+            log_ok "Homebrew installed"
+            ;;
+        *)
+            log_warn "Skipping Homebrew installation"
+            ;;
+    esac
+}
+
+# Parse arguments
+SKIP_BREW=false
+VERBOSE=false
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --help|-h)
+            show_help
+            ;;
+        --no-brew)
+            SKIP_BREW=true
+            shift
+            ;;
+        --verbose|-v)
+            VERBOSE=true
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+# Main installation
+echo ""
+echo "╔══════════════════════════════════════╗"
+echo "║       igbanam's dotfiles setup       ║"
+echo "╚══════════════════════════════════════╝"
+echo ""
+
+# Check for Homebrew
+if [[ "$SKIP_BREW" == false ]]; then
+    check_homebrew
+fi
+
+# Initialize dotbot
+log_info "Initializing dotbot..."
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
+log_ok "Dotbot initialized"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"
+# Run dotbot
+log_info "Running dotbot..."
+if [[ "$VERBOSE" == true ]]; then
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" --verbose "${@}"
+else
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+fi
+
+echo ""
+log_ok "Dotfiles installation complete!"
+echo ""
+echo "Next steps:"
+echo "  1. Restart your shell or run: source ~/.zshrc"
+echo "  2. Open Vim and run :PlugInstall (if plugins weren't installed)"
+echo "  3. Enjoy your new setup!"
+echo ""

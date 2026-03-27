@@ -1,8 +1,13 @@
 - defaults:
     link:
       relink: true
+      create: true
 
-- clean: ['~']
+- clean: ['~', '~/.config']
+
+- create:
+    - ~/projects
+    - ~/.config
 
 - link:
     ~/.gitconfig: gitconfig
@@ -10,32 +15,32 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.vim/vim.d: vim.d
-
-- brewfile:
-    - Brewfile
-
-- create:
-    - ~/projects
+    ~/.config/ghostty: ghostty
 
 - shell:
+    # Homebrew packages (works on macOS and Linux with Homebrew)
     -
-      command: curl -sSL https://get.rvm.io | bash -s stable
-      description: Bring RVM in
-    -
-      command: . $HOME/.rvm/scripts/rvm
-      description: Activate RVM
+      command: command -v brew >/dev/null 2>&1 && brew bundle --file=Brewfile || echo "Homebrew not found, skipping brew packages"
+      description: Install Homebrew packages
+      stdout: true
+      stderr: true
+    # Vim plugin manager
     -
       command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      description: "Install vim-plug: Packaage Management for [Neo]Vim"
+      description: "Install vim-plug: Package Management for Vim"
+    # Vim plugins
     -
-      command: echo "export GIT_BASE_BRANCH=release" >> $HOME/.zprofile
-      description: Default Git branch is "release"
+      command: vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa" || true
+      description: Install Vim plugins
+    # Shell configuration
     -
-      command: read var && echo Your variable is $var
-      stdin: true
-      stdout: true
-      description: Reading and printing variable
-      quiet: true
+      command: grep -q "GIT_BASE_BRANCH" ~/.zprofile 2>/dev/null || echo 'export GIT_BASE_BRANCH=release' >> ~/.zprofile
+      description: Set default Git branch to "release"
+    # Modern CLI tool integrations
     -
-      command: read fail
-      stderr: true
+      command: command -v zoxide >/dev/null 2>&1 && grep -q "zoxide init" ~/.zshrc 2>/dev/null || echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc || true
+      description: Initialize zoxide in zsh
+    # Git maintenance
+    -
+      command: command -v git >/dev/null 2>&1 && git maintenance start || true
+      description: Enable git background maintenance
