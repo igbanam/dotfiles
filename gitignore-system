@@ -46,6 +46,10 @@ __pycache__
 msty.*
 .msty.*
 
+# if there are any experiments wihin a codebase I don't want to be committed
+# in, here's the folder for that
+personal-experiments
+
 # A.I. shenanigans
 CLAUDE.md
 GEMINI.md
