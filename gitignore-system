@@ -55,3 +55,9 @@ CLAUDE.md
 GEMINI.md
 .claude
 .opencode
+docs/superpowers
+
+# I'm using this pattern to hide ignore rules I don't want visible to the
+# repository e.g. unignoring some files ignored by gitignore, so other tools
+# can benefit from the files git ignores.
+.ignore
