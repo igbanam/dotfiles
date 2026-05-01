@@ -14,3 +14,4 @@ font-feature = -calt
 macos-icon = xray
 macos-option-as-alt=false
 theme = Tomorrow Night Bright
+background-opacity = 0.8
