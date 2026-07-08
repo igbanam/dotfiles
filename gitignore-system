@@ -55,6 +55,7 @@ CLAUDE.md
 GEMINI.md
 .claude
 .opencode
+.cursor
 docs/superpowers
 
 # I'm using this pattern to hide ignore rules I don't want visible to the
