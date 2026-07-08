@@ -79,13 +79,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
 Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
+Plug 'vim-scripts/vim-auto-save'
 Plug 'wakatime/vim-wakatime'
 Plug 'wellle/targets.vim'
-# ======================================================================== #
-# DISCONNECTED PLUGINS (kept for easy rollback)                            #
-# To reconnect: uncomment the plugin and comment/remove its replacement    #
-# ======================================================================== #
-# Plug 'vim-scripts/vim-auto-save'                               # using native autowrite
 # ------------------------------------------------------------------------ }}}
 plug#end()
 
