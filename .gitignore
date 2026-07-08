@@ -1,1 +1,25 @@
 gitconfig.*
+
+# Secrets and credentials
+*.local
+.env
+.env.*
+!.env.example
+credentials*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+!secrets.example.*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
