@@ -3,6 +3,8 @@ vim9script
 # Intellisense (coc.nvim, ale, supertab) -------------------- {{{
 set shortmess+=c      # Don't give |ins-completion-menu| messages
 set updatetime=300    # Diagnostic messages disappear faster
+set signcolumn=yes    # Always show signcolumn for diagnostics
+# ------------------------------------------------------------------------ }}}
 
 # For expanding decorations in Scala worksheets
 nmap <leader>ws <Plug>(coc-metals-expand-decoration)
@@ -43,7 +45,10 @@ g:coc_global_extensions = [
   'coc-java',
   'coc-json',
   'coc-phpactor',
-  'coc-tsserver'
+  'coc-tsserver',
+  'coc-solargraph',
+  'coc-pyright',
+  'coc-kotlin',
 ]
 
 # Ale
@@ -53,10 +58,9 @@ g:ale_linters = {
   'elixir': ['credo', 'dialyxir', 'dogma', 'mix'],
   'ruby': ['ruby', 'rails_best_practices']
 }
-
-# SuperTab
-g:SuperTabDefaultCompletionType = "<c-n>"
+g:ale_disable_lsp = 1  # Disable ALE's LSP to avoid conflicts with vim-lsp
 # ------------------------------------------------------------------------ }}}
+
 # AI (copilot.vim) ------------------------------------------------------- {{{
 var copilot_filetypes = [
   'ruby',

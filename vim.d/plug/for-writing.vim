@@ -62,8 +62,30 @@ autocmd! User GoyoLeave ++nested GoyoLeave()
 
 g:UltiSnipsEditSplit = "vertical"
 # ------------------------------------------------------------------------ }}}
-# Auto Save (vim-auto-save) ---------------------------------------------- {{{
-g:auto_save = 1                 # enable autosave on vim startup
-g:auto_save_in_insert_mode = 0  # do not save while in insert mode
-g:auto_save_events = ["CursorHold"]
+
+# Auto Save (native implementation) -------------------------------------- {{{
+# Mimics vim-auto-save behavior using native autocommands
+# Saves on CursorHold (when cursor is idle for 'updatetime' ms)
+
+def AutoSave(): void
+  if &modified && !&readonly && expand('%') != '' && &buftype == ''
+    silent! write
+  endif
+enddef
+
+augroup native_auto_save
+  autocmd!
+  autocmd CursorHold * AutoSave()
+  autocmd FocusLost * AutoSave()
+augroup END
 # ------------------------------------------------------------------------ }}}
+
+# ======================================================================== #
+# DISCONNECTED: vim-auto-save plugin (using native implementation above)   #
+# To reconnect: uncomment plugin in plugs.vim and settings below,          #
+# then comment out the native_auto_save augroup above                      #
+# ======================================================================== #
+# g:auto_save = 1                 # enable autosave on vim startup
+# g:auto_save_in_insert_mode = 0  # do not save while in insert mode
+# g:auto_save_events = ["CursorHold"]
+# ------------------------------------------------------------------------ #
