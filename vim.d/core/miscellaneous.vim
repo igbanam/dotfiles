@@ -49,7 +49,14 @@ nmap <leader>r  :redraw!<cr>
 # Cursor Visuals per Mode ------------------------------------------------ {{{
 # Vertical cursor for INSERT
 # Underscore cursor for REPLACE
-if has("autocmd")
+if has('win32')
+  # :! runs cmd.exe on Windows, so let Vim send the escape codes itself
+  &t_SI = "\e[6 q"
+  &t_SR = "\e[4 q"
+  &t_EI = "\e[2 q"
+  &t_ti ..= "\e[2 q"
+  &t_te ..= "\e[0 q"
+elseif has("autocmd")
   au VimEnter * silent execute '!echo -ne "\e[2 q"' | redraw!
   au InsertLeave * silent execute '!echo -ne "\e[2 q"'
   au InsertEnter,InsertChange *

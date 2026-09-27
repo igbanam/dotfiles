@@ -7,8 +7,9 @@ packadd! helptoc
 
 # Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  # expand() because cmd.exe on Windows does not expand ~
+  execute 'silent !curl -fLo ' .. shellescape(expand('~/.vim/autoload/plug.vim'))
+    \ .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 # Descriptions ----------------------------------------------------------- {{{
@@ -37,7 +38,7 @@ Plug 'fatih/vim-go',                    { 'for': 'go' }
 Plug 'honza/vim-snippets'
 Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
-Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim',               { 'for': ['pandoc', 'markdown'] }
 Plug 'junegunn/gv.vim'
@@ -46,7 +47,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ledger/vim-ledger'
 Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim',               { 'branch': 'release' }
-Plug 'neoclide/coc.nvim',             { 'branch': 'release' }  # replaced by vim-lsp
 Plug 'ollykel/v-vim'
 Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
 Plug 'philrunninger/nerdtree-visual-selection'

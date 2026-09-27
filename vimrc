@@ -16,6 +16,14 @@ if line('$') > 1000
   set re=1
 endif
 
+# Windows Vim uses ~/vimfiles and symlinks need admin rights there. Mirror the
+# Unix ~/.vim layout, and put this repo on the runtimepath so vim.d is found
+# without linking it. See README.
+if has('win32')
+  set runtimepath^=~/.vim runtimepath+=~/.vim/after
+  execute 'set runtimepath^=' .. fnameescape(expand('<script>:p:h'))
+endif
+
 runtime ./vim.d/plugs.vim
 runtime! ./vim.d/core/*.vim
 runtime! ./vim.d/plug/*.vim
