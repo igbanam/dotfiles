@@ -30,10 +30,14 @@ cd ~/.dotfiles
 ./install --verbose    # Verbose output
 ```
 
-### Windows (Vim only)
+### Windows (Vim and Git)
 
 Dotbot uses symlinks, and creating those on Windows needs admin rights or
-Developer Mode. The Vim config doesn't need links on Windows. When `vimrc`
+Developer Mode. The Vim and Git configs don't need links on Windows.
+
+#### Vim
+
+When `vimrc`
 detects `has('win32')`, it adds `~/.vim` and this repo to the `runtimepath`
 itself. Clone the repo, then create `~\_vimrc` containing one line:
 
@@ -50,9 +54,28 @@ admin:
 scoop install vim ripgrep universal-ctags python
 ```
 
+#### Git
+
+Git reads the global config from `%USERPROFILE%\.gitconfig`. Make that file
+include this repo's `gitconfig`, then override the macOS-only values after it:
+
+```ini
+[include]
+  path = ~/projects/igbanam/dotfiles/gitconfig
+[core]
+  excludesfile = ~/projects/igbanam/dotfiles/gitignore-system
+[credential]
+  helper =
+  helper = manager
+```
+
+Values after the include win. The empty `helper =` clears the `osxkeychain`
+helper so only Git Credential Manager runs. `excludesfile` points at the repo
+because `~/.gitignore-system` is a Dotbot link.
+
 ## Requirements
 
-- **macOS** or **Linux** (Vim config also works on **Windows**, see above)
+- **macOS** or **Linux** (Vim and Git configs also work on **Windows**, see above)
 - **Homebrew** (will prompt to install if missing)
 - **Git** 2.x+
 - **Vim** 9.x+ (installed via Brewfile)
