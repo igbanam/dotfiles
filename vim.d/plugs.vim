@@ -25,9 +25,8 @@ endif
 
 plug#begin('~/.vim/bundle')
 # Colors ----------------------------------------------------------------- {{{
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/everforest'
-Plug 'igbanam/vim-colors'
+Plug '~/projects/igbanam/vim-colors'
 # ------------------------------------------------------------------------ }}}
 # IDE Capabilities ------------------------------------------------------- {{{
 Plug 'andymass/vim-matchup'

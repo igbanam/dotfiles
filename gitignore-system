@@ -62,3 +62,5 @@ docs/superpowers
 # repository e.g. unignoring some files ignored by gitignore, so other tools
 # can benefit from the files git ignores.
 .ignore
+
+.superpowers/

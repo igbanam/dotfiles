@@ -232,12 +232,14 @@
   topic-pull = "!f(){ \
     branch=$(git branch-name); \
     base=$(git topic-base-branch-name); \
+    strategy=\"\"; \
+    if [ \"$1\" = \"--theirs\" ]; then strategy=\"-X theirs\"; fi; \
     echo; \
     echo 📥 Checking out the latest \"$(tput bold)$base$(tput sgr0)\"; \
     git checkout \"$base\"; git pull; \
     echo; \
     echo 🪜 Rebasing \"$(tput bold)$branch$(tput sgr0)\"...; \
-    git checkout \"$branch\"; git rebase \"$base\"; \
+    git checkout \"$branch\"; git rebase $strategy \"$base\"; \
   };f"
 
   topic-push = !git publish
@@ -249,8 +251,30 @@
   };f"
 
   topic-sync = "!f(){ \
-    git topic-pull; \
-    git push --force-with-lease; \
+    strategy=\"\"; \
+    if [ \"$1\" = \"--theirs\" ] || [ \"$1\" = \"--ours\" ]; then \
+      strategy=\"$1\"; \
+    fi; \
+    if [ -n \"$strategy\" ]; then \
+      branch=$(git branch-name); \
+      base=$(git topic-base-branch-name); \
+      echo; \
+      echo 📥 Checking out the latest \"$(tput bold)$base$(tput sgr0)\"; \
+      git checkout \"$base\"; git pull; \
+      echo; \
+      echo 🪜 Rebasing \"$(tput bold)$branch$(tput sgr0)\" with auto-resolution...; \
+      git checkout \"$branch\"; \
+      git rebase -X \"${strategy#--}\" \"$base\" || true; \
+      while [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; do \
+        git checkout --${strategy#--} . 2>/dev/null; \
+        git add -A; \
+        GIT_EDITOR=true git rebase --continue || true; \
+      done; \
+      git push --force-with-lease; \
+    else \
+      git topic-pull \"$1\"; \
+      git push --force-with-lease; \
+    fi; \
   };f"
 
   ### MAINTENANCE ALIASES ###
@@ -519,3 +543,5 @@
   autoupdate = true
 [maintenance]
   repo = /Users/igbanam/projects/igbanam/dotfiles
+[beads]
+	role = maintainer
