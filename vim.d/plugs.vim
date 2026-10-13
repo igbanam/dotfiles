@@ -63,7 +63,7 @@ Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim',         { 'for': 'elixir' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
+Plug 'igbanam/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
