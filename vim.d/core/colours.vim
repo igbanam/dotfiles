@@ -53,5 +53,5 @@ def Theme(theme_file: string, default_theme: string)
   execute 'colorscheme ' .. active_theme
 enddef
 
-Theme(GetThemeFile(), "nord")
+Theme(GetThemeFile(), "everforest")
 # ------------------------------------------------------------------------ }}}

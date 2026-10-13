@@ -6,7 +6,6 @@ if !exists('g:airline_symbols')
 endif
 
 g:airline_theme = 'zenburn'
-g:airline_experimental = 1
 g:airline_powerline_fonts = 1
 g:airline_left_alt_sep = "\uE0C1"
 g:airline_left_sep = "\uE0C0"
