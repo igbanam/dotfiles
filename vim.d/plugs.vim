@@ -39,7 +39,7 @@ Plug 'igbanam/vim-startify'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf',                    { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim',               { 'for': ['pandoc', 'markdown'] }
+Plug 'junegunn/goyo.vim',               { 'for': ['markdown'] }
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
@@ -75,8 +75,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-pandoc/vim-pandoc',           { 'for': 'markdown' }
-Plug 'vim-pandoc/vim-pandoc-syntax',    { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',               { 'for': 'ruby' }
 Plug 'vim-scripts/vim-auto-save'
 Plug 'wakatime/vim-wakatime'
