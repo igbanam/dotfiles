@@ -47,6 +47,13 @@ endif
 set list listchars=tab:»·,trail:·,nbsp:·
 # ------------------------------------------------------------------------ }}}
 
+# No modelines for QuickFix content--------------------------------------- {{{
+augroup QuickfixModelines
+  autocmd!
+  autocmd FileType qf setlocal nomodeline
+augroup END
+# ------------------------------------------------------------------------ }}}
+
 # Spaces for specific file types ----------------------------------------- {{{
 augroup IntentionalIndentations
   autocmd!
